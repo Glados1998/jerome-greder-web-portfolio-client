@@ -18,8 +18,9 @@ export default function Home() {
                     className="absolute top-40 left-16 w-full h-96 flex flex-col justify-center items-start text-white p-14">
                     <h1 className="text-8xl font-bold">Hello there!</h1>
                     <p className="text-4xl font-medium mt-8">
-                        My name is Jérôme Greder <br/>
-                        Junior Fullstack Developer.
+                        Jérôme Greder <br/>
+                        Junior Fullstack Developer <br/>
+                        At your service.
                     </p>
                     <hr className="w-32 mt-8"/>
                     <div className="flex flex-row gap-3 mt-8">
@@ -39,7 +40,7 @@ export default function Home() {
                         applications. <br/> I am a self-taught junior Fullstack developer and alumni of the <a target={'_blank'} href={'https://www.epitech.eu/en/'} className={'font-medium hover:underline'}>Epitech school</a>.
                     </p>
                     <div className={'mt-6'}>
-                        <Link href={'/contact'} className={'font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out'}>
+                        <Link href={'/contact'} className={'font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out hover:dark:bg-slate-50 hover:dark:text-black'}>
                             Let's talk!
                         </Link>
                     </div>
