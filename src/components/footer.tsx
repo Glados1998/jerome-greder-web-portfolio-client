@@ -12,12 +12,11 @@ const socialLinks = [
     {label: "Github", href: ""},
     {label: "LinkedIn", href: ""},
     {label: "Instagram", href: ""},
-    {label: "X", href: ""},
 ]
 export default function Footer() {
     return (
-        <footer className={'bg-slate-200 p-6 backdrop-blur-md backdrop-opacity-30 absolute inset-x-0 bottom-0'}>
-            <div className={'grid grid-flow-col auto-cols-max gap-10'}>
+        <footer className={'bg-slate-200 p-6 backdrop-blur bg-white/50 sticky inset-x-0 bottom-0'}>
+            <div className={'grid grid-flow-col auto-cols-max gap-10 ml-10'}>
                 <div className={'grid grid-flow-row gap-3'}>
                     <span className={'font-bold text-md'}>Jérôme Greder web portfolio</span>
                     <span className={'font-medium text-sm'}>© {new Date().getFullYear()} | All rights reserved</span>

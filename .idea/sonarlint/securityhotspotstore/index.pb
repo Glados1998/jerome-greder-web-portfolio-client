@@ -85,3 +85,5 @@ I
 src/app/projects/page.tsx,5/7/578d255b7b0130388341c97e908309a0ae778780
 H
 src/app/contact/page.tsx,1/e/1ee5438b85d3cc29b9284bd5fcd275cb9d5bc7cf
+L
+src/assets/style/globals.css,3/1/31e599a9332b2acab834137a920dbff511c5d992
