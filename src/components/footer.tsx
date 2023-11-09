@@ -11,7 +11,6 @@ const links = [
 const socialLinks = [
     {label: "Github", href: ""},
     {label: "LinkedIn", href: ""},
-    {label: "Instagram", href: ""},
 ]
 export default function Footer() {
     return (
@@ -20,9 +19,9 @@ export default function Footer() {
                 <div className={'grid grid-flow-row gap-3'}>
                     <span className={'font-bold text-md'}>Jérôme Greder web portfolio</span>
                     <span className={'font-medium text-sm'}>© {new Date().getFullYear()} | All rights reserved</span>
-                    <span className={'font-medium text-sm'}>Made with <Link href={'https://nextjs.org'}
-                                                                            className={'text-blue-500'}>Next.js</Link>, <br/> Powered by <Link
-                        href={'https://aws.amazon.com'} className={'text-blue-500'}>AWS</Link></span>
+                    <span className={'font-medium text-sm'}>Made with <a target={'_blank'} href={'https://nextjs.org'}
+                                                                            className={'text-blue-500'}>Next.js</a>, <br/> Powered by <a target={'_blank'}
+                        href={'https://aws.amazon.com'} className={'text-blue-500'}>AWS</a></span>
                 </div>
                 <div className={'grid grid-flow-row gap-3'}>
                     <h1 className={'text-md font-bold'}>
@@ -31,7 +30,7 @@ export default function Footer() {
                     <ul className={'grid grid-flow-row auto-rows-max'}>
                         {links.map(link => (
                             <li className={'font-medium'} key={link.label}>
-                                <Link href={link.href}>{link.label}</Link>
+                                <a target={'_blank'} href={link.href}>{link.label}</a>
                             </li>
                         ))}
                     </ul>
@@ -43,7 +42,7 @@ export default function Footer() {
                     <ul className={'grid grid-flow-row auto-rows-max'}>
                         {socialLinks.map(link => (
                             <li className={'font-medium'} key={link.label}>
-                                <Link href={link.href}>{link.label}</Link>
+                                <a target={'_blank'} href={link.href}>{link.label}</a>
                             </li>
                         ))}
                     </ul>

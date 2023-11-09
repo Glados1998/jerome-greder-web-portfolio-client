@@ -87,3 +87,7 @@ H
 src/app/contact/page.tsx,1/e/1ee5438b85d3cc29b9284bd5fcd275cb9d5bc7cf
 L
 src/assets/style/globals.css,3/1/31e599a9332b2acab834137a920dbff511c5d992
+Q
+!src/interfaces/links.interface.ts,e/9/e960656e3239f0a82eb4429d5439a63b12b35695
+S
+#src/interfaces/project.interface.ts,4/3/432fdc05256999ec213001587422915a772161ed

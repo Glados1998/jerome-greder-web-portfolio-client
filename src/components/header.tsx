@@ -29,7 +29,7 @@ export default function Header() {
                     <span className={'font-medium mr-4'}>
                         Languages
                     </span>
-                    <select className={'text-white rounded-md p-1 dark:text-black dark:p-1 dark:rounded-md'}>
+                    <select className={'text-black rounded-md p-1 dark:p-1 dark:rounded-md'}>
                         <option>English</option>
                         <option>Deutsch</option>
                         <option>Français</option>
