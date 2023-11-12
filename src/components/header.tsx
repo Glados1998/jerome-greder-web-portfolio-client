@@ -25,7 +25,7 @@ export default function Header() {
                         ))}
                     </ul>
                 </div>
-                <div className={'flex items-center mr-10'}>
+                {/*<div className={'flex items-center mr-10'}>
                     <span className={'font-medium mr-4'}>
                         Languages
                     </span>
@@ -34,7 +34,7 @@ export default function Header() {
                         <option>Deutsch</option>
                         <option>Français</option>
                     </select>
-                </div>
+                </div>*/}
             </nav>
         </header>
     );

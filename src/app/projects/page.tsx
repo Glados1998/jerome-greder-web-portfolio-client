@@ -12,7 +12,7 @@ export default function Projects() {
                         my projects
                     </h1>
                     <p className="text-xl md:text-2xl lg:text-4xl font-medium mt-4">
-                        Here are some of the projects I've been working on <br/>
+                        Here are some of the projects I&apos;ve been working on <br/>
                         over time.
                     </p>
                     <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>
@@ -27,7 +27,7 @@ export default function Projects() {
                                 <h2 className="text-3xl md:text-4xl font-bold">
                                     {project.name}
                                 </h2>
-                                <p className="text-base md:text-xl font-medium">
+                                <p className="text-base md:text-xl font-medium" >
                                     {project.description}
                                 </p>
                                 <p className="text-base md:text-xl font-medium">
