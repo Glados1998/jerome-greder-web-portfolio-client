@@ -11,7 +11,7 @@ export default function Contact() {
                            className="rounded-2xl shadow-lg"/>
                     <div className="flex flex-col text-left space-y-4 w-full md:w-[44rem]">
                         <h2 className="text-5xl md:text-5xl font-bold">
-                            Contact me, and let's make something great together!
+                            Contact me, and let&apos;s make something great together!
                         </h2>
                         <p className="text-base md:text-xl font-medium">
                             You can contact me by email at <a href={'mailto:jerome-alexandre.greder@epitech.eu'}
