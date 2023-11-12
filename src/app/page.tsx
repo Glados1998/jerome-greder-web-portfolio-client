@@ -35,13 +35,13 @@ export default function Home() {
                 <div className={'flex flex-col justify-center m-12 text-center'}>
                     <h1 className={'text-3xl font-bold mb-6'}>Crafting digital experiences <br/> out of code with
                         passion. </h1>
-                    <p className={''}>
+                    <p>
                         Building digital experiences is my passion. I love to create beautiful and functional websites and
                         applications. <br/> I am a self-taught junior Fullstack developer and alumni of the <a target={'_blank'} href={'https://www.epitech.eu/en/'} className={'font-medium hover:underline'}>Epitech school</a>.
                     </p>
                     <div className={'mt-6'}>
                         <Link href={'/contact'} className={'font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out hover:dark:bg-slate-50 hover:dark:text-black'}>
-                            Let's talk!
+                            Let&apos;s talk!
                         </Link>
                     </div>
                 </div>
