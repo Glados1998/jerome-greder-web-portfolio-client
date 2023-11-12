@@ -28,8 +28,6 @@ S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
-C
-src/app/globals.css,d/a/da1d6f21d01d0f36b5501dffcf7fd160ffcb290d
 A
 public/vercel.svg,0/c/0c3567b3146da917779092b6952cf7aa844d3c76
 w
@@ -70,11 +68,6 @@ B
 Q.idea/sonarlint/securityhotspotstore/7/0/7030d0b2f71b999ff89a343de08c414af32fc93a,9/a/9ab775a45cd57b8b48016a1df33230d8b5c74c21
 >
 .eslintrc.json,7/1/71c20a341bfe32aa5cd5b4384e94f942bab6a7d3
-?
-gitActions.yaml,9/7/97527b9dd9786f2bec51e0a85df05c70bfdef1af
-:
-
-src/images,f/6/f6d8a00c870a039282eb7934feaaf4117878e5df
 I
 src/components/footer.tsx,5/2/52d8b363510dbefbfdfb26c2c9bbccf179d45007
 I
@@ -87,7 +80,13 @@ H
 src/app/contact/page.tsx,1/e/1ee5438b85d3cc29b9284bd5fcd275cb9d5bc7cf
 L
 src/assets/style/globals.css,3/1/31e599a9332b2acab834137a920dbff511c5d992
-Q
-!src/interfaces/links.interface.ts,e/9/e960656e3239f0a82eb4429d5439a63b12b35695
-S
-#src/interfaces/project.interface.ts,4/3/432fdc05256999ec213001587422915a772161ed
+D
+src/data/projects.ts,a/8/a869f37ffcd5c0901b11b4856a99b32c4dd41483
+R
+"src/interface/project.interface.ts,a/8/a8b65d25ac66fcdc1dfdc4b6743f28849d262ef5
+E
+src/data/languages.ts,d/5/d52a75c25c3d475c0d83d4e426572f405378bc33
+O
+src/interface/tech.interface.ts,3/f/3f73714e81dd951e7bb6f6c82210e435ffc26222
+Y
+)localhost_2023-11-11_20-23-55.report.html,f/b/fbd1b277fd654ef740531e66c28efc5c41f2a27b
