@@ -10,43 +10,46 @@ const links = [
 export default function Home() {
     return (
         <>
-            <div className="relative">
-                <div className="h-[45rem] relative ">
-                    <Image src={homeBanner} alt="Home banner" layout="fill" objectFit="cover"/>
-                </div>
+            <div className='relative'>
+                <Image src={homeBanner} alt="Home banner"
+                       className="relative xl:h-[45rem] lg:h-[30rem] md:h-[24rem] sm:h-[20rem]" objectFit='cover'/>
                 <div
-                    className="absolute top-40 left-16 w-full h-96 flex flex-col justify-center items-start text-white p-14">
-                    <h1 className="text-8xl font-bold">Hello there!</h1>
-                    <p className="text-4xl font-medium mt-8">
+                    className="absolute top-4 left-4 md:left-16 md:top-14 sm:top-0 sm:left-0 w-fit flex flex-col justify-center items-start text-white p-4">
+                    <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">Hello there!</h1>
+                    <p className="text-xl md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
                         Jérôme Greder <br/>
                         Junior Fullstack Developer <br/>
                         At your service.
                     </p>
-                    <hr className="w-32 mt-8"/>
-                    <div className="flex flex-row gap-3 mt-8">
+                    <hr className="w-20 md:w-32 mt-4 md:mt-4"/>
+                    <div className="flex flex-wrap gap-3 mt-4 md:mt-8">
                         {links.map((link) => (
                             <Link href={link.href} key={link.label}
-                                  className="font-medium hover:bg-slate-50 p-2 rounded-md hover:text-black transition duration-300 ease-in-out">
+                                  className="text-sm md:text-base font-medium hover:bg-slate-50 p-2 rounded-md hover:text-black transition duration-300 ease-in-out">
                                 {link.label}
                             </Link>
                         ))}
                     </div>
                 </div>
-                <div className={'flex flex-col justify-center m-12 text-center'}>
-                    <h1 className={'text-3xl font-bold mb-6'}>Crafting digital experiences <br/> out of code with
-                        passion. </h1>
-                    <p className={''}>
-                        Building digital experiences is my passion. I love to create beautiful and functional websites and
-                        applications. <br/> I am a self-taught junior Fullstack developer and alumni of the <a target={'_blank'} href={'https://www.epitech.eu/en/'} className={'font-medium hover:underline'}>Epitech school</a>.
-                    </p>
-                    <div className={'mt-6'}>
-                        <Link href={'/contact'} className={'font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out hover:dark:bg-slate-50 hover:dark:text-black'}>
-                            Let's talk!
-                        </Link>
-                    </div>
+            </div>
+            <div className={'flex flex-col justify-center m-6 md:m-12 text-center'}>
+                <h1 className={'text-xl md:text-3xl font-bold mb-4 md:mb-6'}>Crafting digital experiences <br/> out
+                    of code with
+                    passion. </h1>
+                <p className={'text-sm md:text-base'}>
+                    Building digital experiences is my passion. I love to create beautiful and functional websites
+                    and
+                    applications. <br/> I am a self-taught junior Fullstack developer and alumni of the <a
+                    target={'_blank'} href={'https://www.epitech.eu/en/'} className={'font-medium hover:underline'}>Epitech
+                    school</a>.
+                </p>
+                <div className={'mt-4 md:mt-6'}>
+                    <Link href={'/contact'}
+                          className={'text-sm md:text-base font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out hover:dark:bg-slate-50 hover:dark:text-black'}>
+                        Let's talk!
+                    </Link>
                 </div>
             </div>
-
         </>
     )
 }
