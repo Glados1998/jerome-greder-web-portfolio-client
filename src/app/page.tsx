@@ -46,7 +46,7 @@ export default function Home() {
                 <div className={'mt-4 md:mt-6'}>
                     <Link href={'/contact'}
                           className={'text-sm md:text-base font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out hover:dark:bg-slate-50 hover:dark:text-black'}>
-                        Let's talk!
+                        Let&apos;s talk!
                     </Link>
                 </div>
             </div>

@@ -10,7 +10,7 @@ export default function Contact() {
                     <Image src={contactImage} alt="Contact banner" width={400} height={400} className="rounded-2xl shadow-lg"/>
                     <div className="flex flex-col text-left space-y-4 w-full">
                         <h2 className="text-3xl md:text-5xl font-bold">
-                            Contact me, and let's make something great together!
+                            Contact me, and let&apos;s make something great together!
                         </h2>
                         <p className="text-sm md:text-xl font-medium">
                             You can contact me by email at <a href='mailto:jerome-alexandre.greder@epitech.eu' className='font-medium hover:underline'>
