@@ -88,7 +88,7 @@ export default function About() {
                             </p>
                             <div className="space-y-2">
                                 <h2 className="text-lg md:text-xl font-bold">Learn More About My School:</h2>
-                                <div className="flex md:gap-4">
+                                <div className="flex gap-5">
                                     <a href="https://www.webacademie.org/" target={'_blank'}
                                        className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
                                         Web@cademie
@@ -114,7 +114,7 @@ export default function About() {
                     <div className="mt-10 flex justify-center">
                         <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">
                             {techs.map((tech) => (
-                                <p className="bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 m-1">{tech.label}</p>
+                                <p className="bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700">{tech.label}</p>
                             ))}
                         </div>
                     </div>

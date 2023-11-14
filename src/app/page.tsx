@@ -14,7 +14,7 @@ export default function Home() {
                 <Image src={homeBanner} alt="Home banner"
                        className="relative xl:h-[45rem] lg:h-[30rem] md:h-[24rem] sm:h-[20rem]" objectFit='cover'/>
                 <div
-                    className="absolute top-4 left-4 md:left-16 md:top-14 sm:top-0 sm:left-0 w-fit flex flex-col justify-center items-start text-white p-4">
+                    className="absolute top-1 left-4 md:left-16 md:top-14 w-fit flex flex-col justify-center items-start text-white p-4">
                     <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">Hello there!</h1>
                     <p className="text-xl md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
                         Jérôme Greder <br/>
@@ -22,7 +22,7 @@ export default function Home() {
                         At your service.
                     </p>
                     <hr className="w-20 md:w-32 mt-4 md:mt-4"/>
-                    <div className="flex flex-wrap gap-3 mt-4 md:mt-8">
+                    <div className="flex flex-wrap gap-3 mt-2 md:mt-8">
                         {links.map((link) => (
                             <Link href={link.href} key={link.label}
                                   className="text-sm md:text-base font-medium hover:bg-slate-50 p-2 rounded-md hover:text-black transition duration-300 ease-in-out">

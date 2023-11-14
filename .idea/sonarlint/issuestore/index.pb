@@ -16,3 +16,5 @@ B
 src/app/layout.tsx,c/f/cfb47de6ae0cae626eed46461300112ef521d977
 I
 src/components/footer.tsx,5/2/52d8b363510dbefbfdfb26c2c9bbccf179d45007
+>
+next.config.js,8/1/811a6d5a2e04fadb44d8eec365f2fa8af5c4facf
