@@ -114,7 +114,7 @@ export default function About() {
                     <div className="mt-10 flex justify-center">
                         <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">
                             {techs.map((tech) => (
-                                <p className="bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700">{tech.label}</p>
+                                <p className="bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700" key={tech.label}>{tech.label}</p>
                             ))}
                         </div>
                     </div>

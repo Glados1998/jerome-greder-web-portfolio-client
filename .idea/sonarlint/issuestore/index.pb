@@ -12,9 +12,9 @@ I
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 H
 src/app/contact/page.tsx,1/e/1ee5438b85d3cc29b9284bd5fcd275cb9d5bc7cf
-B
-src/app/layout.tsx,c/f/cfb47de6ae0cae626eed46461300112ef521d977
-I
-src/components/footer.tsx,5/2/52d8b363510dbefbfdfb26c2c9bbccf179d45007
 >
 next.config.js,8/1/811a6d5a2e04fadb44d8eec365f2fa8af5c4facf
+I
+src/components/footer.tsx,5/2/52d8b363510dbefbfdfb26c2c9bbccf179d45007
+B
+src/app/layout.tsx,c/f/cfb47de6ae0cae626eed46461300112ef521d977
