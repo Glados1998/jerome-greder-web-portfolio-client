@@ -1,0 +1,21 @@
+{
+  "Header": {
+  },
+  "Footer": {
+  },
+  "Index": {
+    "title": "Hello there!",
+    "junior-full-stack-developer": "Junior Full Stack Developer",
+    "at-your-service": "At your service",
+    "about-me": "About me",
+    "my-projects": "My projects"
+  },
+  "About": {
+    "title": "About"
+  },
+  "projects": {
+  },
+  "Contact": {
+    "title": "Contact"
+  }
+}
