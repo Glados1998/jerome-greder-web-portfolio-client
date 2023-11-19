@@ -1,13 +1,15 @@
 import Image from 'next/image'
-import homeBanner from '../assets/images/heroBanner.jpg'
+import homeBanner from 'src/app/[locale]/assets/images/heroBanner.jpg'
 import Link from "next/link";
+import {useTranslations} from 'next-intl';
 
 const links = [
-    {label: "About me", href: "/about"},
-    {label: "My projects", href: "/projects"},
+    {label: "about-me", href: "/about"},
+    {label: "my-projects", href: "/projects"},
 ];
 
 export default function Home() {
+    const t = useTranslations('Index');
     return (
         <>
             <div className='relative'>
@@ -15,18 +17,18 @@ export default function Home() {
                        className="relative xl:h-[45rem] lg:h-[30rem] md:h-[24rem] sm:h-[20rem]" objectFit='cover'/>
                 <div
                     className="absolute top-1 left-4 md:left-16 md:top-14 w-fit flex flex-col justify-center items-start text-white p-4">
-                    <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">Hello there!</h1>
+                    <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{t('title')}</h1>
                     <p className="text-xl md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
                         Jérôme Greder <br/>
-                        Junior Fullstack Developer <br/>
-                        At your service.
+                        {t('junior-full-stack-developer')} <br/>
+                        {t('at-your-service')}
                     </p>
                     <hr className="w-20 md:w-32 mt-4 md:mt-4"/>
                     <div className="flex flex-wrap gap-3 mt-2 md:mt-8">
                         {links.map((link) => (
                             <Link href={link.href} key={link.label}
                                   className="text-sm md:text-base font-medium hover:bg-slate-50 p-2 rounded-md hover:text-black transition duration-300 ease-in-out">
-                                {link.label}
+                                {t(link.label)}
                             </Link>
                         ))}
                     </div>
