@@ -1,0 +1,51 @@
+{
+  "components": {
+    "Header": {
+      "home": "Zuhause",
+      "about": "Über mich",
+      "projects": "Meine Projekte",
+      "contact": "Kontakt",
+      "language": "Sprache"
+    },
+    "Footer": {
+      "madeWith": "Gemacht mit",
+      "hostedOn": "Gehostet auf",
+      "allRightsReserved": "Alle Rechte vorbehalten",
+      "navigationLabel": "Navigation",
+      "socialLabel": "Sozial",
+      "social": {
+        "github": "Github",
+        "linkedin": "Linkedin"
+      },
+      "navigation": {
+        "home": "Zuhause",
+        "about": "Über mich",
+        "projects": "Meine Projekte",
+        "contact": "Kontakt"
+      }
+    }
+  },
+  "page": {
+    "Index": {
+      "title": "Hallo da!",
+      "juniorFullStackDeveloper": "Junior Full Stack Entwickler",
+      "atYourService": "Zu Ihren Diensten",
+      "subTitle": "Mit Leidenschaft digitale Erlebnisse aus Code erschaffen",
+      "subDescription": "Das Erstellen digitaler Erlebnisse ist meine Leidenschaft. Ich liebe es, schöne und funktionelle Websites und Anwendungen zu kreieren. Ich bin ein autodidaktischer Junior Fullstack-Entwickler und Alumni der ",
+      "subContactButton": "lassen Sie uns reden",
+      "epitech": "Epitech Hochschule",
+      "buttonsLabel": {
+        "about": "Über mich",
+        "projects": "Meine Projekte"
+      }
+    },
+    "About": {
+      "title": "Über"
+    },
+    "projects": {
+    },
+    "Contact": {
+      "title": "Kontakt"
+    }
+  }
+}

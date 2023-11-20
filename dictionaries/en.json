@@ -1,0 +1,53 @@
+{
+  "components": {
+    "Header": {
+      "home": "Home",
+      "about": "About",
+      "projects": "My Projects",
+      "contact": "Contact",
+      "language": "Language"
+    },
+    "Footer": {
+      "madeWith": "Made with",
+      "hostedOn": "Hosted on",
+      "allRightsReserved": "All rights reserved",
+      "navigationLabel": "Navigation",
+      "socialLabel": "Social",
+      "social": {
+        "socials": "Socials",
+        "github": "Github",
+        "linkedin": "Linkedin"
+      },
+      "navigation": {
+        "navigation": "Navigation",
+        "home": "Home",
+        "about": "About",
+        "projects": "My Projects",
+        "contact": "Contact"
+      }
+    }
+  },
+  "page": {
+    "Index": {
+      "title": "Hello there!",
+      "juniorFullStackDeveloper": "Junior Full Stack Developer",
+      "atYourService": "At your service",
+      "subTitle": "Crafting digital experiences out of code with passion.",
+      "subDescription": "Building digital experiences is my passion. I love to create beautiful and functional websites and applications. I am a self-taught junior Fullstack developer and alumni of the ",
+      "subContactButton": "let's talk",
+      "epitech": "Epitech School",
+      "buttonsLabel": {
+        "about": "About me",
+        "projects": "My projects"
+      }
+    },
+    "About": {
+      "title": "About"
+    },
+    "projects": {
+    },
+    "Contact": {
+      "title": "Contact"
+    }
+  }
+}

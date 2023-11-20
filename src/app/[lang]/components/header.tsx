@@ -1,16 +1,18 @@
-"use client";
+import {getDictionary} from "../../../../lib/dictionary";
+import {Locale} from "../../../../i18.donfig";
 import Link from "next/link";
-import { Menu } from '@headlessui/react';
-import { Fragment } from 'react';
+import LocaleSwitcher from "./locale-switcher";
+
 
 const links = [
-    { label: "Home", href: "/" },
-    { label: "About me", href: "/about" },
-    { label: "My projects", href: "/projects" },
-    { label: "Contact", href: "/contact" },
+    { label: "home", href: "/" },
+    { label: "about", href: "/about" },
+    { label: "projects", href: "/projects" },
+    { label: "contact", href: "/contact" },
 ];
 
-export default function Header() {
+export default async function Header({ lang }: { lang: Locale }) {
+    const { components } = await getDictionary(lang)
     return (
         <header className="bg-slate-200 sticky top-0 p-6 backdrop-blur-md bg-white/60 z-10 dark:backdrop-blur-md dark:bg-slate-900/60">
             <nav className="flex justify-between items-center">
@@ -23,15 +25,15 @@ export default function Header() {
                     <ul className="hidden md:flex gap-6">
                         {links.map((link) => (
                             <li className="font-medium" key={link.label}>
-                                <Link href={link.href}>
-                                    {link.label}
+                                <Link href={`/${lang}/${link.href}`}>
+                                    {components.Header[link.label]}
                                 </Link>
                             </li>
                         ))}
                     </ul>
                 </div>
                 {/* Dropdown Menu for smaller screens */}
-                <Menu as="div" className="md:hidden relative">
+                {/*<Menu as="div" className="md:hidden relative">
                     <Menu.Button>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
@@ -47,28 +49,19 @@ export default function Header() {
                                 )}
                             </Menu.Item>
                         ))}
-                        <div className="px-4 py-2 dark:text-black">
-                                <span className={'text-sm font-medium'}>
-                                    Languages
-                                </span>
-                            <select className={'mt-1 block w-full rounded-md p-1 dark:rounded-md'}>
-                                <option>English</option>
-                                <option>Deutsch</option>
-                                <option>Français</option>
-                            </select>
-                        </div>
+                        <Menu.Item as={Fragment}>
+                            <LocaleSwitcher />
+                        </Menu.Item>
                     </Menu.Items>
-                </Menu>
+                </Menu>*/}
 
                 <div className="hidden md:flex items-center mr-10">
                     <span className={'font-medium mr-4'}>
-                        Languages
+                        {components.Header.language} :&nbsp;
                     </span>
-                    <select className={'text-black rounded-md p-1 dark:p-1 dark:rounded-md'}>
-                        <option>English</option>
-                        <option>Deutsch</option>
-                        <option>Français</option>
-                    </select>
+                    <div>
+                        <LocaleSwitcher />
+                    </div>
                 </div>
             </nav>
         </header>

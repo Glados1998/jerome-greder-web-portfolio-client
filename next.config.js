@@ -1,7 +1,4 @@
-const withNextIntl = require('next-intl/plugin')(
-    'src/i18.ts',
-);
+/** @type {import('next').NextConfig} */
+const nextConfig = {}
 
-module.exports = withNextIntl({
-
-});
+module.exports = nextConfig

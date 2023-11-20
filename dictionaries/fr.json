@@ -1,0 +1,51 @@
+{
+  "components": {
+    "Header": {
+      "home": "Accueil",
+      "about": "À propos",
+      "projects": "Projets",
+      "contact": "Contact",
+      "language": "Langue"
+    },
+    "Footer": {
+      "madeWith": "Fait avec",
+      "hostedOn": "Hébergé sur",
+      "allRightsReserved": "Tous droits réservés",
+      "navigationLabel": "Navigation",
+      "socialLabel": "Social",
+      "social": {
+        "github": "Github",
+        "linkedin": "Linkedin"
+      },
+      "navigation": {
+        "home": "Accueil",
+        "about": "À propos",
+        "projects": "Projets",
+        "contact": "Contact"
+      }
+    }
+  },
+  "page": {
+    "Index": {
+      "title": "Hello there!",
+      "juniorFullStackDeveloper": "Développeur Full Stack Junior",
+      "atYourService": "À votre service",
+      "subTitle": "Créer des expériences numériques à partir de code avec passion",
+      "subDescription": "Construire des expériences numériques est ma passion. J'adore créer des sites web et des applications à la fois beaux et fonctionnels. Je suis un développeur Fullstack junior autodidacte et ancien élève de ",
+      "subContactButton": "parlons-en",
+      "epitech": "Epitech",
+      "buttonsLabel": {
+        "about": "À propos",
+        "projects": "Projets"
+      }
+    },
+    "About": {
+      "title": "About"
+    },
+    "projects": {
+    },
+    "Contact": {
+      "title": "Contact"
+    }
+  }
+}

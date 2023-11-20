@@ -1,4 +1,4 @@
-import contactImage from "../../assets/images/contact-banner.jpg";
+import contactImage from "src/app/[lang]/assets/images/contact-banner.jpg";
 import Image from "next/image";
 import {BsLinkedin} from "react-icons/bs";
 

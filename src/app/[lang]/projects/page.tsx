@@ -1,6 +1,6 @@
-import projects from '../../data/projects';
 import { AiFillGithub } from "react-icons/ai";
 import { MdWebAsset } from "react-icons/md";
+import projects from "@/data/projects";
 
 export default function Projects() {
     return (
