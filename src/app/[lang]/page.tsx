@@ -9,11 +9,7 @@ const links = [
     {label: "projects", href: "/projects"},
 ];
 
-export default async function Home({
-                                       params: {lang}
-                                   }: {
-    params: { lang: Locale }
-}) {
+export default async function Home({params: {lang}}: {params: { lang: Locale } }) {
     const {page} = await getDictionary(lang)
     return (
         <>

@@ -3,16 +3,74 @@ import ProjectInterface from "@/interface/project.interface";
 
 const projects: ProjectInterface[] = [
     {
-        name: "Covid-19 Tracker",
-        description: "A Covid-19 tracker built with React and Typescript.",
-        link: "https://covid-19-tracker-2b9b9.web.app/",
-        github: "https://github.com/Joseph-Mendoza/covid-19-tracker",
+        name: "Kotlin Restaurant",
+        github: "https://github.com/Glados1998/restaurant",
+        technologies: [
+            {
+                label: "Kotlin",
+            },
+            {
+                label: "Spring Boot",
+            },
+            {
+                label: "MySQL",
+            },
+        ]
+    },
+    {
+        name: "epiChat",
+        github: "https://github.com/Glados1998/epiChat",
+        technologies: [
+            {
+                label: "Node.js",
+            },
+            {
+                label: "Express",
+            },
+            {
+                label: "Socket.io",
+            },
+            {
+                label: "React",
+            },
+        ]
+    },
+    {
+        name: "pokeDex",
+        github: "https://github.com/Glados1998/pokeDex",
         technologies: [
             {
                 label: "React",
             },
             {
-                label: "Typescript",
+                label: "Axios",
+            },
+            {
+                label: "Reducer",
+            },
+            {
+                label: "API",
+            },
+            {
+                label: "Scss",
+            },
+        ]
+    },
+    {
+        name: "my-wackeep",
+        github: "https://github.com/Glados1998/my-wackeep",
+        technologies: [
+            {
+                label: "PHP",
+            },
+            {
+                label: "MySQL",
+            },
+            {
+                label: "Bootstrap",
+            },
+            {
+                label: "JavaScript",
             },
         ]
     },

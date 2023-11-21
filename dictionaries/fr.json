@@ -57,9 +57,20 @@
       "techStack": "Mon stack technique"
     },
     "projects": {
+      "title": "Mes projets",
+      "subTitle": "Voici quelques-uns des projets sur lesquels j'ai travaillé",
+      "cta": "Découvrez-le sur"
     },
+
     "Contact": {
-      "title": "Contact"
+      "title": "Contactez-moi",
+      "subTitle": "Je suis impatient de vous entendre",
+      "contactMeAt": "Vous pouvez me contacter par e-mail à",
+      "orBy": "ou par",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "at": "à",
+      "linkedin": "N'hésitez pas à me contacter également sur LinkedIn"
     }
   }
 }

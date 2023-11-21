@@ -57,9 +57,19 @@
       "techStack": "Mein Tech-Stack"
     },
     "projects": {
+      "title": "Meine Projekte",
+      "subTitle": "Hier sind einige der Projekte, an denen ich gearbeitet habe",
+      "cta": "Schauen Sie es an auf"
     },
     "Contact": {
-      "title": "Kontakt"
+      "title": "Kontakt aufnehmen",
+      "subTitle": "Ich freue mich darauf, von Ihnen zu hören!",
+      "contactMeAt": "Sie können mich per E-Mail kontaktieren unter",
+      "orBy": "oder über",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "at": "bei",
+      "linkedin": "Fühlen Sie sich frei, mich auch auf LinkedIn zu kontaktieren"
     }
   }
 }

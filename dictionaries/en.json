@@ -59,9 +59,19 @@
       "techStack": "My tech stack"
     },
     "projects": {
+      "title": "My projects",
+      "subTitle": "Here are some of the projects I've worked on",
+      "cta": "Check it out on"
     },
     "Contact": {
-      "title": "Contact"
+      "title": "Contact me",
+      "subTitle": "Let's get in touch!",
+      "contactMeAt": "You can contact me by email at",
+      "orBy": "or by",
+      "email": "Email",
+      "phone": "phone",
+      "at": "at",
+      "linkedin": "Feel free to reach out also to me on LinkedIn"
     }
   }
 }
