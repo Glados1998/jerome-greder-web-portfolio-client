@@ -42,7 +42,21 @@
       }
     },
     "About": {
-      "title": "About"
+      "title": "About me",
+      "subTitle": "Glad you could make it!",
+      "profile": {
+        "descriptionOne": "A devoted learner and tech enthusiast. I craft aesthetically pleasing and functional websites and applications, leveraging the power of React & Angular, and constructing robust APIs with Node.js and Express.",
+        "descriptionTwo": "Seeking new opportunities as a Junior Fullstack or Junior Frontend developer. Keen on advancing my skills and growing professionally. Eager to contribute with the teams I wish to work with."
+      },
+      "cta": "Find me on",
+      "educationLabel": "My education",
+      "education": {
+        "epitech": "Web@cademie by Epitech",
+        "subheading": "Brave New World",
+        "description": "Valedictorian from the Web@cademie 2023, powered by Epitech. The program targets aspiring web developers offering comprehensive training in modern web technologies and practices."
+      },
+      "ctaSchool": "Learn more about the school",
+      "techStack": "My tech stack"
     },
     "projects": {
     },

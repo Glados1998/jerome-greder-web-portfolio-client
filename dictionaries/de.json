@@ -40,7 +40,21 @@
       }
     },
     "About": {
-      "title": "Über"
+      "title": "Über mich",
+      "subTitle": "Schön, dass Sie es geschafft haben!",
+      "profile": {
+        "descriptionOne": "Ein engagierter Lernender und Technik-Enthusiast. Ich gestalte ästhetisch ansprechende und funktionale Websites und Anwendungen, nutze die Kraft von React & Angular und baue robuste APIs mit Node.js und Express.",
+        "descriptionTwo": "Auf der Suche nach neuen Möglichkeiten als Junior Fullstack- oder Junior Frontend-Entwickler. Bestrebt, meine Fähigkeiten weiterzuentwickeln und beruflich zu wachsen. Eager darauf, mit den Teams, für die ich arbeiten möchte, zusammenzuarbeiten."
+      },
+      "cta": "Finden Sie mich auf",
+      "educationLabel": "Meine Ausbildung",
+      "education": {
+        "epitech": "Web@cademie von Epitech",
+        "subheading": "Schöne Neue Welt",
+        "description": "Jahrgangsbester der Web@cademie 2023, unterstützt von Epitech. Das Programm richtet sich an angehende Webentwickler und bietet eine umfassende Ausbildung in modernen Webtechnologien und -praktiken."
+      },
+      "ctaSchool": "Erfahren Sie mehr über die Schule",
+      "techStack": "Mein Tech-Stack"
     },
     "projects": {
     },
