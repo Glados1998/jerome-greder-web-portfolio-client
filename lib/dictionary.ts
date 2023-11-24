@@ -1,4 +1,3 @@
-import 'server-only'
 import {Locale} from "../i18.donfig";
 
 const dictionaries = {

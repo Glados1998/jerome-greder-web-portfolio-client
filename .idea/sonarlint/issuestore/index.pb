@@ -54,3 +54,7 @@ D
 src/data/projects.ts,a/8/a869f37ffcd5c0901b11b4856a99b32c4dd41483
 R
 "src/interface/project.interface.ts,a/8/a8b65d25ac66fcdc1dfdc4b6743f28849d262ef5
+;
+vercel.json,8/3/83188a989cfa5952424962eec8f2d0f97ba87e09
+>
+.eslintrc.json,7/1/71c20a341bfe32aa5cd5b4384e94f942bab6a7d3

@@ -14,8 +14,6 @@ A
 postcss.config.js,3/f/3f70684581fd16ab3be77ca959e0138ef3ee8bfb
 <
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
-w
-G.idea/sonarlint/issuestore/3/f/3f70684581fd16ab3be77ca959e0138ef3ee8bfb,0/0/00861cac31c437dcc74bb945d3f67fd13dec49ef
 =
 tsconfig.json,6/1/61ebb9fd6e8cf9082658121d5d81e297791dacd0
 
@@ -28,22 +26,12 @@ A
 public/vercel.svg,0/c/0c3567b3146da917779092b6952cf7aa844d3c76
 ?
 public/next.svg,0/f/0f0d3de08f3cde5481ae7a36082cdc12c93b0f89
-w
-G.idea/sonarlint/issuestore/f/a/fa288d1472d29beccb489a676f68739ad365fc47,c/d/cdb55fb7b9550cf1c93c03e68dfe3882647e90dc
 
 Q.idea/sonarlint/securityhotspotstore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,1/0/10a03f31c4dce92cb371e761ce9429428bb6c176
 
 Q.idea/sonarlint/securityhotspotstore/f/a/fa288d1472d29beccb489a676f68739ad365fc47,8/7/87e2c3a83dc597fc0ead43218c432cce50269498
 w
 G.idea/sonarlint/issuestore/c/f/cfb47de6ae0cae626eed46461300112ef521d977,e/4/e435b00f825eec81451551a33748452eb422ec45
-w
-G.idea/sonarlint/issuestore/3/3/3393394e21dbac7686e91ad17c5283fb052d67f3,1/4/142b1978c1bb6e053d6c63f6fd888b3271154c41
-
-Q.idea/sonarlint/securityhotspotstore/c/f/cfb47de6ae0cae626eed46461300112ef521d977,8/3/832e39e2c8f02312bfc2c784007d018c209de527
-
-Q.idea/sonarlint/securityhotspotstore/3/3/3393394e21dbac7686e91ad17c5283fb052d67f3,c/c/cc316c6147a0ab433b897a138aeeec5dac9ce1d1
-w
-G.idea/sonarlint/issuestore/7/9/7948598afd6f2aa542f1b55d7b6f077a70937e77,6/b/6b61b6c813e795210812d389b660095260f0f5bb
 
 Q.idea/sonarlint/securityhotspotstore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302,3/0/30205a209c6ce77c4cfc19a09e6f57c588b7fb88
 
@@ -98,3 +86,5 @@ P
 i18.donfig.ts,9/5/95a906fa9dfcd5532d118bf118d82d8b779a6333
 ]
 -src/app/[lang]/components/locale-switcher.tsx,8/8/8863d904532c45308992ca5149762e372d83ab9e
+;
+vercel.json,8/3/83188a989cfa5952424962eec8f2d0f97ba87e09

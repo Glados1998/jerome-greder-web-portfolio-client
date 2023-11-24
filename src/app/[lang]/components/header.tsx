@@ -1,7 +1,10 @@
+"use client";
 import {getDictionary} from "../../../../lib/dictionary";
 import {Locale} from "../../../../i18.donfig";
 import Link from "next/link";
 import LocaleSwitcher from "./locale-switcher";
+import {Menu} from "@headlessui/react";
+import {Fragment} from "react";
 
 
 const links = [
@@ -33,7 +36,7 @@ export default async function Header({ lang }: { lang: Locale }) {
                     </ul>
                 </div>
                 {/* Dropdown Menu for smaller screens */}
-                {/*<Menu as="div" className="md:hidden relative">
+                <Menu as="div" className="md:hidden relative">
                     <Menu.Button>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
@@ -43,8 +46,8 @@ export default async function Header({ lang }: { lang: Locale }) {
                         {links.map((link) => (
                             <Menu.Item as={Fragment} key={link.label}>
                                 {({ active }) => (
-                                    <Link href={link.href} className={`font-medium block dark:text-black px-4 py-2 text-sm ${active ? 'bg-gray-100' : ''}`}>
-                                        {link.label}
+                                    <Link href={`/${lang}/${link.href}`} className={`font-medium block dark:text-black px-4 py-2 text-sm ${active ? 'bg-gray-100' : ''}`}>
+                                        {components.Header[link.label]}
                                     </Link>
                                 )}
                             </Menu.Item>
@@ -53,7 +56,7 @@ export default async function Header({ lang }: { lang: Locale }) {
                             <LocaleSwitcher />
                         </Menu.Item>
                     </Menu.Items>
-                </Menu>*/}
+                </Menu>
 
                 <div className="hidden md:flex items-center mr-10">
                     <span className={'font-medium mr-4'}>
