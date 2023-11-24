@@ -47,7 +47,7 @@ export default async function Projects({params: {lang}}: { params: { lang: Local
                                         <div className="flex gap-4 mt-2">
                                             {project.github && (
                                                 <a href={project.github} target="_blank" rel="noopener noreferrer"
-                                                   className="text-3xl text-gray-600 dark:text-white">
+                                                   className="text-3xl text-black dark:text-white">
                                                     <AiFillGithub/>
                                                 </a>
                                             )}

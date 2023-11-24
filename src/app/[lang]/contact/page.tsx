@@ -15,7 +15,7 @@ export default async function Contact({params: {lang}}: { params: { lang: Locale
                         <h2 className="text-3xl md:text-5xl font-bold">
                             {page.Contact.title}
                         </h2>
-                        <h2 className="text-3xl md:text-5xl font-bold w-[50rem]">
+                        <h2 className="text-3xl md:text-5xl font-bold">
                             {page.Contact.subTitle}
                         </h2>
                         <p className="text-sm md:text-3xl font-medium">
@@ -27,7 +27,7 @@ export default async function Contact({params: {lang}}: { params: { lang: Locale
                             +33 7 84 25 06 10
                         </a>
                         </p>
-                        <div className="flex flex-col md:flex-row gap-6 absolute bottom-16">
+                        <div className="flex flex-col md:flex-row gap-6 ">
                             <p className="text-sm md:text-3xl font-medium">
                                 {page.Contact.linkedin}.
                             </p>

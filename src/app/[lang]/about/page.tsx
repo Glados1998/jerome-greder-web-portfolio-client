@@ -95,7 +95,7 @@ export default async function About({
                                        className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
                                         Web@cademie
                                     </a>
-                                    <a href="https://www.epitech.eu/en/" target={'_blank'}
+                                    <a href="https://www.epitech.eu" target={'_blank'}
                                        className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
                                         Epitech
                                     </a>
