@@ -88,3 +88,5 @@ P
 -src/app/[lang]/components/locale-switcher.tsx,8/8/8863d904532c45308992ca5149762e372d83ab9e
 ;
 vercel.json,8/3/83188a989cfa5952424962eec8f2d0f97ba87e09
+R
+"src/app/[lang]/assets/svg/next.svg,2/4/24dfe9e11ac0bad78d2a1adcb960b55c869270fc

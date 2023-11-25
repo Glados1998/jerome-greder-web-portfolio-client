@@ -22,7 +22,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
                 <div className={'grid grid-flow-row gap-3'}>
                     <span className={'font-bold text-md'}>Jérôme Greder web portfolio</span>
                     <span className={'font-medium text-sm'}>© {new Date().getFullYear()} | {components.Footer.allRightsReserved}</span>
-                    <span className={'font-medium text-sm'}>{components.Footer.madeWith} <a target={'_blank'} href={'https://nextjs.org'} className={'text-blue-500'}>Next.js</a>, <br/> {components.Footer.hostedOn} <a target={'_blank'} href={'https://vercel.com/'} className={'text-blue-500'}>Vercel</a></span>
+                    <span className={'font-medium text-sm'}>{components.Footer.madeWith} <a target={'_blank'} href={'https://nextjs.org'} className={'text-blue-500'}>Next.js</a> <br/> {components.Footer.hostedOn} <a target={'_blank'} href={'https://vercel.com/'} className={'text-blue-500'}>Vercel</a></span>
                 </div>
 
                 {/* Second Row - Navigation and Social Links */}

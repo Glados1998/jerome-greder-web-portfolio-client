@@ -58,3 +58,5 @@ R
 vercel.json,8/3/83188a989cfa5952424962eec8f2d0f97ba87e09
 >
 .eslintrc.json,7/1/71c20a341bfe32aa5cd5b4384e94f942bab6a7d3
+R
+"src/app/[lang]/assets/svg/next.svg,2/4/24dfe9e11ac0bad78d2a1adcb960b55c869270fc

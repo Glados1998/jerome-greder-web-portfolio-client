@@ -1,7 +1,7 @@
 {
   "components": {
     "Header": {
-      "home": "Zuhause",
+      "home": "Startseite",
       "about": "Über mich",
       "projects": "Meine Projekte",
       "contact": "Kontakt",
@@ -18,7 +18,7 @@
         "linkedin": "Linkedin"
       },
       "navigation": {
-        "home": "Zuhause",
+        "home": "Startseite",
         "about": "Über mich",
         "projects": "Meine Projekte",
         "contact": "Kontakt"
@@ -27,31 +27,43 @@
   },
   "page": {
     "Index": {
-      "title": "Hallo da!",
-      "juniorFullStackDeveloper": "Junior Full Stack Entwickler",
+      "title": "Hallo",
+      "juniorFullStackDeveloper": "Junior Full Stack / Frontend Entwickler",
       "atYourService": "Zu Ihren Diensten",
       "subTitle": "Mit Leidenschaft digitale Erlebnisse aus Code erschaffen",
       "subDescription": "Das Erstellen digitaler Erlebnisse ist meine Leidenschaft. Ich liebe es, schöne und funktionelle Websites und Anwendungen zu kreieren. Ich bin ein autodidaktischer Junior Fullstack-Entwickler und Alumni der ",
-      "subContactButton": "lassen Sie uns reden",
       "epitech": "Epitech Hochschule",
       "buttonsLabel": {
         "about": "Über mich",
         "projects": "Meine Projekte"
+      },
+      "coding": {
+        "title": "Programmieren Tag und Nacht",
+        "description": "Während meines Studiums habe ich gelernt, Webentwicklung zu lieben, daher tüftele ich immer an neuen Technologien und Frameworks. Ich bin immer auf der Suche nach neuen Herausforderungen und Möglichkeiten zu lernen und zu wachsen."
+      },
+      "minimalism": {
+        "title": "Fokussiert auf das Wesentliche",
+        "description": "Manchmal sind die einfachsten Lösungen die besten. Ich glaube, dass die besten Designs die sind, die einfach und intuitiv sind. Ich bemühe mich, schöne und funktionale Websites und Anwendungen zu erstellen."
+      },
+      "contact": {
+        "title": "In Kontakt treten",
+        "description": "Ich bin immer offen für neue Möglichkeiten und Herausforderungen. Wenn Sie ein Projekt haben, das Sie besprechen möchten, können Sie mich gerne kontaktieren. Ich bin immer offen für neue Möglichkeiten und Herausforderungen. Wenn Sie ein Projekt haben, das Sie besprechen möchten, können Sie mich gerne kontaktieren.",
+        "cta": "Mich kontaktieren"
       }
     },
     "About": {
       "title": "Über mich",
-      "subTitle": "Schön, dass Sie es geschafft haben!",
+      "subTitle": "Ein Überblick über mich selbst",
       "profile": {
         "descriptionOne": "Ein engagierter Lernender und Technik-Enthusiast. Ich gestalte ästhetisch ansprechende und funktionale Websites und Anwendungen, nutze die Kraft von React & Angular und baue robuste APIs mit Node.js und Express.",
-        "descriptionTwo": "Auf der Suche nach neuen Möglichkeiten als Junior Fullstack- oder Junior Frontend-Entwickler. Bestrebt, meine Fähigkeiten weiterzuentwickeln und beruflich zu wachsen. Eager darauf, mit den Teams, für die ich arbeiten möchte, zusammenzuarbeiten."
+        "descriptionTwo": "Auf der Suche nach neuen Möglichkeiten als Full Stack oder Junior Frontend Entwickler. Ich möchte meine Fähigkeiten weiterentwickeln und professionell wachsen. Ich möchte gerne zu den Teams beitragen, mit denen ich arbeiten möchte."
       },
       "cta": "Finden Sie mich auf",
       "educationLabel": "Meine Ausbildung",
       "education": {
-        "epitech": "Web@cademie von Epitech",
-        "subheading": "Schöne Neue Welt",
-        "description": "Jahrgangsbester der Web@cademie 2023, unterstützt von Epitech. Das Programm richtet sich an angehende Webentwickler und bietet eine umfassende Ausbildung in modernen Webtechnologien und -praktiken."
+        "epitech": "Web@cademie by Epitech",
+        "subheading": "Die Schule für Informatik Exzellenz",
+        "description": "Jahrgangsbester der Web@cademie by Epitech 2023. Das Programm richtet sich an angehende Webentwickler und bietet eine umfassende Ausbildung in modernen Webtechnologien und -praktiken."
       },
       "ctaSchool": "Erfahren Sie mehr über die Schule",
       "techStack": "Mein Tech-Stack"
@@ -69,7 +81,7 @@
       "email": "E-Mail",
       "phone": "Telefon",
       "at": "bei",
-      "linkedin": "Fühlen Sie sich frei, mich auch auf LinkedIn zu kontaktieren"
+      "linkedin": "Sie finden mich auch auf Linkedin"
     }
   }
 }

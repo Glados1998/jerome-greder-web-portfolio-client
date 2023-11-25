@@ -17,7 +17,7 @@ const links = [
 export default async function Header({ lang }: { lang: Locale }) {
     const { components } = await getDictionary(lang)
     return (
-        <header className="bg-slate-200 sticky top-0 p-6 backdrop-blur-md bg-white/60 z-10 dark:backdrop-blur-md dark:bg-slate-900/60">
+        <header className="bg-slate-200 sticky top-0 md:p-2 p-3 backdrop-blur-md bg-white/60 z-10 dark:backdrop-blur-md dark:bg-slate-900/60">
             <nav className="flex justify-between items-center">
                 <div className="flex items-center">
                     <h1 className="text-3xl font-bold mr-10 ml-10">
@@ -42,11 +42,11 @@ export default async function Header({ lang }: { lang: Locale }) {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
                         </svg>
                     </Menu.Button>
-                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white dark:bg-slate-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         {links.map((link) => (
                             <Menu.Item as={Fragment} key={link.label}>
                                 {({ active }) => (
-                                    <Link href={`/${lang}/${link.href}`} className={`font-medium block dark:text-black px-4 py-2 text-sm ${active ? 'bg-gray-100' : ''}`}>
+                                    <Link href={`/${lang}/${link.href}`} className={"font-medium block px-4 py-2 text-sm dark:hover:bg-slate-700 hover:bg-slate-200"}>
                                         {components.Header[link.label]}
                                     </Link>
                                 )}

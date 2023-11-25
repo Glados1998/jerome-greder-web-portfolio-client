@@ -57,20 +57,6 @@ export default async function About({
                                     </a>
                                 </div>
                             </div>
-                            {/*<div>
-                                <p className="text-lg font-bold">
-                                    Download my resume:
-                                </p>
-                                <div className="mt-2">
-                                    <select
-                                        className="form-select block w-full px-4 py-2 text-base font-normal text-gray-700 bg-white border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500 transition ease-in-out">
-                                        <option value="">Select language</option>
-                                        <option value="CV_English.pdf">English (PDF)</option>
-                                        <option value="CV_French.pdf">Français (PDF)</option>
-                                        <option value="CV_German.pdf">Deutsch (PDF)</option>
-                                    </select>
-                                </div>
-                            </div>*/}
                         </div>
                     </div>
                 </div>

@@ -29,31 +29,43 @@
   },
   "page": {
     "Index": {
-      "title": "Hello there!",
-      "juniorFullStackDeveloper": "Junior Full Stack Developer",
+      "title": "Hello",
+      "juniorFullStackDeveloper": "Junior Full Stack / Frontend Developer",
       "atYourService": "At your service",
       "subTitle": "Crafting digital experiences out of code with passion.",
       "subDescription": "Building digital experiences is my passion. I love to create beautiful and functional websites and applications. I am a self-taught junior Fullstack developer and alumni of the ",
-      "subContactButton": "let's talk",
       "epitech": "Epitech School",
       "buttonsLabel": {
         "about": "About me",
         "projects": "My projects"
+      },
+      "coding": {
+        "title": "Coding day and night",
+        "description": "During my studies I've learned to love web development therefore I'm always tinkering with new technologies and frameworks. I'm always looking for new challenges and opportunities to learn and grow."
+      },
+      "minimalism": {
+        "title": "Focused on the essentials",
+        "description": "Sometimes the simplest solutions are the best. I believe that the best designs are the ones that are simple and intuitive. I strive to create beautiful and functional websites and applications."
+      },
+      "contact": {
+        "title": "Get in touch",
+        "description": "I'm always open to new opportunities and challenges. If you have a project you'd like to discuss, feel free to contact me. I'm always open to new opportunities and challenges. If you have a project you'd like to discuss, feel free to contact me.",
+        "cta": "Contact me"
       }
     },
     "About": {
       "title": "About me",
-      "subTitle": "Glad you could make it!",
+      "subTitle": "A glimpse of myself ",
       "profile": {
         "descriptionOne": "A devoted learner and tech enthusiast. I craft aesthetically pleasing and functional websites and applications, leveraging the power of React & Angular, and constructing robust APIs with Node.js and Express.",
-        "descriptionTwo": "Seeking new opportunities as a Junior Fullstack or Junior Frontend developer. Keen on advancing my skills and growing professionally. Eager to contribute with the teams I wish to work with."
+        "descriptionTwo": "Seeking new opportunities as a Full Stack or Junior Frontend developer. Keen on advancing my skills and growing professionally. Eager to contribute to the teams I would like to work with."
       },
       "cta": "Find me on",
       "educationLabel": "My education",
       "education": {
         "epitech": "Web@cademie by Epitech",
-        "subheading": "Brave New World",
-        "description": "Valedictorian from the Web@cademie 2023, powered by Epitech. The program targets aspiring web developers offering comprehensive training in modern web technologies and practices."
+        "subheading": "the School of Computer Science Excellence",
+        "description": "Valedictorian from the Web@cademie by Epitech 2023. The program targets aspiring web developers offering comprehensive training in modern web technologies and practices."
       },
       "ctaSchool": "Learn more about the school",
       "techStack": "My tech stack"
@@ -71,7 +83,7 @@
       "email": "Email",
       "phone": "phone",
       "at": "at",
-      "linkedin": "Feel free to reach out also to me on LinkedIn"
+      "linkedin": "You can also find me on Linkedin"
     }
   }
 }

@@ -4,6 +4,7 @@ import "src/app/[lang]/assets/style/globals.css";
 import Header from "@/app/[lang]/components/header";
 import Footer from "@/app/[lang]/components/footer";
 import {i18n, Locale} from "../../../i18.donfig";
+import { Analytics } from '@vercel/analytics/react';
 
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
@@ -34,6 +35,7 @@ export default function RootLayout({
           <Header lang={params.lang}/>
               <main>
                   {children}
+                  <Analytics />
               </main>
           <Footer lang={params.lang} />
       </body>
