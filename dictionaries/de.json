@@ -47,7 +47,7 @@
       },
       "contact": {
         "title": "In Kontakt treten",
-        "description": "Ich bin immer offen für neue Möglichkeiten und Herausforderungen. Wenn Sie ein Projekt haben, das Sie besprechen möchten, können Sie mich gerne kontaktieren. Ich bin immer offen für neue Möglichkeiten und Herausforderungen. Wenn Sie ein Projekt haben, das Sie besprechen möchten, können Sie mich gerne kontaktieren.",
+        "description": "Ich bin immer offen für neue Möglichkeiten und Herausforderungen. Wenn Sie ein Projekt haben, das Sie besprechen möchten, können Sie mich gerne kontaktieren.",
         "cta": "Mich kontaktieren"
       }
     },
@@ -55,15 +55,15 @@
       "title": "Über mich",
       "subTitle": "Ein Überblick über mich selbst",
       "profile": {
-        "descriptionOne": "Ein engagierter Lernender und Technik-Enthusiast. Ich gestalte ästhetisch ansprechende und funktionale Websites und Anwendungen, nutze die Kraft von React & Angular und baue robuste APIs mit Node.js und Express.",
-        "descriptionTwo": "Auf der Suche nach neuen Möglichkeiten als Full Stack oder Junior Frontend Entwickler. Ich möchte meine Fähigkeiten weiterentwickeln und professionell wachsen. Ich möchte gerne zu den Teams beitragen, mit denen ich arbeiten möchte."
+        "descriptionOne": "Als engagierter Lernender und begeisterter Technologie-Enthusiast gestalte ich ästhetisch ansprechende und funktionale Websites und Anwendungen. Ich nutze die Fähigkeiten von React & Angular und baue erfahrungsgemäß robuste APIs mit Node.js und Express.",
+        "descriptionTwo": "Auf der Suche nach neuen Möglichkeiten als Full Stack- oder Junior Frontend-Entwickler, strebe ich danach, meine Fähigkeiten weiterzuentwickeln und professionell zu wachsen. Ich bin motiviert, einen aktiven Beitrag zu den Teams zu leisten, in denen ich tätig sein werde."
       },
       "cta": "Finden Sie mich auf",
       "educationLabel": "Meine Ausbildung",
       "education": {
         "epitech": "Web@cademie by Epitech",
         "subheading": "Die Schule für Informatik Exzellenz",
-        "description": "Jahrgangsbester der Web@cademie by Epitech 2023. Das Programm richtet sich an angehende Webentwickler und bietet eine umfassende Ausbildung in modernen Webtechnologien und -praktiken."
+        "description": "Jahrgangsbester der Web@cadémie by Epitech 2023. Dieses Programm ist speziell für angehende Webentwickler konzipiert und bietet eine umfassende Ausbildung in modernen Webtechnologien und -praktiken."
       },
       "ctaSchool": "Erfahren Sie mehr über die Schule",
       "techStack": "Mein Tech-Stack"

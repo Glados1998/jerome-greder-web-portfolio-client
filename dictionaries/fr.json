@@ -31,15 +31,15 @@
       "juniorFullStackDeveloper": "Développeur Full Stack / Frontend Junior",
       "atYourService": "À votre service",
       "subTitle": "Créer des expériences numériques à partir de code avec passion",
-      "subDescription": "Construire des expériences numériques est ma passion. J'adore créer des sites web et des applications à la fois beaux et fonctionnels. Je suis un développeur Fullstack junior autodidacte et ancien élève de ",
-      "epitech": "Epitech",
+      "subDescription": "Construire des expériences numériques est ma passion. J'adore créer des sites web et des applications à la fois belles et fonctionnelles. Je suis un développeur Fullstack junior autodidacte et ancien élève ",
+      "epitech": "d'Epitech",
       "buttonsLabel": {
         "about": "À propos",
         "projects": "Projets"
       },
       "coding": {
         "title": "Coder jour et nuit",
-        "description": "Pendant mes études, j’ai appris à aimer le développement web, donc je bricole toujours avec les nouvelles technologies et les cadres. Je suis toujours à la recherche de nouveaux défis et de nouvelles opportunités pour apprendre et grandir."
+        "description": "Pendant mes études, j’ai appris à aimer le développement web, donc je travaille toujours avec les nouvelles technologies et les frameworks. Je suis toujours à la recherche de nouveaux défis et de nouvelles opportunités pour apprendre et évoluer."
       },
       "minimalism": {
         "title": "Centrée sur l'essentiel",
@@ -47,7 +47,7 @@
       },
       "contact": {
         "title": "Entrer en contact",
-        "description": "Je suis toujours ouvert aux nouvelles opportunités et aux nouveaux défis. Si vous avez un projet dont vous aimeriez discuter, n’hésitez pas à communiquer avec moi. Je suis toujours ouvert aux nouvelles opportunités et aux nouveaux défis. Si vous avez un projet dont vous aimeriez discuter, n’hésitez pas à communiquer avec moi.",
+        "description": "Je suis toujours ouvert aux nouvelles opportunités et aux nouveaux défis. Si vous avez un projet dont vous aimeriez discuter, n’hésitez pas à me le communiquer.",
         "cta": "Me contacter"
       }
     },
@@ -55,15 +55,15 @@
       "title": "À propos de moi",
       "subTitle": "Un aperçu de moi-même",
       "profile": {
-        "descriptionOne": "Un apprenant dévoué et passionné de technologie. Je crée des sites web et des applications esthétiquement plaisants et fonctionnels, en exploitant la puissance de React & Angular, et en construisant des API robustes avec Node.js et Express.",
-        "descriptionTwo": "Je suis à la recherche de nouvelles occasions en tant que développeur Full Stack ou Junior Frontend. Je tiens à faire progresser mes compétences et à me développer professionnellement. Désireux de contribuer aux équipes avec lesquelles j’aimerais travailler."
+        "descriptionOne": "Je suis un développeur dévoué et passionné par la technologie. Je crée des sites web et des applications à la fois esthétiques et fonctionnelles, en exploitant la puissance de React et Angular pour le développement front-end, et en construisant des API robustes avec Node.js et Express pour le back-end.",
+        "descriptionTwo": "Je suis à la recherche de nouvelles occasions en tant que développeur Full Stack ou Junior Frontend. Je suis déterminé à faire évoluer mes compétences et à progresser professionnellement. Je suis désireux de contribuer activement et avec enthousiasme aux équipes qui souhaiteraient travailler avec moi."
       },
       "cta": "Trouvez-moi sur",
       "educationLabel": "Ma formation",
       "education": {
         "epitech": "Web@cademie by Epitech",
         "subheading": "l'École de l'excellence informatique",
-        "description": "Major de promotion de la Web@cademie by Epitech 2023. Le programme cible les aspirants développeurs web en offrant une formation complète sur les technologies et pratiques web modernes."
+        "description": "Major de promotion de la Web@cadémie by Epitech 2023. Le programme cible les aspirants développeurs web en offrant une formation complète sur les technologies et pratiques web modernes."
       },
       "ctaSchool": "En savoir plus sur l'école",
       "techStack": "Mon stack technique"
