@@ -12,17 +12,23 @@ const socialLinks = [
     {label: "github", href: "https://github.com/Glados1998"},
     {label: "linkedin", href: "https://www.linkedin.com/in/jerome-greder/"},
 ]
-export default async function Footer({ lang }: { lang: Locale }) {
+export default async function Footer({lang}: { lang: Locale }) {
     const {components} = await getDictionary(lang)
     return (
-        <footer className={'bg-slate-200 p-6 backdrop-blur bg-white/50 md:sticky inset-x-0 bottom-0 z-10 dark:backdrop-blur-md dark:bg-slate-900/60'}>
-            <div className={'grid grid-rows-2 gap-4 md:grid-rows-1 md:grid-flow-col auto-cols-max md:gap-10 ml-4 md:ml-10'}>
+        <footer
+            className={'bg-slate-200 p-6 backdrop-blur bg-white/50 md:sticky inset-x-0 bottom-0 z-10 dark:backdrop-blur-md dark:bg-slate-900/60'}>
+            <div
+                className={'grid grid-rows-2 gap-4 md:grid-rows-1 md:grid-flow-col auto-cols-max md:gap-10 ml-4 md:ml-10'}>
 
                 {/* First Row - Main Content */}
                 <div className={'grid grid-flow-row gap-3'}>
                     <span className={'font-bold text-md'}>Jérôme Greder web portfolio</span>
-                    <span className={'font-medium text-sm'}>© {new Date().getFullYear()} | {components.Footer.allRightsReserved}</span>
-                    <span className={'font-medium text-sm'}>{components.Footer.madeWith} <a target={'_blank'} href={'https://nextjs.org'} className={'text-blue-500'}>Next.js</a> <br/> {components.Footer.hostedOn} <a target={'_blank'} href={'https://vercel.com/'} className={'text-blue-500'}>Vercel</a></span>
+                    <span
+                        className={'font-medium text-sm'}>© {new Date().getFullYear()} | {components.Footer.allRightsReserved}</span>
+                    <span className={'font-medium text-sm'}>{components.Footer.madeWith} <a target={'_blank'}
+                                                                                            href={'https://nextjs.org'}
+                                                                                            className={'text-blue-500'}>Next.js</a> <br/> {components.Footer.hostedOn}
+                        <a target={'_blank'} href={'https://vercel.com/'} className={'text-blue-500'}>Vercel</a></span>
                 </div>
 
                 {/* Second Row - Navigation and Social Links */}
