@@ -6,12 +6,10 @@ import {AiFillGithub} from "react-icons/ai";
 import techs from "@/data/languages";
 import {Locale} from "../../../../i18.donfig";
 import {getDictionary} from "../../../../lib/dictionary";
+import ProgrammingTag from "@/app/[lang]/components/programmingTag";
 
-export default async function About({
-                                        params: {lang}
-                                    }: {
-    params: { lang: Locale }
-}) {
+export default async function About({params: {lang}}: {params: { lang: Locale }}) {
+
     const {page} = await getDictionary(lang)
     return (
         <>
@@ -102,8 +100,7 @@ export default async function About({
                     <div className="mt-10 flex justify-center">
                         <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">
                             {techs.map((tech) => (
-                                <p className="bg-slate-200 rounded-md px-3 py-1 text-sm font-semibold text-black"
-                                   key={tech.label}>{tech.label}</p>
+                                <ProgrammingTag key={tech.label} programmingTag={tech}/>
                             ))}
                         </div>
                     </div>

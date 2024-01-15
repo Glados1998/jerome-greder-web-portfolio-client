@@ -3,6 +3,7 @@ import {MdWebAsset} from "react-icons/md";
 import projects from "@/data/projects";
 import {Locale} from "../../../../i18.donfig";
 import {getDictionary} from "../../../../lib/dictionary";
+import ProgrammingTag from "@/app/[lang]/components/programmingTag";
 
 export default async function Projects({params: {lang}}: { params: { lang: Locale } }) {
     const {page} = await getDictionary(lang)
@@ -31,10 +32,7 @@ export default async function Projects({params: {lang}}: { params: { lang: Local
                                 </h2>
                                 <p className="text-base md:text-xl font-medium">
                                     {project.technologies?.map((technology, techIndex) => (
-                                        <span key={techIndex}
-                                              className="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-                                            {technology.label}
-                                        </span>
+                                        <ProgrammingTag key={technology.label} programmingTag={technology}/>
                                     ))}
                                 </p>
 
