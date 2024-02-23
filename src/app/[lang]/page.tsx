@@ -59,7 +59,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                 </div>
                 <div className={'flex flex-col gap-12'}>
                     <div>
-                        <Image src={minimal} alt="Passion" objectFit='cover' width={450} height={200}
+                        <Image src={minimal} alt="minimal" objectFit='cover' width={450} height={200}
                                className="rounded-2xl shadow-lg"/>
                     </div>
                     <div className={'text-left w-fit md:w-[400px] break-words'}>
