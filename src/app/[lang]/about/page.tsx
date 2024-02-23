@@ -3,14 +3,15 @@ import headshot from 'src/app/[lang]/assets/images/profile-image1.jpg';
 import epitechBanner from 'src/app/[lang]/assets/images/epitech-banner.jpg';
 import {BsLinkedin} from "react-icons/bs";
 import {AiFillGithub} from "react-icons/ai";
-import techs from "@/data/languages";
 import {Locale} from "../../../../i18.donfig";
 import {getDictionary} from "../../../../lib/dictionary";
 import ProgrammingTag from "@/app/[lang]/components/programmingTag";
+import getTags from "../../../../utils/getTags";
 
 export default async function About({params: {lang}}: {params: { lang: Locale }}) {
 
     const {page} = await getDictionary(lang)
+    const tags = await getTags()
     return (
         <>
             <div className="relative px-5 md:px-20 lg:px-40 py-10">
@@ -99,9 +100,11 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                     </div>
                     <div className="mt-10 flex justify-center">
                         <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">
-                            {techs.map((tech) => (
-                                <ProgrammingTag key={tech.label} programmingTag={tech}/>
-                            ))}
+                            {tags.tags.data.map((tech) => {
+                                return (
+                                    <ProgrammingTag key={tech.id} programmingTag={tech}/>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
