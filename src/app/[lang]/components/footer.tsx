@@ -28,7 +28,7 @@ export default async function Footer({lang}: { lang: Locale }) {
                     <span className={'font-medium text-sm'}>{components.Footer.madeWith} <a target={'_blank'}
                                                                                             href={'https://nextjs.org'}
                                                                                             className={'text-blue-500'}>Next.js</a> <br/> {components.Footer.hostedOn}
-                        <a target={'_blank'} href={'https://vercel.com/'} className={'text-blue-500'}>Vercel</a></span>
+                        <a target={'_blank'} href={'https://vercel.com/'} className={'text-blue-500'}> Vercel</a></span>
                 </div>
 
                 {/* Second Row - Navigation and Social Links */}
