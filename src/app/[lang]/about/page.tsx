@@ -78,7 +78,7 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                                 <div className="flex gap-5">
                                     <a href="https://www.webacademie.org/" target={'_blank'}
                                        className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
-                                        Web@cademie
+                                        Web@cadémie
                                     </a>
                                     <a href="https://www.epitech.eu" target={'_blank'}
                                        className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
