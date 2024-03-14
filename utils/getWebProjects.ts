@@ -1,11 +1,15 @@
 export default async function getWebProjects() {
-    const res = await fetch('https://strapi-production-739f.up.railway.app/api/projects?populate=*')
+    const timestamp = Date.now();
+    const res = await fetch(`https://strapi-production-739f.up.railway.app/api/projects?populate=*&timestamp=${timestamp}`)
 
     if (!res.ok) {
         throw new Error('Failed to fetch projects')
     }
 
+    const data = await res.json();
+    console.log("data", data); // Log the data to the console
+
     return {
-        projects: await res.json()
+        projects: data
     }
 }
