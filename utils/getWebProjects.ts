@@ -1,15 +1,19 @@
-export default async function getWebProjects() {
-    const timestamp = Date.now();
-    const res = await fetch(`https://strapi-production-739f.up.railway.app/api/projects?populate=*&timestamp=${timestamp}`)
+import axios from 'axios';
 
-    if (!res.ok) {
+export default async function getWebProjects() {
+    const res = await axios.get('https://strapi-production-739f.up.railway.app/api/projects?populate=*', {
+        headers: {
+            'Cache-Control': 'no-cache'
+        }
+    })
+
+    if (res.status !== 200) {
         throw new Error('Failed to fetch projects')
     }
 
-    const data = await res.json();
-    console.log("data", data); // Log the data to the console
+    console.log("data", res.data); // Log the data to the console
 
     return {
-        projects: data
+        projects: res.data
     }
 }
