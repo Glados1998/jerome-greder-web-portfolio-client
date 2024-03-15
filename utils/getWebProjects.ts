@@ -2,11 +2,8 @@
 export default async function getWebProjects() {
     const res = await fetch(`https://strapi-production-739f.up.railway.app/api/projects?populate=*`, {
         headers: {
-           cache: 'force-cache',
+           cache: 'no-store',
         },
-        next : {
-            revalidate: 5000,
-        }
     })
 
     if (!res.ok) {
