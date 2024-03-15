@@ -1,9 +1,9 @@
 
 export default async function getWebProjects() {
     const res = await fetch(`https://strapi-production-739f.up.railway.app/api/projects?populate=*`, {
-        headers: {
-           cache: 'no-store',
-        },
+        next : {
+            revalidate: 0
+        }
     })
 
     if (!res.ok) {
@@ -11,7 +11,6 @@ export default async function getWebProjects() {
     }
 
     const data = await res.json();
-    console.log("data", data); // Log the data to the console
 
     return {
         projects: data
