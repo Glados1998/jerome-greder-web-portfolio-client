@@ -21,7 +21,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                 <div
                     className="absolute top-1 left-4 md:left-16 md:top-14 w-fit flex flex-col justify-center items-start text-white p-4">
                     <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{page.Index.title}</h1>
-                    <p className="text-xl md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
+                    <p className="text-sm md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
                         Jérôme Greder <br/>
                         {page.Index.juniorFullStackDeveloper} <br/>
                         {page.Index.atYourService}
