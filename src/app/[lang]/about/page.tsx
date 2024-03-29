@@ -77,11 +77,11 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                                 <h2 className="text-lg md:text-xl font-bold">{page.About.ctaSchool}:</h2>
                                 <div className="flex gap-5">
                                     <a href="https://www.webacademie.org/" target={'_blank'}
-                                       className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
+                                       className="btn">
                                         Web@cadémie
                                     </a>
                                     <a href="https://www.epitech.eu" target={'_blank'}
-                                       className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
+                                       className="btn">
                                         Epitech
                                     </a>
                                 </div>
