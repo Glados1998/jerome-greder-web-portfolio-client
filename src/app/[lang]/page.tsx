@@ -15,7 +15,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
     const {page} = await getDictionary(lang)
     return (
         <>
-            <div className='p-10 grid md:grid-cols-2 grid-rows-2'>
+            <div className='p-10 grid sm:grid-rows-2 md:grid-cols-2 md:grid-rows-1'>
                 <div
                     className="ml-10 w-fit flex flex-col justify-center p-4">
                     <h1 className="text-4xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{page.Index.title}</h1>
