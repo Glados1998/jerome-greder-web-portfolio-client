@@ -17,7 +17,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
         <>
             <div className='p-10 grid md:grid-cols-2 grid-rows-2'>
                 <div
-                    className="ml-10 w-fit flex flex-col justify-center text-white p-4">
+                    className="ml-10 w-fit flex flex-col justify-center p-4">
                     <h1 className="text-4xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{page.Index.title}</h1>
                     <p className="text-xl md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 mt:font-medium">
                         Jérôme Greder <br/>
