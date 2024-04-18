@@ -15,11 +15,13 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
     const {page} = await getDictionary(lang)
     return (
         <>
-            <div className='p-10 grid sm:grid-rows-2 md:grid-cols-2 md:grid-rows-1'>
+            <div className='relative'>
+                <Image src={homeBanner} alt="Home banner"
+                       className="relative xl:h-[45rem] lg:h-[30rem] md:h-[24rem] sm:h-[20rem]" objectFit='cover'/>
                 <div
-                    className="ml-10 w-fit flex flex-col justify-center p-4">
-                    <h1 className="text-4xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{page.Index.title}</h1>
-                    <p className="text-xl md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 mt:font-medium">
+                    className="absolute top-1 left-4 md:left-16 md:top-14 w-fit flex flex-col justify-center items-start text-white p-4">
+                    <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{page.Index.title}</h1>
+                    <p className="text-sm md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
                         Jérôme Greder <br/>
                         {page.Index.juniorFullStackDeveloper} <br/>
                         {page.Index.atYourService}
@@ -75,7 +77,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                 </div>
                 <div className={'mt-4 md:mt-6 flex justify-center'}>
                     <Link href={`/${lang}/contact`}
-                          className={'btn'}>
+                          className={'text-sm md:text-base font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out hover:dark:bg-slate-50 hover:dark:text-black'}>
                         {page.Index.contact.cta}
                     </Link>
                 </div>
