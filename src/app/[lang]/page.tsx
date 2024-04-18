@@ -15,11 +15,13 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
     const {page} = await getDictionary(lang)
     return (
         <>
-            <div className='p-10 grid md:grid-cols-2 grid-rows-2'>
+            <div className='relative'>
+                <Image src={homeBanner} alt="Home banner"
+                       className="relative xl:h-[45rem] lg:h-[30rem] md:h-[24rem] sm:h-[20rem]" objectFit='cover'/>
                 <div
-                    className="ml-10 w-fit flex flex-col justify-center text-white p-4">
-                    <h1 className="text-4xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{page.Index.title}</h1>
-                    <p className="text-xl md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 mt:font-medium">
+                    className="absolute top-1 left-4 md:left-16 md:top-14 w-fit flex flex-col justify-center items-start text-white p-4">
+                    <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{page.Index.title}</h1>
+                    <p className="text-xl md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
                         Jérôme Greder <br/>
                         {page.Index.juniorFullStackDeveloper} <br/>
                         {page.Index.atYourService}
@@ -28,14 +30,12 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                     <div className="flex flex-wrap gap-3 mt-2 md:mt-8">
                         {links.map((link) => (
                             <Link href={`/${lang}/${link.href}`} key={link.label}
-                                  className="btn">
+                                  className="text-sm md:text-base font-medium hover:bg-slate-50 p-2 rounded-md hover:text-black transition duration-300 ease-in-out">
                                 {page.Index.buttonsLabel[link.label]}
                             </Link>
                         ))}
                     </div>
                 </div>
-                <Image loading='eager' src={homeBanner} alt="Home banner"
-                       className="rounded-2xl shadow-lg"/>
             </div>
             <div className={'flex flex-col justify-center m-6 md:m-12 '}>
                 <div className={'flex flex-col justify-center items-center '}>
@@ -49,7 +49,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
             <div className={'flex flex-col md:flex-row gap-12 justify-evenly m-6 md:m-12 text-center'}>
                 <div className={'flex flex-col gap-12'}>
                     <div>
-                        <Image src={passion} loading="lazy" alt="Passion" objectFit='cover' width={500} height={250}
+                        <Image src={passion} alt="Passion" objectFit='cover' width={500} height={250}
                                className="rounded-2xl shadow-lg"/>
                     </div>
                     <div className={'text-left w-fit md:w-[400px] break-words'}>
@@ -59,7 +59,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                 </div>
                 <div className={'flex flex-col gap-12'}>
                     <div>
-                        <Image src={minimal} loading="lazy" alt="minimal" objectFit='cover' width={450} height={200}
+                        <Image src={minimal} alt="minimal" objectFit='cover' width={450} height={200}
                                className="rounded-2xl shadow-lg"/>
                     </div>
                     <div className={'text-left w-fit md:w-[400px] break-words'}>
@@ -75,7 +75,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                 </div>
                 <div className={'mt-4 md:mt-6 flex justify-center'}>
                     <Link href={`/${lang}/contact`}
-                          className={'btn'}>
+                          className={'text-sm md:text-base font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out hover:dark:bg-slate-50 hover:dark:text-black'}>
                         {page.Index.contact.cta}
                     </Link>
                 </div>
