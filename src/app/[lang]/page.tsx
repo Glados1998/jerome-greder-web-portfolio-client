@@ -36,8 +36,6 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                         ))}
                     </div>
                 </div>
-                <Image loading='eager' src={homeBanner} alt="Home banner"
-                       className="rounded-2xl shadow-lg"/>
             </div>
             <div className={'flex flex-col justify-center m-6 md:m-12 '}>
                 <div className={'flex flex-col justify-center items-center '}>
