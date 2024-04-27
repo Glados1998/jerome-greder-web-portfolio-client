@@ -1,6 +1,7 @@
 import ProgrammingTag from "@/app/[lang]/components/programmingTag";
 import {AiFillGithub} from "react-icons/ai";
 import {MdWebAsset} from "react-icons/md";
+import SocialBtn from "@/app/[lang]/components/SocialBtn";
 
 export default function ProjectItem({projects, page}) {
 
@@ -24,16 +25,20 @@ export default function ProjectItem({projects, page}) {
 
                         <div className="flex gap-4 mt-2">
                             {projects.repoLink && (
-                                <a href={projects.repoLink} target="_blank" rel="noopener noreferrer"
-                                   className="text-3xl text-black dark:text-white">
+                                <SocialBtn
+                                    href={projects.repoLink}
+                                    className="text-md md:text-lg font-semibold text-white bg-black p-1 rounded-md dark:text-slate-900 dark:bg-slate-200"
+                                >
                                     <AiFillGithub/>
-                                </a>
+                                    Github
+                                </SocialBtn>
                             )}
                             {projects.liveLink && (
-                                <a href={projects.liveLink} target="_blank" rel="noopener noreferrer"
-                                   className="text-3xl text-blue-600 dark:text-white">
+                                <SocialBtn href={projects.liveLink}
+                                   className="text-md md:text-lg font-semibold text-white bg-blue-600 p-1 rounded-md dark:text-slate-900 dark:bg-slate-200">
                                     <MdWebAsset/>
-                                </a>
+                                    Live
+                                </SocialBtn>
                             )}
                         </div>
                     </div>

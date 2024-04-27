@@ -11,10 +11,10 @@ export default async function Projects({params: {lang}}: { params: { lang: Local
             <div className="relative px-5 md:px-20 lg:px-40 py-10">
                 {/* Intro Section */}
                 <div className="text-center">
-                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold">
+                    <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">
                         {page.projects.title}
                     </h1>
-                    <p className="text-xl md:text-2xl lg:text-4xl font-medium mt-4">
+                    <p className="text-xl md:text-2xl lg:text-2xl font-medium mt-4">
                         {page.projects.subTitle}
                     </p>
                     <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>

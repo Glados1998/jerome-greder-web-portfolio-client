@@ -3,6 +3,7 @@ import Image from "next/image";
 import {BsLinkedin} from "react-icons/bs";
 import {Locale} from "../../../../i18.donfig";
 import {getDictionary} from "../../../../lib/dictionary";
+import SocialBtn from "@/app/[lang]/components/SocialBtn";
 
 export default async function Contact({params: {lang}}: { params: { lang: Locale } }) {
     const {page} = await getDictionary(lang)
@@ -13,10 +14,10 @@ export default async function Contact({params: {lang}}: { params: { lang: Locale
                     <Image src={contactImage} alt="Contact banner" width={400} height={400}
                            className="rounded-2xl shadow-lg"/>
                     <div className="flex flex-col text-left space-y-4 w-full">
-                        <h2 className="text-3xl md:text-5xl font-bold">
+                        <h2 className="text-2xl md:text-6xl lg:text-5xl font-bold">
                             {page.Contact.title}
                         </h2>
-                        <h2 className="text-3xl md:text-5xl font-bold">
+                        <h2 className="text-2xl md:text-6xl lg:text-5xl font-bold">
                             {page.Contact.subTitle}
                         </h2>
                         <p className="text-sm md:text-3xl font-medium">
@@ -34,10 +35,11 @@ export default async function Contact({params: {lang}}: { params: { lang: Locale
                             <p className="text-sm md:text-3xl font-medium">
                                 {page.Contact.linkedin}.
                             </p>
-                            <a href="https://www.linkedin.com/in/jerome-greder/" target='_blank'
-                               className="text-2xl md:text-4xl text-blue-600 dark:text-white">
+                            <SocialBtn href="https://www.linkedin.com/in/jerome-greder/" target='_blank'
+                               className="text-md md:text-lg font-semibold text-white bg-blue-600 p-1 rounded-md dark:text-slate-900 dark:bg-slate-200">
                                 <BsLinkedin/>
-                            </a>
+                                Linkedin
+                            </SocialBtn>
                         </div>
                     </div>
                 </div>

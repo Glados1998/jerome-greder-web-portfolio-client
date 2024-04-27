@@ -7,6 +7,7 @@ import {Locale} from "../../../../i18.donfig";
 import {getDictionary} from "../../../../lib/dictionary";
 import ProgrammingTag from "@/app/[lang]/components/programmingTag";
 import getTags from "../../../../utils/getTags";
+import SocialBtn from "@/app/[lang]/components/SocialBtn";
 
 export default async function About({params: {lang}}: {params: { lang: Locale }}) {
 
@@ -17,10 +18,10 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
             <div className="relative px-5 md:px-20 lg:px-40 py-10">
                 {/* Intro Section */}
                 <div className="text-center">
-                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold">
+                    <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">
                         {page.About.title}
                     </h1>
-                    <p className="text-xl md:text-2xl lg:text-4xl font-medium mt-4">
+                    <p className="text-xl md:text-2xl lg:text-2xl font-medium mt-4">
                         {page.About.subTitle}
                     </p>
                     <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>
@@ -46,14 +47,16 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                                     {page.About.cta}:
                                 </p>
                                 <div className="flex gap-4 mt-2">
-                                    <a href="https://www.linkedin.com/in/jerome-greder/" target={'_blank'}
-                                       className="text-4xl text-blue-600 dark:text-white">
+                                    <SocialBtn href="https://www.linkedin.com/in/jerome-greder/"
+                                       className="text-md md:text-lg font-semibold text-white bg-blue-600 p-1 rounded-md dark:text-slate-900 dark:bg-slate-200">
                                         <BsLinkedin/>
-                                    </a>
-                                    <a href="https://github.com/Glados1998" target={'_blank'}
-                                       className="text-4xl text-gray-600 dark:text-white">
+                                        Linkedin
+                                    </SocialBtn>
+                                    <SocialBtn href="https://github.com/Glados1998"
+                                       className="text-md md:text-lg font-semibold text-white bg-black p-1 rounded-md dark:text-slate-900 dark:bg-slate-200">
                                         <AiFillGithub/>
-                                    </a>
+                                        Github
+                                    </SocialBtn>
                                 </div>
                             </div>
                         </div>

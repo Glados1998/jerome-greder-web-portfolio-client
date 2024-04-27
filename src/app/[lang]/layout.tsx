@@ -13,6 +13,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Jérôme Greder',
   description: 'Jérôme Greder - Junior Fullstack Developer',
+
 }
 
 export async function generateStaticParams() {
