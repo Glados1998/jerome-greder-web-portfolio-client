@@ -20,7 +20,7 @@ export default async function Contact({params: {lang}}: { params: { lang: Locale
                         <h2 className="text-2xl md:text-6xl lg:text-5xl font-bold">
                             {page.Contact.subTitle}
                         </h2>
-                        <p className="text-sm md:text-3xl font-medium">
+                        <p className="text-sm md:text-2xl font-medium">
                             {page.Contact.contactMeAt} <a href='mailto:jerome-alexandre.greder@epitech.eu'
                                                           className='font-medium hover:underline'>
                             jerome-alexandre.greder@epitech.eu
@@ -32,7 +32,7 @@ export default async function Contact({params: {lang}}: { params: { lang: Locale
                         </a>
                         </p>
                         <div className="flex flex-col md:flex-row gap-6 ">
-                            <p className="text-sm md:text-3xl font-medium">
+                            <p className="text-sm md:text-2xl font-medium">
                                 {page.Contact.linkedin}.
                             </p>
                             <SocialBtn href="https://www.linkedin.com/in/jerome-greder/" target='_blank'
