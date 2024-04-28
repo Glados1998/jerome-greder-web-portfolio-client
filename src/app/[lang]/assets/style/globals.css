@@ -20,21 +20,21 @@
 }
 
 .btn-linkedin {
-  @apply text-blue-600 dark:text-white dark:bg-blue-600;
+  @apply text-blue-600 dark:text-white;
 }
 .btn-linkedin:hover {
   @apply bg-blue-600 text-white duration-300 dark:bg-blue-600 dark:text-white ease-in-out scale-110;
 }
 
 .btn-github {
-  @apply text-black dark:text-slate-900 dark:bg-white;
+  @apply text-black dark:text-white;
 }
 .btn-github:hover {
   @apply bg-black text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110;
 }
 
 .btn-live {
-  @apply text-green-600 dark:text-white dark:bg-green-600;
+  @apply text-green-600 dark:text-white;
 }
 .btn-live:hover {
   @apply bg-green-600 text-white duration-300 dark:bg-green-700 dark:text-white ease-in-out scale-110;
