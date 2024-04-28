@@ -21,22 +21,20 @@ export default async function Contact({params: {lang}}: { params: { lang: Locale
                             {page.Contact.subTitle}
                         </h2>
                         <p className="text-sm md:text-2xl font-medium">
-                            {page.Contact.contactMeAt} <a href='mailto:jerome-alexandre.greder@epitech.eu'
-                                                          className='font-medium hover:underline'>
-                            jerome-alexandre.greder@epitech.eu
-                        </a> & <a href='mailto:j.greder@staro.ch' className='font-medium hover:underline'>
-                            j.greder@staro.ch
-                        </a> {page.Contact.orBy} {page.Contact.phone} {page.Contact.at} <a href='tel:+33 7 84 25 06 10'
-                                                                                           className='font-medium hover:underline'>
-                            +33 7 84 25 06 10
-                        </a>
+                            {page.Contact.contactMeAt} <a href='mailto:jerome.greder@icloude.com'
+                                                          className='font-medium underline hover:no-underline'>
+                            jerome.greder@icloude.com
+                        </a> {page.Contact.orBy} {page.Contact.phone} {page.Contact.at} <br/>
+                            <a href='tel:+33 7 84 25 06 10' className='font-medium underline hover:no-underline'>
+                                +33 7 84 25 06 10
+                            </a>
                         </p>
                         <div className="flex flex-col md:flex-row gap-6 ">
                             <p className="text-sm md:text-2xl font-medium">
                                 {page.Contact.linkedin}.
                             </p>
                             <SocialBtn href="https://www.linkedin.com/in/jerome-greder/" target='_blank'
-                               className="text-md md:text-lg font-semibold text-white bg-blue-600 p-1 rounded-md dark:text-slate-900 dark:bg-slate-200">
+                                       className="btn-linkedin">
                                 <BsLinkedin/>
                                 Linkedin
                             </SocialBtn>

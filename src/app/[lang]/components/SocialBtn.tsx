@@ -1,7 +1,7 @@
 export default function SocialBtn({children, ...props}) {
     return (
         <a {...props} href={props.href} target='_blank' rel={'noopener noreferrer'}>
-            <span className={"btn-social"}>
+            <span>
             {children}
             </span>
         </a>

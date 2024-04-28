@@ -2,20 +2,25 @@ import ProgrammingTag from "@/app/[lang]/components/programmingTag";
 import {AiFillGithub} from "react-icons/ai";
 import {MdWebAsset} from "react-icons/md";
 import SocialBtn from "@/app/[lang]/components/SocialBtn";
+import minimal from 'src/app/[lang]/assets/images/minimal.jpg'
+import Image from "next/image";
 
 export default function ProjectItem({projects, page}) {
 
     return (
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4 w-full md:w-[44rem]">
             <div className="flex flex-col text-left space-y-4 w-full md:w-[44rem]">
-                <h2 className="text-3xl md:text-4xl font-bold">
+                <Image src={minimal} loading="lazy" alt="minimal" objectFit='cover' width={450} height={200}
+                       className="rounded-2xl shadow-lg"/>
+                <h2 className="text-3xl md:text-3xl font-bold">
                     {projects.title}
                 </h2>
-                <p className="text-base md:text-xl font-medium">
+                <div className={'flex flex-wrap gap-3 mt-2 md:mt-8'}>
                     {projects.programming_tags.data?.map((technology, index) => (
                         <ProgrammingTag key={index} programmingTag={technology}/>
                     ))}
-                </p>
+                </div>
+
 
                 <div className="flex flex-col md:flex-row gap-6">
                     <div>
@@ -27,15 +32,14 @@ export default function ProjectItem({projects, page}) {
                             {projects.repoLink && (
                                 <SocialBtn
                                     href={projects.repoLink}
-                                    className="text-md md:text-lg font-semibold text-white bg-black p-1 rounded-md dark:text-slate-900 dark:bg-slate-200"
-                                >
+                                    className="btn-github">
                                     <AiFillGithub/>
                                     Github
                                 </SocialBtn>
                             )}
                             {projects.liveLink && (
                                 <SocialBtn href={projects.liveLink}
-                                   className="text-md md:text-lg font-semibold text-white bg-blue-600 p-1 rounded-md dark:text-slate-900 dark:bg-slate-200">
+                                   className="btn-live">
                                     <MdWebAsset/>
                                     Live
                                 </SocialBtn>

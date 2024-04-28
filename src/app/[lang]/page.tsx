@@ -30,7 +30,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                     <div className="flex flex-wrap gap-3 mt-2 md:mt-8">
                         {links.map((link) => (
                             <Link href={`/${lang}/${link.href}`} key={link.label}
-                                  className="btn">
+                                  className="btn-inverted">
                                 {page.Index.buttonsLabel[link.label]}
                             </Link>
                         ))}
@@ -75,7 +75,7 @@ export default async function Home({params: {lang}}: { params: { lang: Locale } 
                 </div>
                 <div className={'mt-4 md:mt-6 flex justify-center'}>
                     <Link href={`/${lang}/contact`}
-                          className={'text-sm md:text-base font-medium hover:bg-slate-800 p-2 rounded-md hover:text-white transition duration-300 ease-in-out hover:dark:bg-slate-50 hover:dark:text-black'}>
+                          className={'btn'}>
                         {page.Index.contact.cta}
                     </Link>
                 </div>

@@ -48,12 +48,12 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                                 </p>
                                 <div className="flex gap-4 mt-2">
                                     <SocialBtn href="https://www.linkedin.com/in/jerome-greder/"
-                                       className="text-md md:text-lg font-semibold text-white bg-blue-600 p-1 rounded-md dark:text-slate-900 dark:bg-slate-200">
+                                       className="btn-linkedin">
                                         <BsLinkedin/>
                                         Linkedin
                                     </SocialBtn>
                                     <SocialBtn href="https://github.com/Glados1998"
-                                       className="text-md md:text-lg font-semibold text-white bg-black p-1 rounded-md dark:text-slate-900 dark:bg-slate-200">
+                                       className="btn-github">
                                         <AiFillGithub/>
                                         Github
                                     </SocialBtn>
@@ -80,11 +80,11 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                                 <h2 className="text-lg md:text-xl font-bold">{page.About.ctaSchool}:</h2>
                                 <div className="flex gap-5">
                                     <a href="https://www.webacademie.org/" target={'_blank'}
-                                       className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
+                                       className="btn">
                                         Web@cadémie
                                     </a>
                                     <a href="https://www.epitech.eu" target={'_blank'}
-                                       className="bg-slate-200 font-semibold hover:bg-slate-800 px-2 py-1 rounded-md text-sm md:text-base text-black hover:text-white transition duration-300 ease-in-out">
+                                       className="btn">
                                         Epitech
                                     </a>
                                 </div>
