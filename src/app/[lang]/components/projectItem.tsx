@@ -8,9 +8,9 @@ import Image from "next/image";
 export default function ProjectItem({projects, page}) {
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center space-y-4 w-full md:w-[44rem]">
+        <div className="flex flex-col md:flex-row items-center justify-center space-y-4 w-full md:w-[25rem]">
             <div className="flex flex-col text-left space-y-4 w-full md:w-[44rem]">
-                <Image src={projects.thumbnail.data ? projects.thumbnail.data.attributes.url : minimal} loading="lazy" alt="minimal" objectFit='cover' width={450} height={200}
+                <Image src={projects.thumbnail.data ? projects.thumbnail.data.attributes.url : minimal} loading="lazy" alt="minimal" objectFit='cover' width={450} height={400}
                        className="rounded-2xl shadow-lg"/>
                 <h2 className="text-3xl md:text-3xl font-bold">
                     {projects.title}
@@ -20,7 +20,6 @@ export default function ProjectItem({projects, page}) {
                         <ProgrammingTag key={index} programmingTag={technology}/>
                     ))}
                 </div>
-
 
                 <div className="flex flex-col md:flex-row gap-6">
                     <div>

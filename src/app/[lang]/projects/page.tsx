@@ -21,7 +21,7 @@ export default async function Projects({params: {lang}}: { params: { lang: Local
                 </div>
 
                 {/* Project Section */}
-                <div className="flex flex-col items-center justify-center mt-10 gap-6 md:gap-20">
+                <div className="flex flex-wrap mt-10 gap-12">
                     {projects.projects.data.map((project, index) => (
                         <ProjectItem key={index} projects={project.attributes} page={page}/>
                     ))}

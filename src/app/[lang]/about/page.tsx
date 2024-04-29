@@ -66,7 +66,7 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                 {/* Education Section */}
                 <div className="mt-20">
                     <div className="text-left">
-                        <h1 className="text-3xl md:text-5xl font-bold">{page.About.educationLabel}</h1>
+                        <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{page.About.educationLabel}</h1>
                         <hr className="mt-4 w-20 border-black dark:border-white"/>
                     </div>
                     <div className="flex flex-col md:flex-row justify-evenly items-center mt-10 gap-6 md:gap-10">
@@ -98,7 +98,7 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                 {/* Stack Section */}
                 <div className="mt-20">
                     <div className="text-center">
-                        <h1 className="text-3xl md:text-5xl font-bold">{page.About.techStack}</h1>
+                        <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{page.About.techStack}</h1>
                         <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>
                     </div>
                     <div className="mt-10 flex justify-center">
