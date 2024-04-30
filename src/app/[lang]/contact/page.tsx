@@ -20,24 +20,13 @@ export default async function Contact({params: {lang}}: { params: { lang: Locale
                         <h2 className="text-2xl md:text-6xl lg:text-5xl font-bold">
                             {page.Contact.subTitle}
                         </h2>
-                        <p className="text-sm md:text-2xl font-medium">
-                            {page.Contact.contactMeAt} <a href='mailto:jerome.greder@icloude.com'
-                                                          className='font-medium underline hover:no-underline'>
-                            jerome.greder@icloude.com
-                        </a> {page.Contact.orBy} {page.Contact.phone} {page.Contact.at} <br/>
-                            <a href='tel:+33 7 84 25 06 10' className='font-medium underline hover:no-underline'>
-                                +33 7 84 25 06 10
-                            </a>
-                        </p>
-                        <div className="flex flex-col md:flex-row gap-6 ">
-                            <p className="text-sm md:text-2xl font-medium">
-                                {page.Contact.linkedin}.
-                            </p>
-                            <SocialBtn href="https://www.linkedin.com/in/jerome-greder/" target='_blank'
-                                       className="btn-linkedin">
-                                <BsLinkedin/>
-                                Linkedin
-                            </SocialBtn>
+                    </div>
+                    <div>
+                        <div className={"input-item"}>
+                            <span>
+                            test:
+                        </span>
+                            <input type="text" placeholder="test"/>
                         </div>
                     </div>
                 </div>
