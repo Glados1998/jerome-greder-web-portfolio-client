@@ -11,7 +11,7 @@ export default function ProjectItem({projects, page}) {
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4">
             <div className="flex flex-col text-left space-y-4">
                 <Image src={projects.thumbnail.data ? projects.thumbnail.data.attributes.url : minimal} loading="lazy" alt="minimal" width={750} height={450}
-                       className="shadow-lg"/>
+                       className="shadow-lg rounded-md"/>
                 <h2 className="text-3xl md:text-3xl font-bold">
                     {projects.title}
                 </h2>
