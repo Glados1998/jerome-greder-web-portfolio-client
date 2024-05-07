@@ -7,6 +7,7 @@ import {i18n, Locale} from "../../../i18.donfig";
 import { Analytics } from '@vercel/analytics/react';
 
 import { Inter } from 'next/font/google'
+import Head from "next/head";
 const inter = Inter({ subsets: ['latin'] })
 
 
@@ -32,8 +33,11 @@ export default function RootLayout({
 
     return (
         <html lang={inter.className} className={'text-black dark:text-white dark:bg-slate-900 flex flex-col min-h-screen'}>
-      <body>
-          <Header lang={params.lang}/>
+        <Head>
+            <link rel="icon" href="../../../public/favicon.ico" sizes={"any"}/>
+        </Head>
+        <body>
+        <Header lang={params.lang}/>
               <main>
                   {children}
                   <Analytics />
