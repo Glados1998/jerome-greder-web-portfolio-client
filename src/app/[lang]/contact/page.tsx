@@ -1,7 +1,7 @@
 import contactImage from "src/app/[lang]/assets/images/contact-banner.jpg";
 import Image from "next/image";
 import {BsLinkedin} from "react-icons/bs";
-import {Locale} from "../../../../i18.donfig";
+import {Locale} from "../../../../i18n.donfig";
 import {getDictionary} from "../../../../lib/dictionary";
 import SocialBtn from "@/app/[lang]/components/SocialBtn";
 

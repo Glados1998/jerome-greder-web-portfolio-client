@@ -1,4 +1,4 @@
-import {Locale} from "../../../../i18.donfig";
+import {Locale} from "../../../../i18n.donfig";
 import {getDictionary} from "../../../../lib/dictionary";
 import ProjectItem from "@/app/[lang]/components/projectItem";
 import getWebProjects from "../../../../utils/getWebProjects";

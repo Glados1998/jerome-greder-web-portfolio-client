@@ -1,6 +1,6 @@
 "use client";
 import {getDictionary} from "../../../../lib/dictionary";
-import {Locale} from "../../../../i18.donfig";
+import {Locale} from "../../../../i18n.donfig";
 import Link from "next/link";
 import LocaleSwitcher from "./locale-switcher";
 import {Menu} from "@headlessui/react";

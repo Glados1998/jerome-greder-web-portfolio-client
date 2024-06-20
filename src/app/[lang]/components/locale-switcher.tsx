@@ -1,7 +1,7 @@
 
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import {i18n} from "../../../../i18.donfig";
+import {i18n} from "../../../../i18n.donfig";
 
 export default function LocaleSwitcher() {
     const pathName = usePathname()

@@ -3,7 +3,7 @@ import React from "react";
 import "src/app/[lang]/assets/style/globals.scss";
 import Header from "@/app/[lang]/components/header";
 import Footer from "@/app/[lang]/components/footer";
-import {i18n, Locale} from "../../../i18.donfig";
+import {i18n, Locale} from "../../../i18n.donfig";
 import { Analytics } from '@vercel/analytics/react';
 
 import { Inter } from 'next/font/google'

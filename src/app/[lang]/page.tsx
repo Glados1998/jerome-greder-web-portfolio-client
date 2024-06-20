@@ -3,7 +3,7 @@ import homeBanner from 'src/app/[lang]/assets/images/heroBanner.jpg'
 import minimal from 'src/app/[lang]/assets/images/minimal.jpg'
 import passion from 'src/app/[lang]/assets/images/passion.jpg'
 import Link from "next/link";
-import {Locale} from "../../../i18.donfig";
+import {Locale} from "../../../i18n.donfig";
 import {getDictionary} from "../../../lib/dictionary";
 
 const links = [

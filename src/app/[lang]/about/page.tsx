@@ -3,7 +3,7 @@ import headshot from 'src/app/[lang]/assets/images/profile-image1.jpg';
 import epitechBanner from 'src/app/[lang]/assets/images/epitech-banner.jpg';
 import {BsLinkedin} from "react-icons/bs";
 import {AiFillGithub} from "react-icons/ai";
-import {Locale} from "../../../../i18.donfig";
+import {Locale} from "../../../../i18n.donfig";
 import {getDictionary} from "../../../../lib/dictionary";
 import ProgrammingTag from "@/app/[lang]/components/programmingTag";
 import getTags from "../../../../utils/getTags";

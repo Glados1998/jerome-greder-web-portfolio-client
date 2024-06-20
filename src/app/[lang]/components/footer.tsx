@@ -1,5 +1,5 @@
 import {getDictionary} from "../../../../lib/dictionary";
-import {Locale} from "../../../../i18.donfig";
+import {Locale} from "../../../../i18n.donfig";
 
 const links = [
     {label: "home", href: "/"},

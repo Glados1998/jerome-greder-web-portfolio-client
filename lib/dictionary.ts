@@ -1,4 +1,4 @@
-import {Locale} from "../i18.donfig";
+import {Locale} from "../i18n.donfig";
 
 const dictionaries = {
     en: () => import('../dictionaries/en.json').then(module => module.default),
