@@ -21,15 +21,7 @@ export async function generateStaticParams() {
     return i18n.locales.map(locale => ({ lang: locale }))
 }
 
-export default function RootLayout({
-                                       children,
-                                       params
-                                   }: {
-    children: React.ReactNode
-    params: { lang: Locale }
-}) {
-
-
+export default function RootLayout({ children, params } : { children: React.ReactNode, params: { lang: Locale } }) {
 
     return (
         <html lang={inter.className} className={'text-black dark:text-white dark:bg-slate-900 flex flex-col min-h-screen'}>
