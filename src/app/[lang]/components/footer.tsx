@@ -1,5 +1,7 @@
 import {getDictionary} from "../../../../lib/dictionary";
 import {Locale} from "../../../../i18.donfig";
+import {SiNextdotjs, SiVercel} from "react-icons/si";
+import Link from "next/link";
 
 const links = [
     {label: "home", href: "/"},
@@ -23,12 +25,15 @@ export default async function Footer({lang}: { lang: Locale }) {
                 {/* First Row - Main Content */}
                 <div className={'grid grid-flow-row gap-3'}>
                     <span className={'font-bold text-md'}>Jérôme Greder web portfolio</span>
-                    <span
-                        className={'font-medium text-sm'}>© {new Date().getFullYear()} | {components.Footer.allRightsReserved}</span>
-                    <span className={'font-medium text-sm'}>{components.Footer.madeWith} <a target={'_blank'}
-                                                                                            href={'https://nextjs.org'}
-                                                                                            className={'text-blue-500'}>Next.js</a> <br/> {components.Footer.hostedOn}
-                        <a target={'_blank'} href={'https://vercel.com/'} className={'text-blue-500'}> Vercel</a></span>
+                    <span className={'font-medium text-sm'}>
+                        © {new Date().getFullYear()} | {components.Footer.allRightsReserved}
+                    </span>
+                    <span className={'font-medium text-sm'}>
+                        {components.Footer.madeWith} <a target={'_blank'} href={'https://nextjs.org'}
+                                                        className={'text-blue-500 underline hover:no-underline'}>
+                        Next.js</a>  {components.Footer.hostedOn} <a target={'_blank'} href={'https://vercel.com/'}
+                                                                          className={'text-blue-500 underline hover:no-underline'}>Vercel</a></span>
+                    <Link href={`/${lang}/legal`} className={'font-medium'}>{components.Footer.legal}</Link>
                 </div>
 
                 {/* Second Row - Navigation and Social Links */}
@@ -41,13 +46,12 @@ export default async function Footer({lang}: { lang: Locale }) {
                         <ul className={'grid grid-flow-row auto-rows-max'}>
                             {links.map(link => (
                                 <li className={'font-medium'} key={link.label}>
-                                    <a href={`/${lang}/${link.href}`}>{components.Footer.navigation[link.label]}</a>
+                                    <Link href={`/${lang}/${link.href}`}>{components.Footer.navigation[link.label]}</Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Social Links */}
                     <div>
                         <h1 className={'text-md font-bold'}>
                             {components.Footer.socialLabel}
@@ -55,7 +59,7 @@ export default async function Footer({lang}: { lang: Locale }) {
                         <ul className={'grid grid-flow-row auto-rows-max'}>
                             {socialLinks.map(link => (
                                 <li className={'font-medium'} key={link.label}>
-                                    <a target={'_blank'} href={link.href}>{components.Footer.social[link.label]}</a>
+                                    <Link target={'_blank'} href={link.href}>{components.Footer.social[link.label]}</Link>
                                 </li>
                             ))}
                         </ul>
