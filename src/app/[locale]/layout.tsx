@@ -39,7 +39,7 @@ export default async function RootLayout({
                 {children}
                 <Analytics />
             </main>
-            {/*<Footer/> */}
+            <Footer/>
             </body>
         </NextIntlClientProvider>
         </html>
