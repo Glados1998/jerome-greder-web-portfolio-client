@@ -1,28 +1,25 @@
 
-import Link from 'next/link'
-import {usePathname} from 'next/navigation'
-import {i18n} from "../../../../i18.donfig.mjs";
+import {Link} from "@/navigation";
+
+const locales = [
+    {label: "en", locale: 'en'},
+    {label: "de", locale: 'de'},
+    {label: "fr", locale: 'fr'},
+]
 
 export default function LocaleSwitcher() {
-    const pathName = usePathname()
-
-    const redirectedPathName = (locale: string) => {
-        if (!pathName) return '/'
-        const segments = pathName.split('/')
-        segments[1] = locale
-        return segments.join('/')
-    }
 
     return (
         <ul className='flex gap-x-3 p-4 justify-between'>
-            {i18n.locales.map(locale => {
+            {locales.map(locale => {
                 return (
-                    <li key={locale}>
+                    <li key={locale.locale}>
                         <Link
-                            href={redirectedPathName(locale)}
+                            href={"/"}
+                            locale={locale.locale}
                             className='btn'
                         >
-                            {locale.toUpperCase()}
+                            {locale.label.toUpperCase()}
                         </Link>
                     </li>
                 )

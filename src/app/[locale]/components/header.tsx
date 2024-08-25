@@ -57,9 +57,9 @@ export default  function Header() {
                             </Menu.Item>
                         ))}
                         <Menu.Item as={Fragment}>
-{/*
+
                             <LocaleSwitcher/>
-*/}
+
                         </Menu.Item>
                     </Menu.Items>
                 </Menu>
@@ -69,9 +69,7 @@ export default  function Header() {
                         {t('language')} :&nbsp;
                     </span>
                     <div>
-{/*
                         <LocaleSwitcher/>
-*/}
                     </div>
                 </div>
             </nav>
