@@ -1,18 +1,30 @@
 "use client";
 import Image from 'next/image';
+import {useEffect, useState} from "react";
 import headshot from 'src/app/[locale]/assets/images/profile-image1.jpg';
 import epitechBanner from 'src/app/[locale]/assets/images/epitech-banner.jpg';
 import {BsLinkedin} from "react-icons/bs";
 import {AiFillGithub} from "react-icons/ai";
-import ProgrammingTag from "@/app/[locale]/components/programmingTag";
 import SocialBtn from "@/app/[locale]/components/SocialBtn";
 import {useTranslations} from "use-intl";
-import getTags from "../../../../utils/getTags";
+import axios from "axios";
+import ProgrammingTag from "@/app/[locale]/components/programmingTag";
 
-const tags = getTags()
 
 export default function About() {
     const t = useTranslations("page.About")
+    const [tags, setTags] = useState({data: []});
+    useEffect(() => {
+        axios.get('https://strapi-production-739f.up.railway.app/api/programming-tags')
+           .then(response => {
+                setTags(response.data)
+               console.log(response.data)
+            })
+           .catch(error => {
+                console.error('Error fetching tags:', error);
+            });
+    }, []);
+
     return (
         <>
             <div className="relative px-5 md:px-20 lg:px-40 py-10">
@@ -103,11 +115,11 @@ export default function About() {
                     </div>
                     <div className="mt-10 flex justify-center">
                         <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">
-                            {tags.then(data => data.tags.data.map((tech) => {
-                                return (
-                                    <ProgrammingTag key={tech.id} programmingTag={tech}/>
-                                );
-                            }))}
+                            {
+                                tags.data.map((tag, index) => (
+                                    <ProgrammingTag key={index} programmingTag={tag}/>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
