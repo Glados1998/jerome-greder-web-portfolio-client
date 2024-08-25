@@ -1,9 +1,9 @@
 import contactImage from "src/app/[lang]/assets/images/contact-banner.jpg";
 import Image from "next/image";
 import {BsLinkedin} from "react-icons/bs";
-import {Locale} from "../../../../i18.donfig";
+import {Locale} from "../../../../i18.donfig.mjs";
 import {getDictionary} from "../../../../lib/dictionary";
-import SocialBtn from "@/app/[lang]/components/SocialBtn";
+import SocialBtn from "@/app/[locale]/components/SocialBtn";
 
 export default async function Contact({params: {lang}}: { params: { lang: Locale } }) {
     const {page} = await getDictionary(lang)

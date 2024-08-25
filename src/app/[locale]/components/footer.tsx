@@ -1,5 +1,5 @@
 import {getDictionary} from "../../../../lib/dictionary";
-import {Locale} from "../../../../i18.donfig";
+import {Locale} from "../../../../i18.donfig.mjs";
 import {SiNextdotjs, SiVercel} from "react-icons/si";
 import Link from "next/link";
 

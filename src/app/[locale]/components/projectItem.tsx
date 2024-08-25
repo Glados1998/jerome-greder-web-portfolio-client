@@ -1,7 +1,7 @@
-import ProgrammingTag from "@/app/[lang]/components/programmingTag";
+import ProgrammingTag from "@/app/[locale]/components/programmingTag";
 import {AiFillGithub} from "react-icons/ai";
 import {MdWebAsset} from "react-icons/md";
-import SocialBtn from "@/app/[lang]/components/SocialBtn";
+import SocialBtn from "@/app/[locale]/components/SocialBtn";
 import minimal from 'src/app/[lang]/assets/images/minimal.jpg'
 import Image from "next/image";
 

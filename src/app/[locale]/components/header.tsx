@@ -1,10 +1,10 @@
 "use client";
-import {getDictionary} from "../../../../lib/dictionary";
-import {Locale} from "../../../../i18.donfig";
-import Link from "next/link";
+
 import LocaleSwitcher from "./locale-switcher";
 import {Menu} from "@headlessui/react";
 import {Fragment} from "react";
+import {useTranslations} from "use-intl";
+import {Link} from "@/navigation";
 
 
 const links = [
@@ -14,8 +14,8 @@ const links = [
     {label: "contact", href: "/contact"},
 ];
 
-export default async function Header({lang}: { lang: Locale }) {
-    const {components} = await getDictionary(lang)
+export default  function Header() {
+    const t = useTranslations('components.Header');
     return (
         <header
             className="bg-slate-200 sticky top-0 md:p-2 p-3 backdrop-blur-md bg-white/60 z-10 dark:backdrop-blur-md dark:bg-slate-900/60">
@@ -29,8 +29,8 @@ export default async function Header({lang}: { lang: Locale }) {
                     <ul className="hidden md:flex gap-6">
                         {links.map((link) => (
                             <li className="font-medium" key={link.label}>
-                                <Link href={`/${lang}/${link.href}`}>
-                                    {components.Header[link.label]}
+                                <Link href={`${link.href}`}>
+                                    {t(link.label)}
                                 </Link>
                             </li>
                         ))}
@@ -49,25 +49,29 @@ export default async function Header({lang}: { lang: Locale }) {
                         {links.map((link) => (
                             <Menu.Item as={Fragment} key={link.label}>
                                 {({active}) => (
-                                    <Link href={`/${lang}/${link.href}`}
+                                    <Link href={`/${link.href}`}
                                           className={"font-medium block px-4 py-2 text-sm dark:hover:bg-slate-700 hover:bg-slate-200"}>
-                                        {components.Header[link.label]}
+                                        {t(link.label)}
                                     </Link>
                                 )}
                             </Menu.Item>
                         ))}
                         <Menu.Item as={Fragment}>
+{/*
                             <LocaleSwitcher/>
+*/}
                         </Menu.Item>
                     </Menu.Items>
                 </Menu>
 
                 <div className="hidden md:flex items-center mr-10">
                     <span className={'font-medium mr-4'}>
-                        {components.Header.language} :&nbsp;
+                        {t('language')} :&nbsp;
                     </span>
                     <div>
+{/*
                         <LocaleSwitcher/>
+*/}
                     </div>
                 </div>
             </nav>
