@@ -1,28 +1,28 @@
+"use client";
 import Image from 'next/image';
-import headshot from 'src/app/[lang]/assets/images/profile-image1.jpg';
-import epitechBanner from 'src/app/[lang]/assets/images/epitech-banner.jpg';
+import headshot from 'src/app/[locale]/assets/images/profile-image1.jpg';
+import epitechBanner from 'src/app/[locale]/assets/images/epitech-banner.jpg';
 import {BsLinkedin} from "react-icons/bs";
 import {AiFillGithub} from "react-icons/ai";
-import {Locale} from "../../../../i18.donfig.mjs";
-import {getDictionary} from "../../../../lib/dictionary";
 import ProgrammingTag from "@/app/[locale]/components/programmingTag";
-import getTags from "../../../../utils/getTags";
 import SocialBtn from "@/app/[locale]/components/SocialBtn";
+import {useTranslations} from "use-intl";
+import getTags from "../../../../utils/getTags";
 
-export default async function About({params: {lang}}: {params: { lang: Locale }}) {
+const tags = getTags()
 
-    const {page} = await getDictionary(lang)
-    const tags = await getTags()
+export default function About() {
+    const t = useTranslations("page.About")
     return (
         <>
             <div className="relative px-5 md:px-20 lg:px-40 py-10">
                 {/* Intro Section */}
                 <div className="text-center">
                     <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">
-                        {page.About.title}
+                        {t("title")}
                     </h1>
                     <p className="text-xl md:text-2xl lg:text-2xl font-medium mt-4">
-                        {page.About.subTitle}
+                        {t("subTitle")}
                     </p>
                     <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>
                 </div>
@@ -36,24 +36,24 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                             Jérôme Greder
                         </h2>
                         <p className="text-base md:text-xl font-medium">
-                            {page.About.profile.descriptionOne}
+                            {t("profile.descriptionOne")}
                         </p>
                         <p className="text-base md:text-xl font-medium">
-                            {page.About.profile.descriptionTwo}
+                            {t("profile.descriptionTwo")}
                         </p>
                         <div className="flex flex-col md:flex-row gap-6">
                             <div>
                                 <p className="text-lg font-bold">
-                                    {page.About.cta}:
+                                    {t("cta")}:
                                 </p>
                                 <div className="flex gap-4 mt-2">
                                     <SocialBtn href="https://www.linkedin.com/in/jerome-greder/"
-                                       className="btn-linkedin">
+                                               className="btn-linkedin">
                                         <BsLinkedin/>
                                         Linkedin
                                     </SocialBtn>
                                     <SocialBtn href="https://github.com/Glados1998"
-                                       className="btn-github">
+                                               className="btn-github">
                                         <AiFillGithub/>
                                         Github
                                     </SocialBtn>
@@ -66,18 +66,18 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                 {/* Education Section */}
                 <div className="mt-20">
                     <div className="text-left">
-                        <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{page.About.educationLabel}</h1>
+                        <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{t("educationLabel")}</h1>
                         <hr className="mt-4 w-20 border-black dark:border-white"/>
                     </div>
                     <div className="flex flex-col md:flex-row justify-evenly items-center mt-10 gap-6 md:gap-10">
                         <div className="space-y-4 max-w-2xl">
-                            <h2 className="text-2xl md:text-4xl font-bold">{page.About.education.epitech}</h2>
-                            <p className="text-lg md:text-2xl font-medium">{page.About.education.subheading}</p>
+                            <h2 className="text-2xl md:text-4xl font-bold">{t("education.epitech")}</h2>
+                            <p className="text-lg md:text-2xl font-medium">{t("education.subheading")}</p>
                             <p className="text-base md:text-xl font-medium">
-                                {page.About.education.description}
+                                {t("education.description")}
                             </p>
                             <div className="space-y-2">
-                                <h2 className="text-lg md:text-xl font-bold">{page.About.ctaSchool}:</h2>
+                                <h2 className="text-lg md:text-xl font-bold">{t("ctaSchool")}:</h2>
                                 <div className="flex gap-5">
                                     <a href="https://www.webacademie.org/" target={'_blank'}
                                        className="btn">
@@ -98,16 +98,16 @@ export default async function About({params: {lang}}: {params: { lang: Locale }}
                 {/* Stack Section */}
                 <div className="mt-20">
                     <div className="text-center">
-                        <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{page.About.techStack}</h1>
+                        <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{t("techStack")}</h1>
                         <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>
                     </div>
                     <div className="mt-10 flex justify-center">
                         <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">
-                            {tags.tags.data.map((tech) => {
+                            {tags.then(data => data.tags.data.map((tech) => {
                                 return (
                                     <ProgrammingTag key={tech.id} programmingTag={tech}/>
                                 );
-                            })}
+                            }))}
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@ export default function Home() {
         <>
             <div className='relative'>
                 <Image src={homeBanner} alt="Home banner"
-                       className="relative xl:h-[45rem] lg:h-[30rem] md:h-[24rem] sm:h-[20rem]" objectFit='cover'/>
+                       className="relative xl:h-[45rem] lg:h-[30rem] md:h-[24rem] sm:h-[20rem]"/>
                 <div
                     className="absolute top-1 left-4 md:left-16 md:top-14 w-fit flex flex-col justify-center items-start text-white p-4">
                     <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{t("title")}</h1>
@@ -49,7 +49,7 @@ export default function Home() {
             <div className={'flex flex-col md:flex-row gap-12 justify-evenly m-6 md:m-12 text-center'}>
                 <div className={'flex flex-col gap-12'}>
                     <div>
-                        <Image src={passion} loading="lazy" alt="Passion" objectFit='cover' width={500} height={250}
+                        <Image src={passion} loading="lazy" alt="Passion" width={500} height={250}
                                className="rounded-2xl shadow-lg"/>
                     </div>
                     <div className={'text-left w-fit md:w-[400px] break-words'}>
@@ -59,7 +59,7 @@ export default function Home() {
                 </div>
                 <div className={'flex flex-col gap-12'}>
                     <div>
-                        <Image src={minimal} loading="lazy" alt="minimal" objectFit='cover' width={450} height={200}
+                        <Image src={minimal} loading="lazy" alt="minimal" width={450} height={200}
                                className="rounded-2xl shadow-lg"/>
                     </div>
                     <div className={'text-left w-fit md:w-[400px] break-words'}>
