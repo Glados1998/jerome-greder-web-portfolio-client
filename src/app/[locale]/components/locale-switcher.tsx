@@ -1,5 +1,5 @@
 
-import {Link} from "@/navigation";
+import {Link, usePathname} from "@/navigation";
 
 const locales = [
     {label: "en", locale: 'en'},
@@ -9,13 +9,15 @@ const locales = [
 
 export default function LocaleSwitcher() {
 
+    const pathName = usePathname()
+
     return (
         <ul className='flex gap-x-3 p-4 justify-between'>
             {locales.map(locale => {
                 return (
                     <li key={locale.locale}>
                         <Link
-                            href={"/"}
+                            href={"/" + pathName}
                             locale={locale.locale}
                             className='btn'
                         >

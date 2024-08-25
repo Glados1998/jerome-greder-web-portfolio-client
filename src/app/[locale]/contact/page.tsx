@@ -24,14 +24,14 @@ export default function Contact() {
                             {t("contactMeAt")} <a href='mailto:jerome.greder@icloude.com'
                                                           className='font-medium underline hover:no-underline'>
                             jerome.greder@icloude.com
-                        </a> {t("Contact.orBy")} {t("Contact.phone")} {t("Contact.at")} <br/>
+                        </a> {t("orBy")} {t("phone")} {t("at")} <br/>
                             <a href='tel:+33 7 84 25 06 10' className='font-medium underline hover:no-underline'>
                                 +33 7 84 25 06 10
                             </a>
                         </p>
                         <div className="flex flex-col md:flex-row gap-6 ">
                             <p className="text-sm md:text-2xl font-medium">
-                                {t("Contact.linkedin")}.
+                                {t("linkedin")}.
                             </p>
                             <SocialBtn href="https://www.linkedin.com/in/jerome-greder/" target='_blank'
                                        className="btn-linkedin">
