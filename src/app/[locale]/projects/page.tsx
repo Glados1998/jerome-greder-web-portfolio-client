@@ -11,7 +11,6 @@ export default function Projects() {
         axios.get('https://strapi-production-739f.up.railway.app/api/projects?populate=*')
             .then(response => {
                 setProjects(response.data)
-                console.log(response.data)
             })
             .catch(error => {
                 console.error('Error fetching projects:', error);
@@ -35,8 +34,8 @@ export default function Projects() {
                 <div className="flex flex-wrap mt-10 gap-12 justify-start">
                     {
                         projects.data.map((project, index) => (
-                        <ProjectItem key={index} projects={project.attributes}/>
-                    ))}
+                            <ProjectItem key={index} projects={project.attributes}/>
+                        ))}
                 </div>
             </div>
         </>

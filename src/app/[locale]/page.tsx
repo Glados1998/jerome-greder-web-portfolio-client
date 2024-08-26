@@ -13,6 +13,7 @@ const links = [
 
 export default function Home() {
     const t = useTranslations('page.Index');
+
     return (
         <>
             <div className='relative'>
@@ -74,7 +75,7 @@ export default function Home() {
                     <p className={'text-sm md:text-base w-30 md:w-[50rem] text-center'}>{t("contact.description")}</p>
                 </div>
                 <div className={'mt-4 md:mt-6 flex justify-center'}>
-                    <Link href={`contact`}
+                    <Link href={`/contact`}
                           className={'btn'}>
                         {t("contact.cta")}
                     </Link>

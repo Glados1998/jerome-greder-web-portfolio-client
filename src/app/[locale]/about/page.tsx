@@ -16,11 +16,10 @@ export default function About() {
     const [tags, setTags] = useState({data: []});
     useEffect(() => {
         axios.get('https://strapi-production-739f.up.railway.app/api/programming-tags')
-           .then(response => {
+            .then(response => {
                 setTags(response.data)
-               console.log(response.data)
             })
-           .catch(error => {
+            .catch(error => {
                 console.error('Error fetching tags:', error);
             });
     }, []);
