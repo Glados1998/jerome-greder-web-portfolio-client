@@ -24,8 +24,7 @@ export default function Home() {
                     <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-8xl font-bold">{t("title")}</h1>
                     <p className="text-sm md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
                         Jérôme Greder <br/>
-                        {t("juniorFullStackDeveloper")} <br/>
-                        {t("atYourService")}
+                        {t("webDev")} {t("atYourService")}
                     </p>
                     <hr className="w-20 md:w-32 mt-4 md:mt-4"/>
                     <div className="flex flex-wrap gap-3 mt-2 md:mt-8">
