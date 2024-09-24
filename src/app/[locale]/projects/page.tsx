@@ -32,10 +32,7 @@ export default function Projects() {
 
                 {/* Project Section */}
                 <div className="flex flex-wrap mt-10 gap-12 justify-start">
-                    {
-                        projects.data.map((project, index) => (
-                            <ProjectItem key={index} projects={project.attributes}/>
-                        ))}
+
                 </div>
             </div>
         </>

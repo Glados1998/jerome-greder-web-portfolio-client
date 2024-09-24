@@ -30,9 +30,8 @@
   },
   "page": {
     "Index": {
-      "title": "Hello",
-      "webDev": "Web Developer",
-      "atYourService": "at your service",
+      "title": "Crafting <span>digital</span> experiences <br></br> Out of passion",
+      "webDev": "Web Developer at your service",
       "subTitle": "Crafting digital experiences out of code with passion.",
       "subDescription": "Building digital experiences is my passion. I love to create beautiful and functional websites and applications. I am a self-taught junior Fullstack developer and alumni of the ",
       "epitech": "Epitech School",

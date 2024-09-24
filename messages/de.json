@@ -28,9 +28,8 @@
   },
   "page": {
     "Index": {
-      "title": "Hallo",
-      "webDev": "Webentwickler",
-      "atYourService": "zu Ihren Diensten",
+      "title": "Mit Leidenschaft <span>digitale</span> <br></br>Erlebnisse zu erschaffen",
+      "webDev": "Webentwickler zu Ihren Diensten",
       "subTitle": "Mit Leidenschaft digitale Erlebnisse aus Code erschaffen",
       "subDescription": "Das Erstellen digitaler Erlebnisse ist meine Leidenschaft. Ich liebe es, schöne und funktionelle Websites und Anwendungen zu kreieren. Ich bin ein autodidaktischer Junior Fullstack-Entwickler und Alumni der ",
       "epitech": "Epitech Hochschule",
