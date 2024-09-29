@@ -1,15 +1,73 @@
 "use client"
-import Image from 'next/image'
-import homeBanner from 'src/app/[locale]/assets/images/heroBanner.jpg'
 import minimal from 'src/app/[locale]/assets/images/minimal.jpg'
 import passion from 'src/app/[locale]/assets/images/passion.jpg'
+import Transparency from 'src/app/[locale]/assets/images/luca-bravo-9l_326FISzk-unsplash.jpg'
+import Innovation from'src/app/[locale]/assets/images/BL03-blanck.png'
+import CMS from 'src/app/[locale]/assets/images/brian-mcgowan-xKnXRV36fEY-unsplash.jpg'
+import Website from 'src/app/[locale]/assets/images/blake-connally-B3l0g6HLxr8-unsplash.jpg'
+import Hosting from 'src/app/[locale]/assets/images/stephen-phillips-hostreviews-co-uk-tN344soypQM-unsplash.jpg'
 import {useTranslations} from "use-intl";
 import {Link} from "@/navigation";
+import CardImage from "@/app/[locale]/components/cardImage";
 
 const links = [
     {label: "about", href: "/about"},
     {label: "projects", href: "/projects"},
 ];
+
+const values: CardsInterface[] = [
+    {
+        image: passion,
+        alt: "Passion",
+        title: "coding.title",
+        description: "coding.description",
+        color: "text-white"
+    },
+    {
+        image: minimal,
+        alt: "Minimal",
+        title: "minimalism.title",
+        description: "minimalism.description"
+    },
+    {
+        image: Transparency,
+        alt: "Transparency",
+        title: "Transparency.title",
+        description: "Transparency.description",
+        color: "text-white"
+    },
+    {
+        image: Innovation,
+        alt: "Transparency",
+        title: "Transparency.title",
+        description: "Transparency.description",
+        color: "text-white"
+    },
+]
+
+const services: CardsInterface[] = [
+    {
+        image: CMS,
+        alt: "Cms",
+        title: "Cms.title",
+        description: "Cms.description",
+        color: "text-white"
+    },
+    {
+        image: Website,
+        alt: "Websites",
+        title: "Websites.title",
+        description: "Websites.description",
+        color: "text-white"
+    },
+    {
+        image: Hosting,
+        alt: "Hosting",
+        title: "Hosting.title",
+        description: "Hosting.description",
+        color: "text-white"
+    }
+]
 
 export default function Home() {
     const t = useTranslations('page.Index');
@@ -25,7 +83,7 @@ export default function Home() {
                             br: () => <br/>
                         })}
                     </h1>
-                    <p className="text-sm md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
+                    <p className="text-md md:text-xl lg:text-2xl xl:text-4xl mt-4 md:mt-4 lg:mt-8 xl:mt-8 font-medium">
                         {t("webDev")}
                     </p>
                     <div className="flex flex-wrap gap-3 mt-2 md:mt-12 ">
@@ -47,9 +105,35 @@ export default function Home() {
                     </p>
                 </div>
             </div>
-            <div className={'flex flex-col md:flex-row gap-12 justify-evenly m-6 md:m-12 text-center'}>
-
+            <div>
+                <div className={"ml-8 lg:ml-20 mb-4 pt-6 "}>
+                    <h3 className={"text-3xl lg:text-4xl font-bold"}>
+                        Mes valeurs. <span className={"text-blue-500 dark:text-white"}>test</span>
+                    </h3>
+                </div>
+                <div className={"overflow-x-scroll"}>
+                    <div className={"inline-flex pb-10 pt-2.5 w-full align-top ltr"}>
+                        {values.map((item, index) => (
+                            <CardImage key={index} cardData={item} t={t}/>
+                        ))}
+                    </div>
+                </div>
             </div>
+            <div>
+                <div className={"ml-8 lg:ml-20 mb-4 pt-6"}>
+                    <h3 className={"text-3xl lg:text-4xl font-bold"}>
+                        Mes valeurs. <span className={"text-blue-500 dark:text-white"}>test</span>
+                    </h3>
+                </div>
+                <div className={"overflow-x-scroll"}>
+                    <div className={"inline-flex pb-10 pt-2.5 w-full align-top ltr"}>
+                        {services.map((item, index) => (
+                            <CardImage key={index} cardData={item} t={t}/>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             <div className={'flex flex-col justify-center m-6 md:m-12 '}>
                 <div className={'flex flex-col justify-center items-center '}>
                     <h1 className={'text-xl md:text-3xl font-bold mb-4 md:mb-6 md:w-[30rem] text-center'}>{t("contact.title")}</h1>
