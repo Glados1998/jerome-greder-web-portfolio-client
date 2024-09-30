@@ -35,7 +35,6 @@ export default function About() {
                     <p className="text-xl md:text-2xl lg:text-2xl font-medium mt-4">
                         {t("subTitle")}
                     </p>
-                    <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>
                 </div>
 
                 {/* Profile Section */}
@@ -78,7 +77,6 @@ export default function About() {
                 <div className="mt-20">
                     <div className="text-left">
                         <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{t("educationLabel")}</h1>
-                        <hr className="mt-4 w-20 border-black dark:border-white"/>
                     </div>
                     <div className="flex flex-col md:flex-row justify-evenly items-center mt-10 gap-6 md:gap-10">
                         <div className="space-y-4 max-w-2xl">
@@ -110,7 +108,6 @@ export default function About() {
                 <div className="mt-20">
                     <div className="text-center">
                         <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{t("techStack")}</h1>
-                        <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>
                     </div>
                     <div className="mt-10 flex justify-center">
                         <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">

@@ -11,7 +11,7 @@ export default function CardImage({cardData, t}) {
                 </div>
                 <div className={`absolute p-4 lg:p-7 ${cardData.color}`}>
                     <h3 className={"text-lg lg:text-3xl font-bold pt-2.5 lg:pt-5"}>{t(cardData.title)}</h3>
-                    <p className={"text-sm lg:text-lg font-normal"}>{t(cardData.description)}</p>
+                    <p className={"text-sm lg:text-lg font-normal lg:font-bold"}>{t(cardData.description)}</p>
                 </div>
             </div>
         </div>

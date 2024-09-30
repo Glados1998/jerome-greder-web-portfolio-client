@@ -27,7 +27,6 @@ export default function Projects() {
                     <p className="text-xl md:text-2xl lg:text-2xl font-medium mt-4">
                         {t("subTitle")}
                     </p>
-                    <hr className="mt-4 w-20 mx-auto border-black dark:border-white"/>
                 </div>
 
                 {/* Project Section */}
