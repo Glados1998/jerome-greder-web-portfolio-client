@@ -38,9 +38,9 @@ const values: CardsInterface[] = [
     },
     {
         image: Innovation,
-        alt: "Transparency",
-        title: "Transparency.title",
-        description: "Transparency.description",
+        alt: "Innovation",
+        title: "Innovation.title",
+        description: "Innovation.description",
         color: "text-white"
     },
 ]
@@ -49,22 +49,22 @@ const services: CardsInterface[] = [
     {
         image: CMS,
         alt: "Cms",
-        title: "Cms.title",
-        description: "Cms.description",
+        title: "CmsService.title",
+        description: "CmsService.description",
         color: "text-white"
     },
     {
         image: Website,
         alt: "Websites",
-        title: "Websites.title",
-        description: "Websites.description",
+        title: "WebsitesService.title",
+        description: "WebsitesService.description",
         color: "text-white"
     },
     {
         image: Hosting,
         alt: "Hosting",
-        title: "Hosting.title",
-        description: "Hosting.description",
+        title: "HostingService.title",
+        description: "HostingService.description",
         color: "text-white"
     }
 ]
@@ -108,7 +108,7 @@ export default function Home() {
             <div>
                 <div className={"ml-8 lg:ml-20 mb-4 pt-6 "}>
                     <h3 className={"text-3xl lg:text-4xl font-bold"}>
-                        Mes valeurs. <span className={"text-blue-500 dark:text-white"}>test</span>
+                        {t("values")}. <span className={"text-blue-500 dark:text-white"}>{t("valuesSpan")}</span>
                     </h3>
                 </div>
                 <div className={"overflow-x-scroll"}>
@@ -122,7 +122,7 @@ export default function Home() {
             <div>
                 <div className={"ml-8 lg:ml-20 mb-4 pt-6"}>
                     <h3 className={"text-3xl lg:text-4xl font-bold"}>
-                        Mes valeurs. <span className={"text-blue-500 dark:text-white"}>test</span>
+                        {t("services")}. <span className={"text-blue-500 dark:text-white"}> {t("servicesSpan")}</span>
                     </h3>
                 </div>
                 <div className={"overflow-x-scroll"}>
