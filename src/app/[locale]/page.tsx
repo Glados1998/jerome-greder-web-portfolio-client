@@ -27,7 +27,8 @@ const values: CardsInterface[] = [
         image: minimal,
         alt: "Minimal",
         title: "minimalism.title",
-        description: "minimalism.description"
+        description: "minimalism.description",
+        color: "text-black"
     },
     {
         image: Transparency,
