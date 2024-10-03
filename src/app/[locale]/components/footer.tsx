@@ -26,7 +26,7 @@ export default function Footer() {
 
                 {/* First Row - Main Content */}
                 <div className={'grid grid-flow-row gap-3'}>
-                    <span className={'font-bold text-md'}>Jérôme Greder web portfolio</span>
+                    <span className={'font-bold text-md'}>Jérôme Greder</span>
                     <span className={'font-medium text-sm'}>
                         © {new Date().getFullYear()} | {t("allRightsReserved")}
                     </span>
@@ -35,7 +35,7 @@ export default function Footer() {
                                                         className={'text-blue-500 underline hover:no-underline'}>
                         Next.js</a> {t("hostedOn")} <a target={'_blank'} href={'https://vercel.com/'}
                                                                     className={'text-blue-500 underline hover:no-underline'}>Vercel</a></span>
-                    <Link href={`legal`} className={'font-medium'}>{t("legal")}</Link>
+                    <Link href={`/legal`} className={'font-medium text-sm'}>{t("legal")}</Link>
                 </div>
 
                 {/* Second Row - Navigation and Social Links */}
