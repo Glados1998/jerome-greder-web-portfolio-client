@@ -102,11 +102,14 @@
     "Contact": {
       "title": "Contact me",
       "subTitle": "Let's get in touch!",
-      "contactMeAt": "You can contact me by email at",
-      "orBy": "or by",
-      "email": "Email",
-      "phone": "phone",
-      "at": "at",
+      "namePlaceholder": "Your Name",
+      "emailPlaceholder": "Your Email",
+      "subjectPlaceholder": "Subject",
+      "messagePlaceholder": "Your Message",
+      "send": "Send",
+      "sending": "Sending...",
+      "successMessage": "Message sent successfully!",
+      "errorMessage": "There was an error sending your message. Please try again.",
       "linkedin": "You can also find me on Linkedin"
     },
     "Legal": {

@@ -101,11 +101,14 @@
     "Contact": {
       "title": "Contactez-moi",
       "subTitle": "J’ai hâte d’avoir de vos nouvelles !",
-      "contactMeAt": "Vous pouvez me contacter par e-mail à",
-      "orBy": "ou par",
-      "email": "E-mail",
-      "phone": "Téléphone",
-      "at": "à",
+      "namePlaceholder": "Votre nom",
+      "emailPlaceholder": "Votre email",
+      "subjectPlaceholder": "Sujet",
+      "messagePlaceholder": "Votre message",
+      "send": "Envoyer",
+      "sending": "Envoi en cours...",
+      "successMessage": "Message envoyé avec succès !",
+      "errorMessage": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
       "linkedin": "Vous pouvez aussi me trouver sur Linkedin"
     },
     "Legal": {

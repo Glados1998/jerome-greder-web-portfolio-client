@@ -1,12 +1,51 @@
 "use client";
 import contactImage from "src/app/[locale]/assets/images/contact-banner.jpg";
+import { useState } from "react";
 import Image from "next/image";
-import {BsLinkedin} from "react-icons/bs";
+import { BsLinkedin } from "react-icons/bs";
 import SocialBtn from "@/app/[locale]/components/SocialBtn";
-import {useTranslations} from "use-intl";
+import { useTranslations } from "use-intl";
 
 export default function Contact() {
     const t = useTranslations("page.Contact")
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+    });
+
+    const [status, setStatus] = useState("idle");
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus("loading");
+
+        try {
+            const response = await fetch("/api/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+            console.log(response);
+
+            if (response.ok) {
+                setStatus("success");
+                setFormData({ name: "", email: "", subject: "", message: "" });
+            } else {
+                setStatus("error");
+            }
+        } catch (error) {
+            console.error("Error sending email:", error);
+            setStatus("error");
+        }
+    };
+
     return (
         <>
             <div className='relative px-5 md:px-20 lg:px-40 py-10 mb-40'>
@@ -20,15 +59,58 @@ export default function Contact() {
                         <h2 className="text-2xl md:text-6xl lg:text-5xl font-bold">
                             {t("subTitle")}
                         </h2>
-                        <p className="text-sm md:text-2xl font-medium">
-                            {t("contactMeAt")} <a href='mailto:jerome.greder@icloude.com'
-                                                          className='font-medium underline hover:no-underline'>
-                            jerome.greder@icloude.com
-                        </a> {t("orBy")} {t("phone")} {t("at")} <br/>
-                            <a href='tel:+33 7 84 25 06 10' className='font-medium underline hover:no-underline'>
-                                +33 7 84 25 06 10
-                            </a>
-                        </p>
+                        <div>
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder={t("namePlaceholder")}
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full p-2 border rounded"
+                                />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder={t("emailPlaceholder")}
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full p-2 border rounded"
+                                />
+                                <input
+                                    type="text"
+                                    name="subject"
+                                    placeholder={t("subjectPlaceholder")}
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full p-2 border rounded"
+                                />
+                                <textarea
+                                    name="message"
+                                    placeholder={t("messagePlaceholder")}
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full p-2 border rounded h-32"
+                                ></textarea>
+                                <button
+                                    type="submit"
+                                    disabled={status === 'loading'}
+                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+                                >
+                                    {status === 'loading' ? t("sending") : t("send")}
+                                </button>
+                            </form>
+                            {status === 'success' && (
+                                <p className="text-green-500 mt-2">{t("successMessage")}</p>
+                            )}
+                            {status === 'error' && (
+                                <p className="text-red-500 mt-2">{t("errorMessage")}</p>
+                            )}
+                        </div>
                         <div className="flex flex-col md:flex-row gap-6 ">
                             <p className="text-sm md:text-2xl font-medium">
                                 {t("linkedin")}.
