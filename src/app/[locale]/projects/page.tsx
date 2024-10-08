@@ -8,7 +8,7 @@ export default function Projects() {
     const t = useTranslations("page.projects")
     const [projects, setProjects] = useState({data: []});
     useEffect(() => {
-        axios.get('https://strapi-production-739f.up.railway.app/api/projects?populate=*')
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
             .then(response => {
                 setProjects(response.data)
             })
