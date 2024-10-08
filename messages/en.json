@@ -100,8 +100,7 @@
       "cta": "Check it out on"
     },
     "Contact": {
-      "title": "Contact me",
-      "subTitle": "Let's get in touch!",
+      "title": "Contact me <br></br> Let's get in touch!",
       "namePlaceholder": "Your Name",
       "emailPlaceholder": "Your Email",
       "subjectPlaceholder": "Subject",

@@ -99,8 +99,7 @@
     },
 
     "Contact": {
-      "title": "Contactez-moi",
-      "subTitle": "J’ai hâte d’avoir de vos nouvelles !",
+      "title": "Contactez-moi <br></br> J’ai hâte d’avoir de vos nouvelles !",
       "namePlaceholder": "Votre nom",
       "emailPlaceholder": "Votre email",
       "subjectPlaceholder": "Sujet",

@@ -49,18 +49,17 @@ export default function Contact() {
     return (
         <>
             <div className='relative px-5 md:px-20 lg:px-40 py-10 mb-40'>
-                <div className='flex flex-col md:flex-row gap-6 md:gap-20'>
-                    <Image src={contactImage} alt="Contact banner" width={400} height={400}
+                <div className='flex flex-col justify-around md:flex-row gap-6 md:gap-20'>
+                    <Image src={contactImage} alt="Contact banner" width={450} height={500}
                            className="rounded-2xl shadow-lg"/>
-                    <div className="flex flex-col text-left space-y-4 w-full">
+                    <div className="flex flex-col text-left space-y-4 justify-around">
                         <h2 className="text-2xl md:text-6xl lg:text-5xl font-bold">
-                            {t("title")}
-                        </h2>
-                        <h2 className="text-2xl md:text-6xl lg:text-5xl font-bold">
-                            {t("subTitle")}
+                            {t.rich("title", {
+                                br: () => <br/>
+                            })}
                         </h2>
                         <div>
-                            <form onSubmit={handleSubmit} className="space-y-4">
+                            <form onSubmit={handleSubmit} className="space-y-4 w-80">
                                 <input
                                     type="text"
                                     name="name"
@@ -68,7 +67,7 @@ export default function Contact() {
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
-                                    className="w-full p-2 border rounded"
+                                    className="input"
                                 />
                                 <input
                                     type="email"
@@ -77,7 +76,7 @@ export default function Contact() {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
-                                    className="w-full p-2 border rounded"
+                                    className="input"
                                 />
                                 <input
                                     type="text"
@@ -86,7 +85,7 @@ export default function Contact() {
                                     value={formData.subject}
                                     onChange={handleChange}
                                     required
-                                    className="w-full p-2 border rounded"
+                                    className="input"
                                 />
                                 <textarea
                                     name="message"
@@ -94,12 +93,12 @@ export default function Contact() {
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
-                                    className="w-full p-2 border rounded h-32"
+                                    className="input h-32"
                                 ></textarea>
                                 <button
                                     type="submit"
                                     disabled={status === 'loading'}
-                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+                                    className="btn"
                                 >
                                     {status === 'loading' ? t("sending") : t("send")}
                                 </button>

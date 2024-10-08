@@ -98,8 +98,7 @@
       "cta": "Schauen Sie es an auf"
     },
     "Contact": {
-      "title": "Kontakt aufnehmen",
-      "subTitle": "Ich freue mich darauf, von Ihnen zu hören!",
+      "title": "Kontakt aufnehmen <br></br> Ich freue mich darauf, von Ihnen zu hören!",
       "namePlaceholder": "Ihr Name",
       "emailPlaceholder": "Ihre E-Mail",
       "subjectPlaceholder": "Betreff",

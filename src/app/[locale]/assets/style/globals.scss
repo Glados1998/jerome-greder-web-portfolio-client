@@ -61,3 +61,7 @@
 .programming-label {
   @apply text-sm font-medium rounded-md dark:bg-white dark:text-slate-900 bg-slate-900 text-white p-1.5;
 }
+
+.input {
+    @apply w-full p-2 rounded-md dark:bg-white dark:text-slate-900 bg-slate-200 text-black;
+}
