@@ -15,7 +15,13 @@ export default function About() {
     const t = useTranslations("page.About")
     const [tags, setTags] = useState({data: []});
     useEffect(() => {
-        axios.get('https://strapi-production-739f.up.railway.app/api/programming-tags')
+
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        if (!apiUrl) {
+            console.error('API URL is not defined in environment variables');
+            return;
+        }
+        axios.get(`${apiUrl}/api/programming-tags`)
             .then(response => {
                 setTags(response.data)
             })

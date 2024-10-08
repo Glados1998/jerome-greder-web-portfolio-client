@@ -1,14 +1,21 @@
 "use client";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import ProjectItem from "@/app/[locale]/components/projectItem";
-import {useTranslations} from "use-intl";
+import { useTranslations } from "use-intl";
 import axios from "axios";
 
 export default function Projects() {
     const t = useTranslations("page.projects")
-    const [projects, setProjects] = useState({data: []});
+    const [projects, setProjects] = useState({ data: [] });
+
     useEffect(() => {
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        if (!apiUrl) {
+            console.error('API URL is not defined in environment variables');
+            return;
+        }
+
+        axios.get(`${apiUrl}/api/projects?populate=*`)
             .then(response => {
                 setProjects(response.data)
             })
@@ -16,6 +23,7 @@ export default function Projects() {
                 console.error('Error fetching projects:', error);
             });
     }, []);
+
     return (
         <>
             <div className="relative px-5 md:px-20 lg:px-40 py-10">
@@ -34,7 +42,8 @@ export default function Projects() {
                     {
                         projects.data.map((project, index) => (
                             <ProjectItem key={index} projects={project.attributes}/>
-                        ))}
+                        ))
+                    }
                 </div>
             </div>
         </>
