@@ -8,6 +8,10 @@
   &:hover {
     @apply bg-slate-900 text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110
   }
+
+  &:disabled {
+    @apply bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-white cursor-not-allowed;
+  }
 }
 
 .btn-inverted {
@@ -63,5 +67,5 @@
 }
 
 .input {
-    @apply w-full p-2 rounded-md dark:bg-white dark:text-slate-900 bg-slate-200 text-black;
+  @apply w-full p-2 rounded-md dark:bg-white dark:text-slate-900 bg-slate-200 text-black;
 }

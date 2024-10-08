@@ -39,7 +39,7 @@ export default function Footer() {
                 </div>
 
                 {/* Second Row - Navigation and Social Links */}
-                <div className={'grid grid-cols-2 gap-3 '}>
+                <div className={'grid grid-cols-2 gap-12'}>
                     {/* Navigation Links */}
                     <div>
                         <h1 className={'text-md font-bold'}>
