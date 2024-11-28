@@ -4,7 +4,7 @@ import LocaleSwitcher from "./locale-switcher";
 import {Menu} from "@headlessui/react";
 import {Fragment} from "react";
 import {useTranslations} from "use-intl";
-import {Link} from "@/navigation";
+import {Link} from "@/i18n/routing";
 
 
 const links = [

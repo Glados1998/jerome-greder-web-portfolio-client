@@ -1,7 +1,7 @@
 "use client";
 
 import {useTranslations} from "use-intl";
-import {Link} from "@/navigation";
+import {Link} from "@/i18n/routing";
 
 const links = [
     {label: "home", href: "/"},

@@ -1,8 +1,8 @@
 "use client";
 import Image from 'next/image';
 import {useEffect, useState} from "react";
-import headshot from 'src/app/[locale]/assets/images/profile-image1.jpg';
-import epitechBanner from 'src/app/[locale]/assets/images/epitech-banner.jpg';
+import headshot from '../assets/images/profile-image1.jpg';
+import epitechBanner from '../assets/images/epitech-banner.jpg';
 import {BsLinkedin} from "react-icons/bs";
 import {AiFillGithub} from "react-icons/ai";
 import SocialBtn from "@/app/[locale]/components/SocialBtn";

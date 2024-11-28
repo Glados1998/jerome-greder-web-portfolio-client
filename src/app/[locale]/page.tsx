@@ -1,14 +1,14 @@
 "use client"
-import minimal from 'src/app/[locale]/assets/images/minimal.jpg'
-import passion from 'src/app/[locale]/assets/images/passion.jpg'
-import Transparency from 'src/app/[locale]/assets/images/luca-bravo-9l_326FISzk-unsplash.jpg'
-import Innovation from'src/app/[locale]/assets/images/BL03-blanck.png'
-import CMS from 'src/app/[locale]/assets/images/brian-mcgowan-xKnXRV36fEY-unsplash.jpg'
-import Website from 'src/app/[locale]/assets/images/blake-connally-B3l0g6HLxr8-unsplash.jpg'
-import Hosting from 'src/app/[locale]/assets/images/stephen-phillips-hostreviews-co-uk-tN344soypQM-unsplash.jpg'
+import minimal from './assets/images/minimal.jpg'
+import passion from './assets/images/passion.jpg'
+import Transparency from './assets/images/luca-bravo-9l_326FISzk-unsplash.jpg'
+import Innovation from'./assets/images/BL03-blanck.png'
+import CMS from './assets/images/brian-mcgowan-xKnXRV36fEY-unsplash.jpg'
+import Website from './assets/images/blake-connally-B3l0g6HLxr8-unsplash.jpg'
+import Hosting from './assets/images/stephen-phillips-hostreviews-co-uk-tN344soypQM-unsplash.jpg'
 import {useTranslations} from "use-intl";
-import {Link} from "@/navigation";
 import CardImage from "@/app/[locale]/components/cardImage";
+import {Link} from "@/i18n/routing";
 
 const links = [
     {label: "about", href: "/about"},

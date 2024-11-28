@@ -1,5 +1,5 @@
 "use client";
-import contactImage from "src/app/[locale]/assets/images/contact-banner.jpg";
+import contactImage from "../assets/images/contact-banner.jpg";
 import { useState } from "react";
 import Image from "next/image";
 import { BsLinkedin } from "react-icons/bs";

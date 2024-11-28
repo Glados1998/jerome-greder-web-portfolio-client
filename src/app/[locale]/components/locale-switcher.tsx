@@ -1,5 +1,5 @@
+import {Link, usePathname} from "@/i18n/routing";
 
-import {Link, usePathname} from "@/navigation";
 
 const locales = [
     {label: "en", locale: 'en'},

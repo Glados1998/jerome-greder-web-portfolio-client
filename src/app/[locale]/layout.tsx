@@ -1,34 +1,42 @@
-import type { Metadata } from 'next'
+import type {Metadata} from 'next'
 import React from "react";
-import "src/app/[locale]/assets/style/globals.scss";
-import { Analytics } from '@vercel/analytics/react';
+import "./assets/style/globals.scss";
+import {Analytics} from '@vercel/analytics/react';
 
-import { Inter } from 'next/font/google'
+import {Inter} from 'next/font/google'
 import Head from "next/head";
 import {getMessages} from "next-intl/server";
 import {NextIntlClientProvider} from "next-intl";
-import Header from "@/app/[locale]/components/header";
-import Footer from "@/app/[locale]/components/footer";
-const inter = Inter({ subsets: ['latin'] })
+import Header from "./components/header";
+import Footer from "./components/footer";
+import {notFound} from "next/navigation";
+import {routing} from "@/i18n/routing";
+
+const inter = Inter({subsets: ['latin']})
 
 
 export const metadata: Metadata = {
-  title: 'Jérôme Greder - Web Developer',
-  description: 'Jérôme Greder - Web Developer - Portfolio',
+    title: 'Jérôme Greder - Web Developer',
+    description: 'Jérôme Greder - Web Developer - Portfolio',
 
 }
 
 export default async function RootLayout({
-                                             children
+                                             children,
+                                             params: {locale}
                                          }: {
     children: React.ReactNode;
+    params: { locale: string };
 }) {
-    // Providing all messages to the client
-    // side is the easiest way to get started
+    // Ensure that the incoming `locale` is valid
+    if (!routing.locales.includes(locale as any)) {
+        notFound();
+    }
     const messages = await getMessages();
 
     return (
-        <html lang={inter.className} className={'text-black dark:text-white dark:bg-slate-900 flex flex-col min-h-screen'}>
+        <html lang={locale} suppressHydrationWarning
+              className={'text-black dark:text-white dark:bg-slate-900 flex flex-col min-h-screen'}>
         <NextIntlClientProvider messages={messages}>
             <Head>
                 <link rel="icon" href="../../../public/favicon.ico" sizes={"any"}/>
@@ -37,7 +45,7 @@ export default async function RootLayout({
             <Header/>
             <main>
                 {children}
-                <Analytics />
+                <Analytics/>
             </main>
             <Footer/>
             </body>
