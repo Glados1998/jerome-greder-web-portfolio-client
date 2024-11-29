@@ -1,32 +1,29 @@
-import type {Metadata} from 'next'
-import React from "react";
-import "./assets/style/globals.scss";
+import type {Metadata} from 'next';
+import React from 'react';
+import './assets/style/globals.scss';
 import {Analytics} from '@vercel/analytics/react';
+import {Inter} from 'next/font/google';
+import Head from 'next/head';
+import {getMessages} from 'next-intl/server';
+import {NextIntlClientProvider} from 'next-intl';
+import Header from './components/header';
+import Footer from './components/footer';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
 
-import {Inter} from 'next/font/google'
-import Head from "next/head";
-import {getMessages} from "next-intl/server";
-import {NextIntlClientProvider} from "next-intl";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import {notFound} from "next/navigation";
-import {routing} from "@/i18n/routing";
-
-const inter = Inter({subsets: ['latin']})
-
+const inter = Inter({subsets: ['latin']});
 
 export const metadata: Metadata = {
     title: 'Jérôme Greder - Web Developer',
     description: 'Jérôme Greder - Web Developer - Portfolio',
-
-}
+};
 
 export default async function RootLayout({
                                              children,
                                              params: {locale}
                                          }: {
     children: React.ReactNode;
-    params: { locale: string };
+    params: { locale: string }; // Ensure this matches the expected type
 }) {
     // Ensure that the incoming `locale` is valid
     if (!routing.locales.includes(locale as any)) {
