@@ -4,7 +4,7 @@ import './assets/style/globals.scss';
 import {Analytics} from '@vercel/analytics/react';
 import {Inter} from 'next/font/google';
 import Head from 'next/head';
-import {getMessages} from 'next-intl/server';
+import {getMessages, setRequestLocale} from 'next-intl/server';
 import {NextIntlClientProvider} from 'next-intl';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -18,20 +18,24 @@ export const metadata: Metadata = {
     description: 'Jérôme Greder - Web Developer - Portfolio',
 };
 
+export function generateStaticParams() {
+    return routing.locales.map((locale) => ({locale}));
+}
+
 export default async function RootLayout({
                                              children,
                                              params: {locale}
                                          }: {
     children: React.ReactNode;
-    params: {locale: string};
+    params: { locale: string }; // Ensure this matches the expected type
 }) {
     // Ensure that the incoming `locale` is valid
     if (!routing.locales.includes(locale as any)) {
         notFound();
     }
 
-    // Providing all messages to the client
-    // side is the easiest way to get started
+    setRequestLocale(locale);
+
     const messages = await getMessages();
 
     return (
