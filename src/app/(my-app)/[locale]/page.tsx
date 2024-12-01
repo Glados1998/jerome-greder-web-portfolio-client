@@ -7,8 +7,8 @@ import CMS from './assets/images/brian-mcgowan-xKnXRV36fEY-unsplash.jpg'
 import Website from './assets/images/blake-connally-B3l0g6HLxr8-unsplash.jpg'
 import Hosting from './assets/images/stephen-phillips-hostreviews-co-uk-tN344soypQM-unsplash.jpg'
 import {useTranslations} from "use-intl";
-import CardImage from "@/app/[locale]/components/cardImage";
 import {Link} from "@/i18n/routing";
+import CardImage from "@/app/(my-app)/[locale]/components/cardImage";
 
 const links = [
     {label: "about", href: "/about"},

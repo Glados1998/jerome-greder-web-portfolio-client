@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import ProjectItem from "@/app/[locale]/components/projectItem";
 import { useTranslations } from "use-intl";
 import axios from "axios";
+import ProjectItem from "@/app/(my-app)/[locale]/components/projectItem";
 
 export default function Projects() {
     const t = useTranslations("page.projects")

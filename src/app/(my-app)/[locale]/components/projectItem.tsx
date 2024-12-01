@@ -1,10 +1,10 @@
-import ProgrammingTag from "@/app/[locale]/components/programmingTag";
 import {AiFillGithub} from "react-icons/ai";
 import {MdWebAsset} from "react-icons/md";
-import SocialBtn from "@/app/[locale]/components/SocialBtn";
 import minimal from '../assets/images/minimal.jpg'
 import Image from "next/image";
 import {useTranslations} from "use-intl";
+import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
+import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
 
 export default function ProjectItem({projects}) {
 

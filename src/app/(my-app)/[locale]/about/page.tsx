@@ -5,10 +5,10 @@ import headshot from '../assets/images/profile-image1.jpg';
 import epitechBanner from '../assets/images/epitech-banner.jpg';
 import {BsLinkedin} from "react-icons/bs";
 import {AiFillGithub} from "react-icons/ai";
-import SocialBtn from "@/app/[locale]/components/SocialBtn";
 import {useTranslations} from "use-intl";
 import axios from "axios";
-import ProgrammingTag from "@/app/[locale]/components/programmingTag";
+import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
+import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
 
 
 export default function About() {
