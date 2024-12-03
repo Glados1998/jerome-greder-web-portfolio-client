@@ -129,7 +129,7 @@ export interface Project {
   id: number;
   name: string;
   image: number | Media;
-  'programming-tags': (number | ProgrammingTag)[];
+  'lorem upsum': (number | ProgrammingTag)[];
   'live-link'?: string | null;
   'github-link'?: string | null;
   updatedAt: string;
@@ -264,7 +264,7 @@ export interface ProgrammingTagSelect<T extends boolean = true> {
 export interface ProjectSelect<T extends boolean = true> {
   name?: T;
   image?: T;
-  'programming-tags'?: T;
+  'lorem upsum'?: T;
   'live-link'?: T;
   'github-link'?: T;
   updatedAt?: T;

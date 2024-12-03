@@ -13,21 +13,14 @@ import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
 
 export default function About() {
     const t = useTranslations("page.About")
-    const [tags, setTags] = useState({data: []});
-    useEffect(() => {
+    const [tags, setTags] = useState([]);
 
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-        if (!apiUrl) {
-            console.error('API URL is not defined in environment variables');
-            return;
-        }
-        axios.get(`${apiUrl}/api/programming-tags`)
-            .then(response => {
-                setTags(response.data)
-            })
-            .catch(error => {
-                console.error('Error fetching tags:', error);
-            });
+    useEffect(() => {
+        axios.get("http://localhost:3000/api/programming-tag/").then(response => {
+            setTags(response.data.docs)
+        }).catch(error => {
+            console.error('Error fetching tags:', error);
+        });
     }, []);
 
     return (
@@ -118,7 +111,7 @@ export default function About() {
                     <div className="mt-10 flex justify-center">
                         <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">
                             {
-                                tags.data.map((tag, index) => (
+                                tags.map((tag, index) => (
                                     <ProgrammingTag key={index} programmingTag={tag}/>
                                 ))
                             }

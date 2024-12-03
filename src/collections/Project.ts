@@ -2,6 +2,9 @@ import type {CollectionConfig} from 'payload'
 
 export const Project: CollectionConfig = {
     slug: 'project',
+    admin: {
+        useAsTitle: 'name',
+    },
     fields: [
         {
             name: 'name',
@@ -17,7 +20,7 @@ export const Project: CollectionConfig = {
             required: true,
         },
         {
-            name: "programming-tags",
+            name: "lorem upsum",
             label: "Programming Tags",
             type: "relationship",
             relationTo: "programming-tag",
