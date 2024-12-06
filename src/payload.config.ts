@@ -15,6 +15,7 @@ import {Project} from "@/collections/Project";
 import {en} from "@payloadcms/translations/languages/en";
 import {de} from "@payloadcms/translations/languages/de";
 import {fr} from "@payloadcms/translations/languages/fr";
+import {Values} from "@/collections/Values";
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -26,11 +27,15 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Users, Media, Services, ProgrammingTag, Project],
+    collections: [Users, Media, Services, ProgrammingTag, Project, Values],
     editor: lexicalEditor(),
     i18n: {
         fallbackLanguage: 'en',
         supportedLanguages: {en, de, fr}
+    },
+    localization: {
+        locales: ['en', 'de', 'fr'],
+        defaultLocale: 'en',
     },
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {

@@ -16,6 +16,7 @@ export interface Config {
     services: Service;
     'programming-tag': ProgrammingTag;
     project: Project;
+    values: Value;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -27,6 +28,7 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     'programming-tag': ProgrammingTagSelect<false> | ProgrammingTagSelect<true>;
     project: ProjectSelect<false> | ProjectSelect<true>;
+    values: ValuesSelect<false> | ValuesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -36,7 +38,7 @@ export interface Config {
   };
   globals: {};
   globalsSelect: {};
-  locale: null;
+  locale: 'en' | 'de' | 'fr';
   user: User & {
     collection: 'users';
   };
@@ -117,7 +119,7 @@ export interface Service {
  */
 export interface ProgrammingTag {
   id: number;
-  name: string;
+  label: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -129,9 +131,20 @@ export interface Project {
   id: number;
   name: string;
   image: number | Media;
-  'lorem upsum': (number | ProgrammingTag)[];
+  'programming-tags'?: (number | ProgrammingTag)[] | null;
   'live-link'?: string | null;
   'github-link'?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "values".
+ */
+export interface Value {
+  id: number;
+  title: string;
+  description: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -161,6 +174,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'project';
         value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'values';
+        value: number | Value;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -253,7 +270,7 @@ export interface ServicesSelect<T extends boolean = true> {
  * via the `definition` "programming-tag_select".
  */
 export interface ProgrammingTagSelect<T extends boolean = true> {
-  name?: T;
+  label?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -264,9 +281,19 @@ export interface ProgrammingTagSelect<T extends boolean = true> {
 export interface ProjectSelect<T extends boolean = true> {
   name?: T;
   image?: T;
-  'lorem upsum'?: T;
+  'programming-tags'?: T;
   'live-link'?: T;
   'github-link'?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "values_select".
+ */
+export interface ValuesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }

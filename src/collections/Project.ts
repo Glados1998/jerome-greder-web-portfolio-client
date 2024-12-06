@@ -11,6 +11,7 @@ export const Project: CollectionConfig = {
             label: 'Name',
             type: 'text',
             required: true,
+            localized: true,
         },
         {
             name: 'image',
@@ -20,12 +21,11 @@ export const Project: CollectionConfig = {
             required: true,
         },
         {
-            name: "lorem upsum",
+            name: "programming-tags",
             label: "Programming Tags",
             type: "relationship",
             relationTo: "programming-tag",
             hasMany: true,
-            required: true,
         },
         {
             name: "live-link",

@@ -13,7 +13,7 @@
       "allRightsReserved": "Tous droits réservés",
       "navigationLabel": "Navigation",
       "socialLabel": "Social",
-      "legal":"Mentions légales",
+      "legal": "Mentions légales",
       "social": {
         "github": "Github",
         "linkedin": "Linkedin"
@@ -22,7 +22,8 @@
         "home": "Accueil",
         "about": "À propos",
         "projects": "Projets",
-        "contact": "Contact"
+        "contact": "Contact",
+        "admin": "Admin"
       }
     }
   },
@@ -57,7 +58,7 @@
       },
       "services": "Mes services",
       "servicesSpan": "Services & Compétences",
-      "CmsService":{
+      "CmsService": {
         "title": "CMS innovants",
         "description": "Je propose des solutions CMS innovantes pour la gestion de contenu, permettant aux clients de gérer facilement leur contenu en ligne."
       },
@@ -97,7 +98,6 @@
       "subTitle": "Voici quelques-uns des projets sur lesquels j'ai travaillé",
       "cta": "Découvrez-le sur"
     },
-
     "Contact": {
       "title": "Contactez-moi <br></br> J’ai hâte d’avoir de vos nouvelles !",
       "namePlaceholder": "Votre nom",
@@ -111,7 +111,6 @@
       "linkedin": "Vous pouvez aussi me trouver sur Linkedin"
     },
     "Legal": {
-
     }
   }
 }

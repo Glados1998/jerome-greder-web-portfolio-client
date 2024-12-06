@@ -3,7 +3,7 @@ import type {CollectionConfig} from "payload";
 export const ProgrammingTag: CollectionConfig = {
     slug: "programming-tag",
     admin :{
-        useAsTitle: "name",
+        useAsTitle: "label",
     },
     labels: {
         singular: "Programming Tag",
@@ -14,7 +14,7 @@ export const ProgrammingTag: CollectionConfig = {
     },
     fields: [
         {
-            name: "name",
+            name: "label",
             type: "text",
             required: true,
         },

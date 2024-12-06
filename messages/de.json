@@ -22,7 +22,8 @@
         "home": "Startseite",
         "about": "Über mich",
         "projects": "Meine Projekte",
-        "contact": "Kontakt"
+        "contact": "Kontakt",
+        "admin": "Admin"
       }
     }
   },

@@ -8,6 +8,7 @@ const links = [
     {label: "about", href: "/about"},
     {label: "projects", href: "/projects"},
     {label: "contact", href: "/contact"},
+    {label: "admin", href: "admin"},
 ]
 
 const socialLinks = [
