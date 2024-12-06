@@ -131,9 +131,9 @@ export interface Project {
   id: number;
   name: string;
   image: number | Media;
-  'programming-tags'?: (number | ProgrammingTag)[] | null;
-  'live-link'?: string | null;
-  'github-link'?: string | null;
+  programming_tags?: (number | ProgrammingTag)[] | null;
+  live_link?: string | null;
+  github_link?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -281,9 +281,9 @@ export interface ProgrammingTagSelect<T extends boolean = true> {
 export interface ProjectSelect<T extends boolean = true> {
   name?: T;
   image?: T;
-  'programming-tags'?: T;
-  'live-link'?: T;
-  'github-link'?: T;
+  programming_tags?: T;
+  live_link?: T;
+  github_link?: T;
   updatedAt?: T;
   createdAt?: T;
 }

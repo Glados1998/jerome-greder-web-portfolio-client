@@ -5,6 +5,9 @@ export const Project: CollectionConfig = {
     admin: {
         useAsTitle: 'name',
     },
+    access: {
+      read: () => true,
+    },
     fields: [
         {
             name: 'name',
@@ -21,20 +24,20 @@ export const Project: CollectionConfig = {
             required: true,
         },
         {
-            name: "programming-tags",
+            name: "programming_tags",
             label: "Programming Tags",
             type: "relationship",
             relationTo: "programming-tag",
             hasMany: true,
         },
         {
-            name: "live-link",
+            name: "live_link",
             label: "Live Link",
             type: "text",
             required: false,
         },
         {
-            name: "github-link",
+            name: "github_link",
             label: "Github Link",
             type: "text",
             required: false,

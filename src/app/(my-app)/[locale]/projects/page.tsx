@@ -6,18 +6,19 @@ import ProjectItem from "@/app/(my-app)/[locale]/components/projectItem";
 
 export default function Projects() {
     const t = useTranslations("page.projects")
-    const [projects, setProjects] = useState({ data: [] });
+    const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV;
         if (!apiUrl) {
             console.error('API URL is not defined in environment variables');
             return;
         }
 
-        axios.get(`${apiUrl}/api/projects?populate=*`)
+        axios.get(`${apiUrl}/project/`)
             .then(response => {
-                setProjects(response.data)
+                setProjects(response.data.docs)
+                console.log(response.data.docs)
             })
             .catch(error => {
                 console.error('Error fetching projects:', error);
@@ -40,8 +41,8 @@ export default function Projects() {
                 {/* Project Section */}
                 <div className="flex flex-wrap mt-10 gap-12 justify-start">
                     {
-                        projects.data.map((project, index) => (
-                            <ProjectItem key={index} projects={project.attributes}/>
+                        projects.map((project, index) => (
+                            <ProjectItem key={index} projects={project}/>
                         ))
                     }
                 </div>

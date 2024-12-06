@@ -16,7 +16,12 @@ export default function About() {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/programming-tag/").then(response => {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV;
+        if (!apiUrl) {
+            console.error('API URL is not defined in environment variables');
+            return;
+        }
+        axios.get(`${apiUrl}/programming-tag/`).then(response => {
             setTags(response.data.docs)
         }).catch(error => {
             console.error('Error fetching tags:', error);
