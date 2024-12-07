@@ -3,12 +3,15 @@ import type {CollectionConfig} from 'payload'
 export const Services: CollectionConfig = {
     slug: 'services',
     admin: {
-        useAsTitle: 'name',
+        useAsTitle: 'title',
+    },
+    access: {
+        read: () => true,
     },
     fields: [
         {
-            name: 'name',
-            label: 'Name',
+            name: 'title',
+            label: 'Title',
             type: 'text',
             required: true,
             localized: true,
@@ -27,5 +30,13 @@ export const Services: CollectionConfig = {
             relationTo: 'media',
             required: true,
         },
+        {
+            name: 'color',
+            label: 'Color',
+            type: 'text',
+            required: true,
+            localized: true,
+            defaultValue: 'text-white'
+        }
     ],
 }

@@ -5,6 +5,9 @@ export const Values: CollectionConfig = {
     admin: {
         useAsTitle: 'title',
     },
+    access: {
+        read: () => true,
+    },
     fields: [
         {
             name: 'title',
@@ -20,5 +23,20 @@ export const Values: CollectionConfig = {
             required: true,
             localized: true,
         },
+        {
+            name: 'image',
+            label: 'Image',
+            type: 'upload',
+            relationTo: 'media',
+            required: true,
+        },
+        {
+            name: 'color',
+            label: 'Color',
+            type: 'text',
+            required: true,
+            localized: true,
+            defaultValue: 'text-white'
+        }
     ],
 }

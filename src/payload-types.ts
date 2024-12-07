@@ -107,9 +107,10 @@ export interface Media {
  */
 export interface Service {
   id: number;
-  name: string;
+  title: string;
   description: string;
   image: number | Media;
+  color: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -145,6 +146,8 @@ export interface Value {
   id: number;
   title: string;
   description: string;
+  image: number | Media;
+  color: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -259,9 +262,10 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
-  name?: T;
+  title?: T;
   description?: T;
   image?: T;
+  color?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -294,6 +298,8 @@ export interface ProjectSelect<T extends boolean = true> {
 export interface ValuesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  image?: T;
+  color?: T;
   updatedAt?: T;
   createdAt?: T;
 }

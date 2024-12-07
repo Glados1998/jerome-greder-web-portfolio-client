@@ -31,16 +31,16 @@ export default function ProjectItem({projects}) {
                         </p>
 
                         <div className="flex gap-4 mt-2">
-                            {projects.repo_link && (
+                            {projects.github_link && (
                                 <SocialBtn
-                                    href={projects.repo_link}
+                                    href={projects.github_link}
                                     className="btn-github">
                                     <AiFillGithub/>
                                     Github
                                 </SocialBtn>
                             )}
                             {projects.live_link && (
-                                <SocialBtn href={projects.repo_link}
+                                <SocialBtn href={projects.live_link}
                                    className="btn-live">
                                     <MdWebAsset/>
                                     Live
