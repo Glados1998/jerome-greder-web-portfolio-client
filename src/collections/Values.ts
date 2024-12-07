@@ -31,12 +31,14 @@ export const Values: CollectionConfig = {
             required: true,
         },
         {
-            name: 'color',
-            label: 'Color',
-            type: 'text',
+            type: "select",
+            name: "color",
+            label: "Color",
             required: true,
-            localized: true,
-            defaultValue: 'text-white'
+            options: [
+                {label: "White", value: "text-white"},
+                {label: "Black", value: "text-black"},
+            ],
         }
     ],
 }

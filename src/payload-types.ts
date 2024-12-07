@@ -110,7 +110,7 @@ export interface Service {
   title: string;
   description: string;
   image: number | Media;
-  color: string;
+  color: 'text-white' | 'text-black';
   updatedAt: string;
   createdAt: string;
 }
@@ -147,7 +147,7 @@ export interface Value {
   title: string;
   description: string;
   image: number | Media;
-  color: string;
+  color: 'text-white' | 'text-black';
   updatedAt: string;
   createdAt: string;
 }

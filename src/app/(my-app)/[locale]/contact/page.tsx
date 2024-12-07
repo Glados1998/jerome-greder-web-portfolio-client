@@ -3,8 +3,8 @@ import contactImage from "../assets/images/contact-banner.jpg";
 import { useState } from "react";
 import Image from "next/image";
 import { BsLinkedin } from "react-icons/bs";
-import SocialBtn from "@/app/[locale]/components/SocialBtn";
 import { useTranslations } from "use-intl";
+import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
 
 export default function Contact() {
     const t = useTranslations("page.Contact")
