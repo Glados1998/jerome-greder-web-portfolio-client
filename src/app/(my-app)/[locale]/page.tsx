@@ -17,60 +17,7 @@ const links = [
     {label: "projects", href: "/projects"},
 ];
 
-const values: CardsInterface[] = [
-    {
-        image: passion,
-        alt: "Passion",
-        title: "coding.title",
-        description: "coding.description",
-        color: "text-white"
-    },
-    {
-        image: minimal,
-        alt: "Minimal",
-        title: "minimalism.title",
-        description: "minimalism.description",
-        color: "text-black"
-    },
-    {
-        image: Transparency,
-        alt: "Transparency",
-        title: "Transparency.title",
-        description: "Transparency.description",
-        color: "text-white"
-    },
-    {
-        image: Innovation,
-        alt: "Innovation",
-        title: "Innovation.title",
-        description: "Innovation.description",
-        color: "text-white"
-    },
-]
 
-const services: CardsInterface[] = [
-    {
-        image: CMS,
-        alt: "Cms",
-        title: "CmsService.title",
-        description: "CmsService.description",
-        color: "text-white"
-    },
-    {
-        image: Website,
-        alt: "Websites",
-        title: "WebsitesService.title",
-        description: "WebsitesService.description",
-        color: "text-white"
-    },
-    {
-        image: Hosting,
-        alt: "Hosting",
-        title: "HostingService.title",
-        description: "HostingService.description",
-        color: "text-white"
-    }
-]
 
 export default function Home() {
     const t = useTranslations('page.Index');
@@ -139,8 +86,8 @@ export default function Home() {
                 </div>
                 <div className={"overflow-x-scroll"}>
                     <div className={"inline-flex pb-10 pt-2.5 w-full align-top ltr"}>
-                        {values.map((item, index) => (
-                            <CardImage key={index} cardData={item} t={t}/>
+                        {valuesData.map((item, index) => (
+                            <CardImage key={index} cardData={item}/>
                         ))}
                     </div>
                 </div>
@@ -153,8 +100,8 @@ export default function Home() {
                 </div>
                 <div className={"overflow-x-scroll"}>
                     <div className={"inline-flex pb-10 pt-2.5 w-full align-top ltr"}>
-                        {services.map((item, index) => (
-                            <CardImage key={index} cardData={item} t={t}/>
+                        {servicesData.map((item, index) => (
+                            <CardImage key={index} cardData={item}/>
                         ))}
                     </div>
                 </div>
