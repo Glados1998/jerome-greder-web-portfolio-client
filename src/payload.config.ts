@@ -16,6 +16,7 @@ import {en} from "@payloadcms/translations/languages/en";
 import {de} from "@payloadcms/translations/languages/de";
 import {fr} from "@payloadcms/translations/languages/fr";
 import {Values} from "@/collections/Values";
+import {s3Storage} from "@payloadcms/storage-s3";
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -43,12 +44,28 @@ export default buildConfig({
     },
     db: postgresAdapter({
         pool: {
-            connectionString: process.env.DATABASE_URI || '',
+            connectionString: process.env.DATABASE_URI || 'postgres://postgres:root@127.0.0.1:5432/jerome-greder-web-portfolio-cms-db',
+            ssl: {
+                rejectUnauthorized: false,
+                ca: path.resolve(dirname, './ssl/server-cert.pem'),
+            }
         },
     }),
     sharp,
     plugins: [
         payloadCloudPlugin(),
-        // storage-adapter-placeholder
+        s3Storage({
+            collections: {
+                media: true,
+            },
+            bucket: process.env.S3_BUCKET,
+            config: {
+                credentials: {
+                    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+                    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+                },
+                region: process.env.S3_REGION,
+            },
+        }),
     ],
 })
