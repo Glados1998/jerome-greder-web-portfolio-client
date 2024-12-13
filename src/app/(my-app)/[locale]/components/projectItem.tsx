@@ -13,7 +13,8 @@ export default function ProjectItem({projects}) {
     return (
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4">
             <div className="flex flex-col text-left space-y-4">
-                <Image src={projects.image ? projects.image.url : minimal} loading="lazy" alt="minimal" width={750} height={450}
+                <Image src={projects.image ? projects.image.url : minimal} loading="lazy" alt="minimal" width={750}
+                       height={450}
                        className="shadow-lg rounded-md"/>
                 <h2 className="text-3xl md:text-3xl font-bold">
                     {projects.title}
@@ -41,7 +42,7 @@ export default function ProjectItem({projects}) {
                             )}
                             {projects.live_link && (
                                 <SocialBtn href={projects.live_link}
-                                   className="btn-live">
+                                           className="btn-live">
                                     <MdWebAsset/>
                                     Live
                                 </SocialBtn>

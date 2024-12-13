@@ -33,9 +33,9 @@ export default function Footer() {
                     </span>
                     <span className={'font-medium text-sm'}>
                         {t("madeWith")} <a target={'_blank'} href={'https://nextjs.org'}
-                                                        className={'text-blue-500 underline hover:no-underline'}>
+                                           className={'text-blue-500 underline hover:no-underline'}>
                         Next.js</a> {t("hostedOn")} <a target={'_blank'} href={'https://vercel.com/'}
-                                                                    className={'text-blue-500 underline hover:no-underline'}>Vercel</a></span>
+                                                       className={'text-blue-500 underline hover:no-underline'}>Vercel</a></span>
                     <Link href={`/legal`} className={'font-medium text-sm'}>{t("legal")}</Link>
                 </div>
 

@@ -14,7 +14,7 @@ const links = [
     {label: "contact", href: "/contact"},
 ];
 
-export default  function Header() {
+export default function Header() {
     const t = useTranslations('components.Header');
     return (
         <header
