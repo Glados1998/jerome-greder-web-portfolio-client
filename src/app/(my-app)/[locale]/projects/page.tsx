@@ -18,7 +18,6 @@ export default function Projects() {
         axios.get(`${apiUrl}/project/`)
             .then(response => {
                 setProjects(response.data.docs)
-                console.log(response.data.docs)
             })
             .catch(error => {
                 console.error('Error fetching projects:', error);
