@@ -1,49 +1,55 @@
 "use client"
-import minimal from './assets/images/minimal.jpg'
-import passion from './assets/images/passion.jpg'
-import Transparency from './assets/images/luca-bravo-9l_326FISzk-unsplash.jpg'
-import Innovation from'./assets/images/BL03-blanck.png'
-import CMS from './assets/images/brian-mcgowan-xKnXRV36fEY-unsplash.jpg'
-import Website from './assets/images/blake-connally-B3l0g6HLxr8-unsplash.jpg'
-import Hosting from './assets/images/stephen-phillips-hostreviews-co-uk-tN344soypQM-unsplash.jpg'
+
 import {useTranslations} from "use-intl";
-import {Link, usePathname} from "@/i18n/routing";
+import {Link} from "@/i18n/routing";
 import CardImage from "@/app/(my-app)/[locale]/components/cardImage";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {getLocaleFromURL} from "@/utils/localeUtils";
 
 const links = [
     {label: "about", href: "/about"},
     {label: "projects", href: "/projects"},
 ];
 
-
-
 export default function Home() {
     const t = useTranslations('page.Index');
 
     const [servicesData, setServicesData] = useState([]);
     const [valuesData, setValuesData] = useState([]);
+    const [locale, setLocale] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const currentLocale = getLocaleFromURL(window.location.href);
+            setLocale(currentLocale);
+        }
+    }, []);
 
     useEffect(() => {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV;
+
         if (!apiUrl) {
             console.error('API URL is not defined in environment variables');
             return;
         }
-        axios.get(`${apiUrl}/values/`).then(response => {
-            setValuesData(response.data.docs)
-            console.log(response.data.docs, 'values')
-        }).catch(error => {
-            console.error('Error fetching values:', error);
-        });
-        axios.get(`${apiUrl}/services/`).then(response => {
-            setServicesData(response.data.docs)
-            console.log(response.data.docs, 'services')
-        }).catch(error => {
-            console.error('Error fetching services:', error);
-        });
-    }, []);
+
+        if (locale) {
+            axios.get(`${apiUrl}/values/?locale=${locale}`).then(response => {
+                setValuesData(response.data.docs)
+                console.log(response.data.docs, 'values')
+            }).catch(error => {
+                console.error('Error fetching values:', error);
+            });
+
+            axios.get(`${apiUrl}/services/?locale=${locale}`).then(response => {
+                setServicesData(response.data.docs)
+                console.log(response.data.docs, 'services')
+            }).catch(error => {
+                console.error('Error fetching services:', error);
+            });
+        }
+    }, [locale]);
 
     return (
         <>

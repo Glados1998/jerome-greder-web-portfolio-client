@@ -10,7 +10,6 @@ import axios from "axios";
 import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
 import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
 
-
 export default function About() {
     const t = useTranslations("page.About")
     const [tags, setTags] = useState([]);
@@ -21,7 +20,7 @@ export default function About() {
             console.error('API URL is not defined in environment variables');
             return;
         }
-        axios.get(`${apiUrl}/programming-tag/`).then(response => {
+        axios.get(`${apiUrl}/programming-tag/?limit=30`).then(response => {
             setTags(response.data.docs)
         }).catch(error => {
             console.error('Error fetching tags:', error);
