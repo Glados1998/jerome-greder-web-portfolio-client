@@ -40,36 +40,12 @@
       },
       "values": "Mes valeurs",
       "valuesSpan": "Valeurs & Principes",
-      "coding": {
-        "title": "Coder jour et nuit",
-        "description": "Pendant mes études, j’ai appris à aimer le développement web, donc je travaille toujours avec les nouvelles technologies et les frameworks. Je suis toujours à la recherche de nouveaux défis et de nouvelles opportunités pour apprendre et évoluer."
-      },
-      "minimalism": {
-        "title": "Centrée sur l'essentiel",
-        "description": "Parfois, les solutions les plus simples sont les meilleures. Je crois que les meilleures conceptions sont celles qui sont simples et intuitives. Je m’efforce de créer des sites Web et des applications beaux et fonctionnels."
-      },
       "Transparency": {
         "title": "Transparence",
         "description": "Je crois en la transparence et l’honnêteté. Je suis toujours ouvert aux retours et aux critiques constructives pour m’améliorer constamment."
       },
-      "Innovation": {
-        "title": "Innovation",
-        "description": "Je suis toujours à l’affût des nouvelles technologies et des tendances pour élargir mes compétences et développer des solutions innovantes."
-      },
       "services": "Mes services",
       "servicesSpan": "Services & Compétences",
-      "CmsService": {
-        "title": "CMS innovants",
-        "description": "Je propose des solutions CMS innovantes pour la gestion de contenu, permettant aux clients de gérer facilement leur contenu en ligne."
-      },
-      "WebsitesService": {
-        "title": "Développement Web",
-        "description": "Je crée des sites web et des applications à la fois esthétiques et fonctionnelles, en exploitant la puissance de React et Angular pour le développement front-end, et en construisant des API robustes avec Node.js et Express pour le back-end."
-      },
-      "HostingService": {
-        "title": "Hébergement et déploiement",
-        "description": "Je propose des services d’hébergement et de déploiement pour les sites web et les applications, garantissant une disponibilité et une performance optimales."
-      },
       "contact": {
         "title": "Entrer en contact",
         "description": "Je suis toujours ouvert aux nouvelles opportunités et aux nouveaux défis. Si vous avez un projet dont vous aimeriez discuter, n’hésitez pas à me le communiquer.",
