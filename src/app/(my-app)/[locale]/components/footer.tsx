@@ -2,13 +2,14 @@
 
 import {useTranslations} from "use-intl";
 import {Link} from "@/i18n/routing";
+import {useRouter} from 'next/navigation';
 
 const links = [
     {label: "home", href: "/"},
     {label: "about", href: "/about"},
     {label: "projects", href: "/projects"},
     {label: "contact", href: "/contact"},
-    {label: "admin", href: "admin"},
+    {label: "admin", href: "/admin"},
 ]
 
 const socialLinks = [
@@ -18,6 +19,7 @@ const socialLinks = [
 export default function Footer() {
 
     const t = useTranslations("components.Footer")
+    const router = useRouter();
 
     return (
         <footer
@@ -49,8 +51,16 @@ export default function Footer() {
                         <ul className={'grid grid-flow-row auto-rows-max'}>
                             {links.map(link => (
                                 <li className={'font-medium'} key={link.label}>
-                                    <Link
-                                        href={`${link.href}`}>{t(`navigation.${link.label}`)}</Link>
+                                    {link.label === 'admin' ? (
+                                        <Link href="/admin" onClick={(e) => {
+                                            e.preventDefault();
+                                            router.push('/admin');
+                                        }}>
+                                            {t(`navigation.${link.label}`)}
+                                        </Link>
+                                    ) : (
+                                        <Link href={`${link.href}`}>{t(`navigation.${link.label}`)}</Link>
+                                    )}
                                 </li>
                             ))}
                         </ul>
