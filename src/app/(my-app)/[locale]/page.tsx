@@ -36,22 +36,14 @@ export default function Home() {
         }
 
         if (locale) {
-            axios.get(`/api/values/?locale=${locale}`, {
-                headers: {
-                    'Access-Control-Allow-Origin': "*",
-                }
-            }).then(response => {
+            axios.get(`${apiUrl}/values/?locale=${locale}`).then(response => {
                 setValuesData(response.data.docs)
                 console.log(response.data.docs)
             }).catch(error => {
                 console.error('Error fetching values:', error);
             });
 
-            axios.get(`/api/services/?locale=${locale}`, {
-                headers: {
-                    'Access-Control-Allow-Origin': "*",
-                }
-            }).then(response => {
+            axios.get(`${apiUrl}/services/?locale=${locale}`).then(response => {
                 setServicesData(response.data.docs)
                 console.log(response.data.docs)
             }).catch(error => {
