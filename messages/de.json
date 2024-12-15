@@ -22,7 +22,8 @@
         "home": "Startseite",
         "about": "Über mich",
         "projects": "Meine Projekte",
-        "contact": "Kontakt"
+        "contact": "Kontakt",
+        "admin": "Admin"
       }
     }
   },
@@ -39,36 +40,12 @@
       },
       "values": "Meine Werte",
       "valuesSpan": "Werte & Prinzipien",
-      "coding": {
-        "title": "Programmieren Tag und Nacht",
-        "description": "Während meines Studiums habe ich gelernt, Webentwicklung zu lieben, daher tüftele ich immer an neuen Technologien und Frameworks. Ich bin immer auf der Suche nach neuen Herausforderungen und Möglichkeiten zu lernen und zu wachsen."
-      },
-      "minimalism": {
-        "title": "Fokussiert auf das Wesentliche",
-        "description": "Manchmal sind die einfachsten Lösungen die besten. Ich glaube, dass die besten Designs die sind, die einfach und intuitiv sind. Ich bemühe mich, schöne und funktionale Websites und Anwendungen zu erstellen."
-      },
       "Transparency": {
         "title": "Transparenz",
         "description": "Ich glaube an Transparenz und Ehrlichkeit. Ich bin immer offen für Feedback und konstruktive Kritik, um mich ständig zu verbessern."
       },
-      "Innovation": {
-        "title": "Innovation",
-        "description": "Ich bin immer auf der Suche nach neuen Technologien und Trends, um meine Fähigkeiten zu erweitern und innovative Lösungen zu entwickeln."
-      },
       "services": "Meine Dienstleistungen",
       "servicesSpan": "Dienstleistungen & Fähigkeiten",
-      "CmsService":{
-        "title": "Innovative CMS-Lösungen",
-        "description": "Ich habe Erfahrung in der Implementierung von Headless-CMS-Lösungen wie Strapi, um schnelle und einzigartige Inhalte für Websites und Anwendungen zu erstellen."
-      },
-      "WebsitesService": {
-        "title": "Websites & Anwendungen",
-        "description": "Ich erstelle ästhetisch ansprechende und funktionale Websites und Anwendungen, die auf die Bedürfnisse und Anforderungen meiner Kunden zugeschnitten sind."
-      },
-      "HostingService": {
-        "title": "Hosting & Deployment",
-        "description": "Ich habe Erfahrung in der Bereitstellung von Websites und Anwendungen auf verschiedenen Plattformen wie Vercel und Railway, um eine schnelle und zuverlässige Bereitstellung zu gewährleisten."
-      },
       "contact": {
         "title": "In Kontakt treten",
         "description": "Ich bin immer offen für neue Möglichkeiten und Herausforderungen. Wenn Sie ein Projekt haben, das Sie besprechen möchten, können Sie mich gerne kontaktieren.",

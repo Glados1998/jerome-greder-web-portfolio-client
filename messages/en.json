@@ -13,7 +13,7 @@
       "allRightsReserved": "All rights reserved",
       "navigationLabel": "Navigation",
       "socialLabel": "Social",
-      "legal":"Legal",
+      "legal": "Legal",
       "social": {
         "socials": "Socials",
         "github": "Github",
@@ -24,7 +24,8 @@
         "home": "Home",
         "about": "About",
         "projects": "My Projects",
-        "contact": "Contact"
+        "contact": "Contact",
+        "admin": "Admin"
       }
     }
   },
@@ -41,36 +42,8 @@
       },
       "values": "My values",
       "valuesSpan": "Values & Principles",
-      "coding": {
-        "title": "Coding day and night",
-        "description": "During my studies I've learned to love web development therefore I'm always tinkering with new technologies and frameworks. I'm always looking for new challenges and opportunities to learn and grow."
-      },
-      "minimalism": {
-        "title": "Focused on the essentials",
-        "description": "Sometimes the simplest solutions are the best. I believe that the best designs are the ones that are simple and intuitive. I strive to create beautiful and functional websites and applications."
-      },
-      "Transparency": {
-        "title": "Transparency",
-        "description": "I believe in transparency and honesty. I'm always open to feedback and constructive criticism to constantly improve myself."
-      },
-      "Innovation": {
-        "title": "Innovation",
-        "description": "I'm always on the lookout for new technologies and trends to expand my skills and develop innovative solutions."
-      },
       "services": "My services",
       "servicesSpan": "Services & Skills",
-      "CmsService":{
-        "title": "Innovative CMS Solutions",
-        "description": "I have experience in developing custom CMS solutions tailored to the needs of my clients, providing them with a user-friendly and efficient content management system."
-      },
-      "WebsitesService": {
-        "title": "Websites & Applications",
-        "description": "I specialize in creating beautiful and functional websites and applications using modern technologies like React and Angular, ensuring a seamless user experience."
-      },
-      "HostingService": {
-        "title": "Hosting & Deployment",
-        "description": "I provide hosting and deployment services for websites and applications, ensuring that they are secure, reliable, and performant."
-      },
       "contact": {
         "title": "Get in touch",
         "description": "I'm always open to new opportunities and challenges. If you have a project you'd like to discuss, feel free to contact me. I'm always open to new opportunities and challenges. If you have a project you'd like to discuss, feel free to contact me.",
@@ -112,7 +85,6 @@
       "linkedin": "You can also find me on Linkedin"
     },
     "Legal": {
-
     }
   }
 }
