@@ -17,7 +17,7 @@ export default function ProjectItem({projects}) {
                        height={450}
                        className="shadow-lg rounded-md"/>
                 <h2 className="text-3xl md:text-3xl font-bold">
-                    {projects.title}
+                    {projects.name}
                 </h2>
                 <div className={'flex flex-wrap gap-3 mt-2 md:mt-8'}>
                     {projects.programming_tags?.map((technology, index) => (
