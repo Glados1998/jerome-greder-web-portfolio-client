@@ -22,7 +22,9 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-    cors: "*",
+    cors: {
+        origins: [process.env.CORS_ORIGIN || '*'],
+    },
     admin: {
         user: Users.slug,
         importMap: {
