@@ -24,6 +24,7 @@ const dirname = path.dirname(filename)
 export default buildConfig({
     cors: {
         origins: [process.env.CORS_ORIGIN],
+        headers: ['Access-Control-Allow-Origin']
     },
     admin: {
         user: Users.slug,
