@@ -6,6 +6,7 @@ import CardImage from "@/app/(my-app)/[locale]/components/cardImage";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {getLocaleFromURL} from "@/utils/localeUtils";
+import {headers} from "next/headers";
 
 const links = [
     {label: "about", href: "/about"},
@@ -35,7 +36,12 @@ export default function Home() {
         }
 
         if (locale) {
-            axios.get(`${apiUrl}/values/?locale=${locale}`).then(response => {
+            axios.get(`${apiUrl}/values/?locale=${locale}`,
+                {
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                    }
+                }).then(response => {
                 setValuesData(response.data.docs)
                 console.log(response.data.docs)
             }).catch(error => {
