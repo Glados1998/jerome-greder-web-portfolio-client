@@ -9,7 +9,7 @@ export default function Projects() {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
         if (!apiUrl) {
             console.error('API URL is not defined in environment variables');
             return;
