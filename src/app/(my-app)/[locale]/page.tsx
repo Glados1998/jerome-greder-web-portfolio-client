@@ -38,7 +38,7 @@ export default function Home() {
         if (locale) {
             axios.get(`https://jerome-greder.com/api/values/?locale=${locale}`, {
                 headers: {
-                    'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_API_URL,
+                    'Access-Control-Allow-Origin': "*",
                 }
             }).then(response => {
                 setValuesData(response.data.docs)
@@ -49,7 +49,7 @@ export default function Home() {
 
             axios.get(`https://jerome-greder.com/api/services/?locale=${locale}`, {
                 headers: {
-                    'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_API_URL,
+                    'Access-Control-Allow-Origin': "*",
                 }
             }).then(response => {
                 setServicesData(response.data.docs)
