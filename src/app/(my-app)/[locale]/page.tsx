@@ -36,12 +36,7 @@ export default function Home() {
         }
 
         if (locale) {
-            axios.get(`${apiUrl}/values/?locale=${locale}`,
-                {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                    }
-                }).then(response => {
+            axios.get(`${apiUrl}/values/?locale=${locale}`).then(response => {
                 setValuesData(response.data.docs)
                 console.log(response.data.docs)
             }).catch(error => {
