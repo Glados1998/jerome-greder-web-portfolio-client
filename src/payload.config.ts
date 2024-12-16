@@ -23,7 +23,7 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
     cors: {
-        origins: [process.env.CORS_ORIGIN],
+        origins: ["https://jerome-greder.com/"],
         headers: ["Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Access-Control-Allow-Methods"],
     },
     admin: {
