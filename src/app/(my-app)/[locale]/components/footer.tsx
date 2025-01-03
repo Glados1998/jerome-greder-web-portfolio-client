@@ -3,6 +3,7 @@
 import {useTranslations} from "use-intl";
 import {Link} from "@/i18n/routing";
 import {useRouter} from 'next/navigation';
+import Image from "next/image";
 
 const links = [
     {label: "home", href: "/"},
@@ -28,8 +29,24 @@ export default function Footer() {
                 className={'grid grid-rows-2 gap-4 md:grid-rows-1 md:grid-flow-col auto-cols-max md:gap-10 ml-4 md:ml-10'}>
 
                 {/* First Row - Main Content */}
-                <div className={'grid grid-flow-row gap-3'}>
-                    <span className={'font-bold text-md'}>Jérôme Greder</span>
+                <div className={'grid grid-flow-row gap-2 justify-start'}>
+                    <div>
+                        <Image
+                            src="/x-icon-black.svg"
+                            width={25}
+                            height={25}
+                            alt="jg pixel logo"
+                            className="block dark:hidden"
+                        />
+                        <Image
+                            src="/x-icon-white.svg"
+                            width={25}
+                            height={25}
+                            alt="jg pixel logo"
+                            className="hidden dark:block"
+                        />
+                    </div>
+                    <span className={'font-bold text-md'}>Jérôme Greder | JG Pixel</span>
                     <span className={'font-medium text-sm'}>
                         © {new Date().getFullYear()} | {t("allRightsReserved")}
                     </span>
