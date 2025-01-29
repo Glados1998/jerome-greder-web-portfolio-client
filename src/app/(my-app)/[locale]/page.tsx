@@ -28,7 +28,7 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL;
 
         if (!apiUrl) {
             console.error('API URL is not defined in environment variables');
@@ -88,7 +88,7 @@ export default function Home() {
             <div>
                 <div className={"ml-8 lg:ml-20 mb-4 pt-6 "}>
                     <h3 className={"text-3xl lg:text-4xl font-bold"}>
-                        {t("values")}. <span className={"text-blue-500 dark:text-white"}>{t("valuesSpan")}</span>
+                        {t("values")}. <span className={"text-blue-500 dark:text-white text-xl lg:text-2xl font-normal"}>{t("valuesSpan")}</span>
                     </h3>
                 </div>
                 <div className={"overflow-x-scroll"}>
@@ -102,7 +102,7 @@ export default function Home() {
             <div>
                 <div className={"ml-8 lg:ml-20 mb-4 pt-6"}>
                     <h3 className={"text-3xl lg:text-4xl font-bold"}>
-                        {t("services")}. <span className={"text-blue-500 dark:text-white"}> {t("servicesSpan")}</span>
+                        {t("services")}. <span className={"text-blue-500 dark:text-white text-xl lg:text-2xl font-normal"}> {t("servicesSpan")}</span>
                     </h3>
                 </div>
                 <div className={"overflow-x-scroll"}>
