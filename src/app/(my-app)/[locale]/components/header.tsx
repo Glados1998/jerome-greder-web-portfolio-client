@@ -57,7 +57,7 @@ export default function Header() {
                         </svg>
                     </Menu.Button>
                     <Menu.Items
-                        className="absolute right-0 w-48 mt-2 origin-top-right bg-white dark:bg-slate-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        className="absolute right-0 w-48 mt-2 origin-top-right bg-white dark:bg-slate-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden">
                         {links.map((link) => (
                             <Menu.Item as={Fragment} key={link.label}>
                                 {({active}) => (

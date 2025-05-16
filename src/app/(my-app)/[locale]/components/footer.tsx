@@ -24,7 +24,7 @@ export default function Footer() {
 
     return (
         <footer
-            className={'bg-slate-200 p-6 backdrop-blur bg-white/50 md:sticky inset-x-0 bottom-0 z-10 dark:backdrop-blur-md dark:bg-slate-900/60'}>
+            className={'bg-slate-200 p-6 backdrop-blur-sm bg-white/50 md:sticky inset-x-0 bottom-0 z-10 dark:backdrop-blur-md dark:bg-slate-900/60'}>
             <div
                 className={'grid grid-rows-2 gap-4 md:grid-rows-1 md:grid-flow-col auto-cols-max md:gap-10 ml-4 md:ml-10'}>
 

@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import React from 'react';
-import './assets/style/globals.scss';
+import './assets/style/globals.css';
 import {Analytics} from '@vercel/analytics/react';
 import {Inter} from 'next/font/google';
 import Head from 'next/head';

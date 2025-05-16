@@ -83,8 +83,8 @@ export default function Home() {
             </div>
             <div className={'flex flex-col justify-center m-6 md:m-12 '}>
                 <div className={'flex flex-col justify-center items-center '}>
-                    <h1 className={'text-xl md:text-3xl font-bold mb-4 md:mb-6 md:w-[30rem] text-center'}>{t("subTitle")}</h1>
-                    <p className={'text-sm md:text-base w-30 md:w-[50rem] text-center break-words'}>{t("subDescription")}<a
+                    <h1 className={'text-xl md:text-3xl font-bold mb-4 md:mb-6 md:w-120 text-center'}>{t("subTitle")}</h1>
+                    <p className={'text-sm md:text-base w-30 md:w-200 text-center break-words'}>{t("subDescription")}<a
                         target={'_blank'} href={'https://www.epitech.eu/'}
                         className={'font-medium hover:underline'}>{t("epitech")}</a>.
                     </p>
@@ -121,8 +121,8 @@ export default function Home() {
 
             <div className={'flex flex-col justify-center m-6 md:m-12 '}>
                 <div className={'flex flex-col justify-center items-center '}>
-                    <h1 className={'text-xl md:text-3xl font-bold mb-4 md:mb-6 md:w-[30rem] text-center'}>{t("contact.title")}</h1>
-                    <p className={'text-sm md:text-base w-30 md:w-[50rem] text-center'}>{t("contact.description")}</p>
+                    <h1 className={'text-xl md:text-3xl font-bold mb-4 md:mb-6 md:w-120 text-center'}>{t("contact.title")}</h1>
+                    <p className={'text-sm md:text-base w-30 md:w-200 text-center'}>{t("contact.description")}</p>
                 </div>
                 <div className={'mt-4 md:mt-6 flex justify-center'}>
                     <Link href={`/contact`}

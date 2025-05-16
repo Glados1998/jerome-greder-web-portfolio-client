@@ -44,7 +44,7 @@ export default function About() {
                 <div className="flex flex-col md:flex-row items-center justify-center mt-10 gap-6 md:gap-20">
                     <Image src={headshot} alt="Jérôme Greder" width={300} height={300}
                            className="rounded-2xl shadow-lg"/>
-                    <div className="flex flex-col text-left space-y-4 w-full md:w-[44rem]">
+                    <div className="flex flex-col text-left space-y-4 w-full md:w-176">
                         <h2 className="text-3xl md:text-4xl font-bold">
                             Jérôme Greder
                         </h2>
@@ -113,7 +113,7 @@ export default function About() {
                         <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{t("techStack")}</h1>
                     </div>
                     <div className="mt-10 flex justify-center">
-                        <div className="w-[50rem] max-w-full flex flex-wrap justify-center items-center gap-4">
+                        <div className="w-200 max-w-full flex flex-wrap justify-center items-center gap-4">
                             {
                                 tags.map((tag, index) => (
                                     <ProgrammingTag key={index} programmingTag={tag}/>
