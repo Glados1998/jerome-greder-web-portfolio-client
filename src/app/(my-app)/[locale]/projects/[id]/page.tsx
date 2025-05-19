@@ -15,6 +15,7 @@ export default function Page() {
     const {id} = useParams();
     const [singleProject, setSingleProject] = useState(null);
     const [locale, setLocale] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const t = useTranslations("page.projects");
 
@@ -27,81 +28,105 @@ export default function Page() {
 
     useEffect(() => {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL;
-        axios.get(`${apiUrl}/project/${id}?depth=1&draft=false&locale=${locale}`).then(response => {
-            setSingleProject(response.data);
-        }).catch(error => {
-            console.error('Error fetching project:', error);
-        });
+        if (apiUrl && locale) {
+            setIsLoading(true);
+            axios.get(`${apiUrl}/project/${id}?depth=1&draft=false&locale=${locale}`).then(response => {
+                setSingleProject(response.data);
+                setIsLoading(false);
+            }).catch(error => {
+                console.error('Error fetching project:', error);
+                setIsLoading(false);
+            });
+        }
     }, [id, locale]);
 
-    return (
-        <div className="container mx-auto px-4 py-10">
-            <div className="mb-4">
-                <Link className="btn" href="/projects">Back</Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Left Column - Images */}
-                <div className="flex flex-col gap-4">
-                    <div className="w-full h-96 relative">
-                        {singleProject?.images && singleProject.images.length > 0 && (
-                            <Image 
-                                src={singleProject.images[selectedImageIndex].url} 
-                                alt={singleProject.images[selectedImageIndex].alt || "Project image"}
-                                layout="fill"
-                                objectFit="cover"
-                                className="rounded-lg"
-                            />
-                        )}
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                        {singleProject?.images?.map((image, index) => (
-                            <div 
-                                key={index} 
-                                className={`w-20 h-20 relative cursor-pointer ${index === selectedImageIndex ? 'ring-2 ring-blue-500' : ''}`}
-                                onClick={() => setSelectedImageIndex(index)}
-                            >
-                                <Image 
-                                    src={image.url} 
-                                    alt={image.alt || `Project image ${index + 1}`}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="rounded"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
+    const displayImages = singleProject?.images?.length > 0 ? singleProject.images : (singleProject?.thumbnail ? [singleProject.thumbnail] : []);
 
-                {/* Right Column - Project Details */}
-                <div className="flex flex-col gap-6">
-                    <h1 className="text-3xl font-bold">{singleProject?.name}</h1>
-                    
-                    <div className="flex flex-wrap gap-2">
-                        {singleProject?.programming_tags?.map((technology, index) => (
-                            <ProgrammingTag key={index} programmingTag={technology}/>
-                        ))}
+    return (
+        <>
+            {!isLoading ? (
+                <div className="container mx-auto px-4 py-10">
+                    <div className="mb-4">
+                        <Link className="btn" href="/projects">Back</Link>
                     </div>
-                    
-                    <div className="prose max-w-none">
-                        <p>{singleProject?.description}</p>
-                    </div>
-                    
-                    <div className="flex gap-4">
-                        {singleProject?.github_link && (
-                            <SocialBtn href={singleProject.github_link} className="btn-github">
-                                <AiFillGithub />
-                                Github
-                            </SocialBtn>
-                        )}
-                        {singleProject?.live_link && (
-                            <SocialBtn href={singleProject.live_link} className="btn-live">
-                                <MdWebAsset />
-                                Live
-                            </SocialBtn>
-                        )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Left Column - Images */}
+                        <div className="flex flex-col gap-4">
+                            <div className="w-full h-96 relative">
+                                {displayImages.length > 0 && (
+                                    <Image
+                                        src={displayImages[selectedImageIndex].url}
+                                        alt={displayImages[selectedImageIndex].alt || "Project image"}
+                                        layout="fill"
+                                        objectFit="cover"
+                                        className="rounded-lg"
+                                    />
+                                )}
+                            </div>
+                            {displayImages.length > 1 && (
+                                <div className="flex flex-wrap gap-3">
+                                    {displayImages.map((image, index) => (
+                                        <div
+                                            key={index}
+                                            className={`w-20 h-20 relative cursor-pointer ${index === selectedImageIndex ? 'ring-2 ring-blue-500' : ''}`}
+                                            onClick={() => setSelectedImageIndex(index)}
+                                        >
+                                            <Image
+                                                src={image.url}
+                                                alt={image.alt || `Project image ${index + 1}`}
+                                                layout="fill"
+                                                objectFit="cover"
+                                                className="rounded"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Right Column - Project Details */}
+                        <div className="flex flex-col gap-6">
+                            <h1 className="text-3xl font-bold">{singleProject?.name}</h1>
+
+                            <div>
+                                <span className="text-lg font-semibold mb-2 block">{t("usedTechnologies")}</span>
+                                <div className="flex flex-wrap gap-2">
+                                    {singleProject?.programming_tags?.map((technology, index) => (
+                                        <ProgrammingTag key={index} programmingTag={technology}/>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div>
+                                <span className="text-lg font-semibold mb-2 block">{t("projectDescription")}</span>
+                                <div className="prose max-w-none max-h-60 overflow-auto">
+                                    <p>{singleProject?.description}</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span className="text-lg font-semibold mb-2 block">{t("projectLinks")}</span>
+                                <div className="flex gap-4">
+                                    {singleProject?.github_link && (
+                                        <SocialBtn href={singleProject.github_link} className="btn-github">
+                                            <AiFillGithub/>
+                                            Github
+                                        </SocialBtn>
+                                    )}
+                                    {singleProject?.live_link && (
+                                        <SocialBtn href={singleProject.live_link} className="btn-live">
+                                            <MdWebAsset/>
+                                            Live
+                                        </SocialBtn>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            ) : (
+                <div>Loading...</div>
+            )}
+        </>
     );
 }

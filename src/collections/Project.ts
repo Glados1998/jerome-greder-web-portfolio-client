@@ -20,6 +20,7 @@ export const Project: CollectionConfig = {
             label: 'Images',
             type: 'upload',
             relationTo: 'media',
+            maxRows:8,
             hasMany: true,
             required: false,
         },
