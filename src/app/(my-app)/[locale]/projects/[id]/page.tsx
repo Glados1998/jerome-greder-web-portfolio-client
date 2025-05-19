@@ -47,7 +47,7 @@ export default function Page() {
             {!isLoading ? (
                 <div className="container mx-auto px-4 py-10">
                     <div className="mb-4">
-                        <Link className="btn" href="/projects">Back</Link>
+                        <Link className="btn" href="/projects">{t("backBtn")}</Link>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {/* Left Column - Images */}
@@ -105,7 +105,7 @@ export default function Page() {
                             </div>
 
                             <div>
-                                <span className="text-lg font-semibold mb-2 block">{t("projectLinks")}</span>
+                                <span className="text-lg font-semibold mb-2 block">{t("cta")}</span>
                                 <div className="flex gap-4">
                                     {singleProject?.github_link && (
                                         <SocialBtn href={singleProject.github_link} className="btn-github">

@@ -70,9 +70,12 @@
       "techStack": "Mein Tech-Stack"
     },
     "projects": {
+      "backBtn": "Zurück",
       "title": "Meine Projekte",
       "subTitle": "Hier sind einige der Projekte, an denen ich gearbeitet habe",
-      "cta": "Schauen Sie es an auf"
+      "cta": "Schauen Sie es an auf",
+      "projectDescription": "Projektbeschreibung",
+      "usedTechnologies": "Verwendete Technologien"
     },
     "Contact": {
       "title": "Kontakt aufnehmen <br></br> Ich freue mich darauf, von Ihnen zu hören!",

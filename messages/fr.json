@@ -70,9 +70,12 @@
       "techStack": "Mon stack technique"
     },
     "projects": {
+      "backBtn": "Retour",
       "title": "Mes projets",
       "subTitle": "Voici quelques-uns des projets sur lesquels j'ai travaillé",
-      "cta": "Découvrez-le sur"
+      "cta": "Découvrez-le sur",
+      "projectDescription": "Description du projet",
+      "usedTechnologies": "Verwendete Technologien"
     },
     "Contact": {
       "title": "Contactez-moi <br></br> J’ai hâte d’avoir de vos nouvelles !",

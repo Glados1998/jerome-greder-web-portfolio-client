@@ -1,31 +1,5 @@
 @import 'tailwindcss';
 
-@theme {
-    --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-    --background-image-gradient-conic: conic-gradient(
-            from 180deg at 50% 50%,
-            var(--tw-gradient-stops)
-    );
-}
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        border-color: var(--color-gray-200, currentcolor);
-    }
-}
-
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -49,7 +23,7 @@
 }
 
 .btn:hover, .btn-social:hover, .btn-live:hover, .btn-github:hover, .btn-linkedin:hover, .btn-inverted:hover {
-    @apply bg-slate-900 text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110;
+    @apply bg-slate-900 text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110 underline underline-offset-2;
 }
 
 .btn:disabled, .btn-social:disabled, .btn-live:disabled, .btn-github:disabled, .btn-linkedin:disabled, .btn-inverted:disabled {
@@ -93,7 +67,7 @@
 }
 
 .programming-label {
-    @apply text-sm font-medium rounded-md dark:bg-white dark:text-slate-900 bg-slate-900 text-white p-1.5;
+    @apply text-sm font-normal rounded-full dark:bg-white dark:text-slate-900 bg-slate-900 text-white p-2;
 }
 
 .input {
