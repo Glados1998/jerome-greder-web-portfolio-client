@@ -68,6 +68,7 @@
       "techStack": "My tech stack"
     },
     "projects": {
+      "noProjects": "No projects found",
       "backBtn": "Back",
       "title": "My projects",
       "subTitle": "Here are some of the projects I've worked on",
