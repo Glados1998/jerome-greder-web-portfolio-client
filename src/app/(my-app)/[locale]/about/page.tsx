@@ -28,101 +28,91 @@ export default function About() {
     }, []);
 
     return (
-        <>
-            <div className="relative px-5 md:px-20 lg:px-40 py-10">
-                {/* Intro Section */}
-                <div className="text-center">
-                    <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">
-                        {t("title")}
-                    </h1>
-                    <p className="text-xl md:text-2xl lg:text-2xl font-medium mt-4">
-                        {t("subTitle")}
-                    </p>
-                </div>
+        <div className="flex flex-col space-y-16 md:space-y-24 px-4 md:px-8 lg:px-12 py-10 max-w-7xl mx-auto">
+            {/* Intro Section */}
+            <section className="text-center">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+                    {t("title")}
+                </h1>
+                <p className="text-xl md:text-2xl lg:text-3xl font-medium">
+                    {t("subTitle")}
+                </p>
+            </section>
 
-                {/* Profile Section */}
-                <div className="flex flex-col md:flex-row items-center justify-center mt-10 gap-6 md:gap-20">
+            {/* Profile Section */}
+            <section className="flex flex-col items-center">
+                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full">
                     <Image src={headshot} alt="Jérôme Greder" width={300} height={300}
                            className="rounded-2xl shadow-lg"/>
-                    <div className="flex flex-col text-left space-y-4 w-full md:w-176">
-                        <h2 className="text-3xl md:text-4xl font-bold">
+                    <div className="flex flex-col space-y-4 flex-grow">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
                             Jérôme Greder
                         </h2>
-                        <p className="text-base md:text-xl font-medium">
+                        <p className="text-base md:text-lg">
                             {t("profile.descriptionOne")}
                         </p>
-                        <p className="text-base md:text-xl font-medium">
+                        <p className="text-base md:text-lg">
                             {t("profile.descriptionTwo")}
                         </p>
-                        <div className="flex flex-col md:flex-row gap-6">
-                            <div>
-                                <p className="text-lg font-bold">
-                                    {t("cta")}:
-                                </p>
-                                <div className="flex gap-4 mt-2">
-                                    <SocialBtn href="https://www.linkedin.com/in/jerome-greder/"
-                                               className="btn-linkedin">
-                                        <BsLinkedin/>
-                                        Linkedin
-                                    </SocialBtn>
-                                    <SocialBtn href="https://github.com/Glados1998"
-                                               className="btn-github">
-                                        <AiFillGithub/>
-                                        Github
-                                    </SocialBtn>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Education Section */}
-                <div className="mt-20">
-                    <div className="text-left">
-                        <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{t("educationLabel")}</h1>
-                    </div>
-                    <div className="flex flex-col md:flex-row justify-evenly items-center mt-10 gap-6 md:gap-10">
-                        <div className="space-y-4 max-w-2xl">
-                            <h2 className="text-2xl md:text-4xl font-bold">{t("education.epitech")}</h2>
-                            <p className="text-lg md:text-2xl font-medium">{t("education.subheading")}</p>
-                            <p className="text-base md:text-xl font-medium">
-                                {t("education.description")}
+                        <div>
+                            <p className="text-lg font-bold mb-2">
+                                {t("cta")}:
                             </p>
-                            <div className="space-y-2">
-                                <h2 className="text-lg md:text-xl font-bold">{t("ctaSchool")}:</h2>
-                                <div className="flex gap-5">
-                                    <a href="https://www.webacademie.org/" target={'_blank'}
-                                       className="btn">
-                                        Web@cadémie
-                                    </a>
-                                    <a href="https://www.epitech.eu" target={'_blank'}
-                                       className="btn">
-                                        Epitech
-                                    </a>
-                                </div>
+                            <div className="flex gap-4">
+                                <SocialBtn href="https://www.linkedin.com/in/jerome-greder/"
+                                           className="btn-linkedin">
+                                    <BsLinkedin/>
+                                    Linkedin
+                                </SocialBtn>
+                                <SocialBtn href="https://github.com/Glados1998"
+                                           className="btn-github">
+                                    <AiFillGithub/>
+                                    Github
+                                </SocialBtn>
                             </div>
                         </div>
-                        <Image src={epitechBanner} alt="Epitech school" width={800} height={300}
-                               className="rounded-2xl shadow-lg"/>
                     </div>
                 </div>
+            </section>
 
-                {/* Stack Section */}
-                <div className="mt-20">
-                    <div className="text-center">
-                        <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold">{t("techStack")}</h1>
-                    </div>
-                    <div className="mt-10 flex justify-center">
-                        <div className="w-200 max-w-full flex flex-wrap justify-center items-center gap-4">
-                            {
-                                tags.map((tag, index) => (
-                                    <ProgrammingTag key={index} programmingTag={tag}/>
-                                ))
-                            }
+            {/* Education Section */}
+            <section className="w-full">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8">{t("educationLabel")}</h2>
+                <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
+                    <div className="space-y-4 flex-grow">
+                        <h3 className="text-xl md:text-2xl font-bold">{t("education.epitech")}</h3>
+                        <p className="text-lg md:text-xl font-medium">{t("education.subheading")}</p>
+                        <p className="text-base md:text-lg">
+                            {t("education.description")}
+                        </p>
+                        <div>
+                            <h4 className="text-lg font-bold mb-2">{t("ctaSchool")}:</h4>
+                            <div className="flex gap-4">
+                                <a href="https://www.webacademie.org/" target="_blank" rel="noopener noreferrer"
+                                   className="btn">
+                                    Web@cadémie
+                                </a>
+                                <a href="https://www.epitech.eu" target="_blank" rel="noopener noreferrer"
+                                   className="btn">
+                                    Epitech
+                                </a>
+                            </div>
                         </div>
                     </div>
+                    <Image src={epitechBanner} alt="Epitech school" width={500} height={200}
+                           className="rounded-2xl shadow-lg"/>
                 </div>
-            </div>
-        </>
+            </section>
+
+            {/* Stack Section */}
+            <section className="w-full">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-center">{t("techStack")}</h2>
+                <div className="flex flex-wrap justify-center gap-4">
+                    {tags.map((tag, index) => (
+                        <ProgrammingTag key={index} programmingTag={tag}/>
+                    ))}
+                </div>
+            </section>
+        </div>
     );
 }
