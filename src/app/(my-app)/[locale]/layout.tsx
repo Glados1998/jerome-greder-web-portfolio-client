@@ -49,14 +49,14 @@ export default async function RootLayout(
 
     return (
         <html lang={locale} suppressHydrationWarning
-              className={'text-black dark:text-white dark:bg-slate-900 flex flex-col min-h-screen'}>
+              className={'text-black dark:text-white dark:bg-slate-900 flex flex-col min-h-screen h-full'}>
         <NextIntlClientProvider messages={messages}>
             <Head>
                 <link rel="icon" href="../../../public/favicon.ico" sizes={"any"}/>
             </Head>
-            <body>
+            <body className="flex flex-col min-h-full">
             <Header/>
-            <main>
+            <main className="flex-grow">
                 {children}
                 <Analytics/>
             </main>
