@@ -6,7 +6,6 @@ import CardImage from "@/app/(my-app)/[locale]/components/cardImage";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {getLocaleFromURL} from "@/utils/localeUtils";
-import {headers} from "next/headers";
 
 const links = [
     {label: "about", href: "/about"},
