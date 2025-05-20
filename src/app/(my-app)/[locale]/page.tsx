@@ -96,11 +96,13 @@ export default function Home() {
                         {t("values")}. <span className={"text-blue-500 dark:text-white text-xl lg:text-2xl font-normal"}>{t("valuesSpan")}</span>
                     </h3>
                 </div>
-                <div className={"overflow-x-scroll"}>
-                    <div className={"inline-flex pb-10 pt-2.5 w-full align-top ltr"}>
-                        {valuesData.map((item, index) => (
-                            <CardImage key={index} cardData={item}/>
-                        ))}
+                <div className="px-8 lg:px-20">
+                    <div className="overflow-x-auto">
+                        <div className="inline-flex pb-10 pt-2.5 space-x-6">
+                            {valuesData.map((item, index) => (
+                                <CardImage key={index} cardData={item}/>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -110,11 +112,13 @@ export default function Home() {
                         {t("services")}. <span className={"text-blue-500 dark:text-white text-xl lg:text-2xl font-normal"}> {t("servicesSpan")}</span>
                     </h3>
                 </div>
-                <div className={"overflow-x-scroll"}>
-                    <div className={"inline-flex pb-10 pt-2.5 w-full align-top ltr"}>
-                        {servicesData.map((item, index) => (
-                            <CardImage key={index} cardData={item}/>
-                        ))}
+                <div className="px-8 lg:px-20">
+                    <div className="overflow-x-auto">
+                        <div className="inline-flex pb-10 pt-2.5 space-x-6">
+                            {servicesData.map((item, index) => (
+                                <CardImage key={index} cardData={item}/>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
