@@ -25,42 +25,33 @@ export function generateStaticParams() {
 export default async function RootLayout(
     props: {
         children: React.ReactNode;
-        params: Promise<{ locale: string }>; // Ensure this matches the expected type
+        params: Promise<{ locale: string }>;
     }
 ) {
     const params = await props.params;
+    const { locale } = params;
+    const { children } = props;
 
-    const {
-        locale
-    } = params;
-
-    const {
-        children
-    } = props;
-
-    // Ensure that the incoming `locale` is valid
     if (!routing.locales.includes(locale as any)) {
         notFound();
     }
 
     setRequestLocale(locale);
-
     const messages = await getMessages();
 
     return (
-        <html lang={locale} suppressHydrationWarning
-              className={'text-black dark:text-white dark:bg-slate-900 flex flex-col min-h-screen h-full'}>
+        <html lang={locale} suppressHydrationWarning className="h-full">
         <NextIntlClientProvider messages={messages}>
             <Head>
-                <link rel="icon" href="../../../public/favicon.ico" sizes={"any"}/>
+                <link rel="icon" href="../../../public/favicon.ico" sizes="any" />
             </Head>
-            <body className="flex flex-col min-h-full">
-            <Header/>
+            <body className="flex flex-col min-h-full text-black dark:text-white dark:bg-slate-900">
+            <Header />
             <main className="flex-grow">
                 {children}
-                <Analytics/>
+                <Analytics />
             </main>
-            <Footer/>
+            <Footer />
             </body>
         </NextIntlClientProvider>
         </html>
