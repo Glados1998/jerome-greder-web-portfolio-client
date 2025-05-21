@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.0",
+    "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "@payloadcms/db-postgres": "^3.5.0",
     "@payloadcms/next": "^3.5.0",
