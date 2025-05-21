@@ -133,8 +133,10 @@ export interface ProgrammingTag {
 export interface Project {
   id: number;
   name: string;
-  image: number | Media;
+  images?: (number | Media)[] | null;
+  thumbnail: number | Media;
   programming_tags?: (number | ProgrammingTag)[] | null;
+  description?: string | null;
   live_link?: string | null;
   github_link?: string | null;
   updatedAt: string;
@@ -288,8 +290,10 @@ export interface ProgrammingTagSelect<T extends boolean = true> {
  */
 export interface ProjectSelect<T extends boolean = true> {
   name?: T;
-  image?: T;
+  images?: T;
+  thumbnail?: T;
   programming_tags?: T;
+  description?: T;
   live_link?: T;
   github_link?: T;
   updatedAt?: T;

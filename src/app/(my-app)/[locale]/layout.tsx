@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import React from 'react';
-import './assets/style/globals.scss';
+import './assets/style/globals.css';
 import {Analytics} from '@vercel/analytics/react';
 import {Inter} from 'next/font/google';
 import Head from 'next/head';
@@ -25,42 +25,33 @@ export function generateStaticParams() {
 export default async function RootLayout(
     props: {
         children: React.ReactNode;
-        params: Promise<{ locale: string }>; // Ensure this matches the expected type
+        params: Promise<{ locale: string }>;
     }
 ) {
     const params = await props.params;
+    const { locale } = params;
+    const { children } = props;
 
-    const {
-        locale
-    } = params;
-
-    const {
-        children
-    } = props;
-
-    // Ensure that the incoming `locale` is valid
     if (!routing.locales.includes(locale as any)) {
         notFound();
     }
 
     setRequestLocale(locale);
-
     const messages = await getMessages();
 
     return (
-        <html lang={locale} suppressHydrationWarning
-              className={'text-black dark:text-white dark:bg-slate-900 flex flex-col min-h-screen'}>
+        <html lang={locale} suppressHydrationWarning className="h-full">
         <NextIntlClientProvider messages={messages}>
             <Head>
-                <link rel="icon" href="../../../public/favicon.ico" sizes={"any"}/>
+                <link rel="icon" href="../../../public/favicon.ico" sizes="any" />
             </Head>
-            <body>
-            <Header/>
-            <main>
+            <body className="flex flex-col min-h-full text-black dark:text-white dark:bg-slate-900">
+            <Header />
+            <main className="flex-grow">
                 {children}
-                <Analytics/>
+                <Analytics />
             </main>
-            <Footer/>
+            <Footer />
             </body>
         </NextIntlClientProvider>
         </html>

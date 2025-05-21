@@ -1,56 +1,27 @@
-import {AiFillGithub} from "react-icons/ai";
-import {MdWebAsset} from "react-icons/md";
-import minimal from '../assets/images/minimal.jpg'
 import Image from "next/image";
-import {useTranslations} from "use-intl";
-import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
-import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
+import Link from "next/link";
+import minimal from '../assets/images/minimal.jpg';
 
-export default function ProjectItem({projects}) {
-
-    const t = useTranslations("page.projects")
+export default function ProjectItem({ project }) {
+    if (!project) return null;
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center space-y-4">
-            <div className="flex flex-col text-left space-y-4">
-                <Image src={projects.image ? projects.image.url : minimal} loading="lazy" alt="minimal" width={750}
-                       height={450}
-                       className="shadow-lg rounded-md"/>
-                <h2 className="text-3xl md:text-3xl font-bold">
-                    {projects.name}
-                </h2>
-                <div className={'flex flex-wrap gap-3 mt-2 md:mt-8'}>
-                    {projects.programming_tags?.map((technology, index) => (
-                        <ProgrammingTag key={index} programmingTag={technology}/>
-                    ))}
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-6">
-                    <div>
-                        <p className="text-lg font-bold">
-                            {t("cta")} :
-                        </p>
-
-                        <div className="flex gap-4 mt-2">
-                            {projects.github_link && (
-                                <SocialBtn
-                                    href={projects.github_link}
-                                    className="btn-github">
-                                    <AiFillGithub/>
-                                    Github
-                                </SocialBtn>
-                            )}
-                            {projects.live_link && (
-                                <SocialBtn href={projects.live_link}
-                                           className="btn-live">
-                                    <MdWebAsset/>
-                                    Live
-                                </SocialBtn>
-                            )}
-                        </div>
-                    </div>
+        <Link href={`/projects/${project.id}`} className="block">
+            <div className="group relative w-full h-80 rounded-2xl shadow overflow-hidden transition-all duration-300 ease-in-out hover:shadow-md hover:scale-[1.02]">
+                <Image 
+                    src={project.thumbnail?.url || minimal.src} 
+                    alt={project.name || 'Project thumbnail'} 
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-transparent"></div>
+                <div className="absolute inset-0 flex items-start p-6">
+                    <h2 className="text-2xl font-bold text-white transition-transform duration-300 group-hover:translate-y-[4px]">
+                        {project.name || 'Untitled Project'}
+                    </h2>
                 </div>
             </div>
-        </div>
-    )
+        </Link>
+    );
 }

@@ -1,54 +1,75 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentcolor);
+    }
+}
+
 .btn, .btn-social, .btn-live, .btn-github, .btn-linkedin, .btn-inverted {
-  @apply text-base md:text-base font-semibold p-2 rounded-md transition duration-300 ease-in-out;
+    @apply text-base md:text-base font-semibold p-2 rounded-md transition duration-300 ease-in-out;
 }
+
 .btn:hover, .btn-social:hover, .btn-live:hover, .btn-github:hover, .btn-linkedin:hover, .btn-inverted:hover {
-  @apply bg-slate-900 text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110;
+    @apply bg-slate-900 text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110 underline underline-offset-2;
 }
+
 .btn:disabled, .btn-social:disabled, .btn-live:disabled, .btn-github:disabled, .btn-linkedin:disabled, .btn-inverted:disabled {
-  @apply bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-white cursor-not-allowed;
+    @apply bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-white cursor-not-allowed;
 }
 
 .btn-inverted:hover {
-  @apply text-slate-900 bg-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110;
+    @apply text-slate-900 bg-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110;
 }
 
 .btn-social span, .btn-live span, .btn-github span, .btn-linkedin span {
-  @apply flex items-center justify-center gap-1.5;
+    @apply flex items-center justify-center gap-1.5;
 }
+
 .btn-social span svg, .btn-live span svg, .btn-github span svg, .btn-linkedin span svg {
-  @apply w-6 h-6;
+    @apply w-6 h-6;
 }
 
 .btn-linkedin {
-  @apply text-blue-600 dark:text-white;
+    @apply text-blue-600 dark:text-white;
 }
+
 .btn-linkedin:hover {
-  @apply bg-blue-600 text-white duration-300 dark:bg-blue-600 dark:text-white ease-in-out scale-110;
+    @apply bg-blue-600 text-white duration-300 dark:bg-blue-600 dark:text-white ease-in-out scale-110;
 }
 
 .btn-github {
-  @apply text-black dark:text-white;
+    @apply text-black dark:text-white;
 }
+
 .btn-github:hover {
-  @apply bg-black text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110;
+    @apply bg-black text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110;
 }
 
 .btn-live {
-  @apply text-green-600 dark:text-white;
+    @apply text-green-600 dark:text-white;
 }
+
 .btn-live:hover {
-  @apply bg-green-600 text-white duration-300 dark:bg-green-700 dark:text-white ease-in-out scale-110;
+    @apply bg-green-600 text-white duration-300 dark:bg-green-700 dark:text-white ease-in-out scale-110;
 }
 
 .programming-label {
-  @apply text-sm font-medium rounded-md dark:bg-white dark:text-slate-900 bg-slate-900 text-white p-1.5;
+    @apply text-sm font-normal rounded-full dark:bg-white dark:text-slate-900 bg-slate-900 text-white p-2;
 }
 
 .input {
-  @apply w-full p-2 rounded-md dark:bg-white dark:text-slate-900 bg-slate-200 text-black;
+    @apply w-full p-2 rounded-md dark:bg-white dark:text-slate-900 bg-slate-200 text-black;
 }
-
-/*# sourceMappingURL=globals.css.map */

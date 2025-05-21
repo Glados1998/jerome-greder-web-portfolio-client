@@ -1,22 +1,25 @@
 import Image from "next/image";
 import minimal from "@/app/(my-app)/[locale]/assets/images/minimal.jpg";
 
-
 export default function CardImage({cardData}) {
     return (
-        <div className="flex ms-4">
-            <div className="flex flex-col w-[25rem] lg:w-[45rem]">
-                <div className="bg-white rounded-2xl shadow-xl hover:shadow-lg overflow-hidden relative w-full h-[15rem] lg:h-[22rem] hover:scale-[1.02] duration-700 ease-in-out">
-                    <Image 
-                        src={cardData.image ? cardData.image.url : minimal} 
-                        alt={cardData.image.alt} 
-                        layout="fill"
-                        objectFit="cover"
-                    />
-                </div>
-                <div className={`mt-4 p-4 lg:p-7`}>
-                    <h3 className="text-lg lg:text-3xl font-bold pt-2.5 lg:pt-5">{cardData.title}</h3>
-                    <p className="text-sm lg:text-lg font-normal lg:font-bold">{cardData.description}</p>
+        <div className="p-2">
+            <div className="group relative w-100 h-80 rounded-2xl shadow overflow-hidden transition-all duration-300 ease-in-out hover:shadow-md hover:scale-[1.02]">
+                <Image
+                    src={cardData.image ? cardData.image.url : minimal}
+                    alt={cardData.image?.alt || cardData.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent"></div>
+                <div className="absolute inset-0 flex flex-col justify-start p-6 text-white">
+                    <h3 className="text-xl font-bold mb-2 transition-transform duration-300 group-hover:translate-y-[4px]">
+                        {cardData.title}
+                    </h3>
+                    <p className="text-sm font-normal transition-all duration-300 group-hover:translate-y-[4px] max-h-32 overflow-hidden">
+                        {cardData.description}
+                    </p>
                 </div>
             </div>
         </div>

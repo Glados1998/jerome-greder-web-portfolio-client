@@ -10,6 +10,7 @@
     "Footer": {
       "madeWith": "Fait avec",
       "hostedOn": "Hébergé sur",
+      "poweredBy": "Propulsé par",
       "allRightsReserved": "Tous droits réservés",
       "navigationLabel": "Navigation",
       "socialLabel": "Social",
@@ -70,9 +71,13 @@
       "techStack": "Mon stack technique"
     },
     "projects": {
+      "noProjects": "Aucun projet trouvé",
+      "backBtn": "Retour",
       "title": "Mes projets",
       "subTitle": "Voici quelques-uns des projets sur lesquels j'ai travaillé",
-      "cta": "Découvrez-le sur"
+      "cta": "Découvrez-le sur",
+      "projectDescription": "Description du projet",
+      "usedTechnologies": "Technologies utilisées"
     },
     "Contact": {
       "title": "Contactez-moi <br></br> J’ai hâte d’avoir de vos nouvelles !",

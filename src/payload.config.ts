@@ -12,10 +12,10 @@ import {Media} from './collections/Media'
 import {Services} from "@/collections/Services";
 import {ProgrammingTag} from "@/collections/ProgrammingTag";
 import {Project} from "@/collections/Project";
+import {Values} from "@/collections/Values";
 import {en} from "@payloadcms/translations/languages/en";
 import {de} from "@payloadcms/translations/languages/de";
 import {fr} from "@payloadcms/translations/languages/fr";
-import {Values} from "@/collections/Values";
 import {s3Storage} from "@payloadcms/storage-s3";
 
 const filename = fileURLToPath(import.meta.url)
@@ -23,7 +23,7 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
     cors: {
-        origins: ["https://jerome-greder.com/"],
+        origins: ["https://jerome-greder.com/", "http://localhost:3000"],
         headers: ["Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Access-Control-Allow-Methods"],
     },
     admin: {
