@@ -7,11 +7,11 @@ export async function POST(request: Request) {
     try {
         const {name, email, subject, message} = await request.json();
 
-        const {data, error} = await resend.emails.send({
+        const { data, error } = await resend.emails.send({
             from: 'mail@jerome-greder.com',
             to: ['jerome.greder@icloud.com'],
             subject: `${subject}`,
-            react: EmailTemplate({name, email, message}),
+            react: await EmailTemplate({ name, email, message }),
         });
 
         if (error) return Response.json({error}, {status: 500});
