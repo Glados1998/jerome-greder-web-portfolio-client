@@ -10,6 +10,7 @@ import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
 import Image from "next/image";
 import {AiFillGithub} from "react-icons/ai";
 import {MdWebAsset} from "react-icons/md";
+import {RichText} from "@payloadcms/richtext-lexical/react"
 
 export default function Page() {
     const {id} = useParams();
@@ -99,9 +100,8 @@ export default function Page() {
 
                             <div>
                                 <span className="text-lg font-semibold mb-2 block">{t("projectDescription")}</span>
-                                <div className="prose max-w-none max-h-60 overflow-auto">
-                                    <p>{singleProject?.description}</p>
-                                </div>
+                                <RichText data={singleProject.description}
+                                          className="prose max-w-none max-h-60 overflow-auto"/>
                             </div>
 
                             <div>

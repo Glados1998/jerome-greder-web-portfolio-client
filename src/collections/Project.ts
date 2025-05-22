@@ -1,4 +1,5 @@
 import type {CollectionConfig} from 'payload'
+import {lexicalEditor} from "@payloadcms/richtext-lexical";
 
 export const Project: CollectionConfig = {
     slug: 'project',
@@ -42,10 +43,10 @@ export const Project: CollectionConfig = {
         {
             name: 'description',
             label: 'Description',
-            type: 'textarea',
-            defaultValue: '',
-            required: false,
+            type: 'richText',
+            editor: lexicalEditor({}),
             localized: true,
+            required: true,
         },
         {
             name: "live_link",
