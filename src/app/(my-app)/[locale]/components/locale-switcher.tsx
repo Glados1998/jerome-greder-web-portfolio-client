@@ -2,18 +2,27 @@
 
 import { Link, usePathname } from "@/i18n/routing";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { getLocaleFromURL } from "@/utils/localeUtils";
 
 const locales = [
-    { label: "en", locale: 'en' },
-    { label: "de", locale: 'de' },
-    { label: "fr", locale: 'fr' },
+    { label: "EN", locale: 'en' },
+    { label: "DE", locale: 'de' },
+    { label: "FR", locale: 'fr' },
 ];
 
 export default function LocaleSwitcher() {
     const pathName = usePathname();
-    const currentLocale = locales.find(loc => pathName.startsWith(`/${loc.locale}`)) || locales[0];
+    const [currentLocale, setCurrentLocale] = useState(locales[0]);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const detectedLocale = getLocaleFromURL(window.location.href);
+            const matchedLocale = locales.find(loc => loc.locale === detectedLocale) || locales[0];
+            setCurrentLocale(matchedLocale);
+        }
+    }, [pathName]);
 
     return (
         <>
@@ -24,9 +33,9 @@ export default function LocaleSwitcher() {
                         <Link
                             href={"/" + pathName}
                             locale={locale.locale}
-                            className='btn'
+                            className={`btn ${locale.locale === currentLocale.locale ? 'bg-slate-900 text-white dark:bg-slate-50 dark:text-black' : ''}`}
                         >
-                            {locale.label.toUpperCase()}
+                            {locale.label}
                         </Link>
                     </li>
                 ))}
@@ -37,7 +46,7 @@ export default function LocaleSwitcher() {
                 <Menu as="div" className="relative inline-block text-left">
                     <div>
                         <Menu.Button className="btn flex items-center justify-center gap-1.5">
-                            {currentLocale.label.toUpperCase()}
+                            {currentLocale.label}
                             <ChevronDownIcon
                                 className="h-5 w-5"
                                 aria-hidden="true"
@@ -61,11 +70,13 @@ export default function LocaleSwitcher() {
                                             <Link
                                                 href={"/" + pathName}
                                                 locale={locale.locale}
-                                                className={`${
-                                                    active ? 'bg-slate-900 text-white dark:bg-slate-50 dark:text-black' : 'text-black dark:text-white'
-                                                } group flex w-full items-center rounded-md px-2 py-2 text-sm font-semibold transition duration-300 ease-in-out`}
+                                                className={`
+                                                    ${active ? 'bg-slate-900 text-white dark:bg-slate-50 dark:text-black' : 'text-black dark:text-white'}
+                                                    ${locale.locale === currentLocale.locale ? 'bg-blue-500 text-white dark:bg-blue-600 dark:text-white' : ''}
+                                                    group flex w-full items-center rounded-md px-2 py-2 text-sm font-semibold transition duration-300 ease-in-out
+                                                `}
                                             >
-                                                {locale.label.toUpperCase()}
+                                                {locale.label}
                                             </Link>
                                         )}
                                     </Menu.Item>
