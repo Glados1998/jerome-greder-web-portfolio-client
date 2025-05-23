@@ -73,3 +73,11 @@
 .input {
     @apply w-full p-2 rounded-md dark:bg-white dark:text-slate-900 bg-slate-200 text-black;
 }
+
+.list-bullet {
+    @apply list-disc pl-5;
+}
+
+.list-number {
+    @apply list-decimal pl-5;
+}
