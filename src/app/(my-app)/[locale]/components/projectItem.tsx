@@ -15,7 +15,7 @@ export default function ProjectItem({ project }) {
                     objectFit="cover"
                     className="transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-transparent"></div>
                 <div className="absolute inset-0 flex items-start p-6">
                     <h2 className="text-2xl font-bold text-white transition-transform duration-300 group-hover:translate-y-[4px]">
                         {project.name || 'Untitled Project'}
