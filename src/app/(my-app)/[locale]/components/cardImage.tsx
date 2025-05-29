@@ -12,7 +12,7 @@ export default function CardImage({cardData}) {
                     objectFit="cover"
                     className="transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-transparent"></div>
                 <div className="absolute inset-0 flex flex-col justify-start p-6 text-white">
                     <h3 className="text-xl font-bold mb-2 transition-transform duration-300 group-hover:translate-y-[4px]">
                         {cardData.title}
