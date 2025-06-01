@@ -20,6 +20,7 @@ import {s3Storage} from "@payloadcms/storage-s3";
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const ca = process.env.RDS_CA_PEM?.replace(/\\n/g, '\n');
 
 export default buildConfig({
     cors: {
@@ -51,7 +52,7 @@ export default buildConfig({
             connectionString: process.env.DATABASE_URI || 'postgres://postgres:root@127.0.0.1:5432/jerome-greder-web-portfolio-cms-db',
             ssl: {
                 rejectUnauthorized: false,
-                ca: path.resolve(dirname, './ssl/server-cert.pem'),
+                ca: ca
             }
         },
     }),
