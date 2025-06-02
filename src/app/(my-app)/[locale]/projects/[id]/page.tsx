@@ -101,7 +101,7 @@ export default function Page() {
                             <div>
                                 <span className="text-lg font-semibold mb-2 block">{t("projectDescription")}</span>
                                 <RichText data={singleProject.description}
-                                          className="prose max-w-none max-h-60 overflow-auto"/>
+                                          className="prose max-w-none max-h-70 overflow-auto bg-slate-200 dark:bg-slate-800 rounded-lg p-3"/>
                             </div>
 
                             <div>
