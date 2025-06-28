@@ -20,7 +20,7 @@ export default function About() {
             console.error('API URL is not defined in environment variables');
             return;
         }
-        axios.get(`${apiUrl}/programming-tag/?limit=30`).then(response => {
+        axios.get(`${apiUrl}/programming-tag/?limit=30&where[includeInStack][equals]=true`).then(response => {
             setTags(response.data.docs)
         }).catch(error => {
             console.error('Error fetching tags:', error);

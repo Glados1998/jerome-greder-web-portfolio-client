@@ -179,6 +179,7 @@ export interface Service {
 export interface ProgrammingTag {
   id: number;
   label: string;
+  includeInStack?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -351,6 +352,7 @@ export interface ServicesSelect<T extends boolean = true> {
  */
 export interface ProgrammingTagSelect<T extends boolean = true> {
   label?: T;
+  includeInStack?: T;
   updatedAt?: T;
   createdAt?: T;
 }

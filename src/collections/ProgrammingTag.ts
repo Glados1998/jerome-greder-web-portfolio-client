@@ -18,5 +18,11 @@ export const ProgrammingTag: CollectionConfig = {
             type: "text",
             required: true,
         },
+        {
+            name: "includeInStack",
+            type: "checkbox",
+            label: "Include tag in Stack",
+            defaultValue: false,
+        }
     ],
 };
