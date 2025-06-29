@@ -1,28 +1,60 @@
 "use client";
 
-import { Link, usePathname } from "@/i18n/routing";
-import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { getLocaleFromURL } from "@/utils/localeUtils";
+import {Link, usePathname} from "@/i18n/routing";
+import {Menu, Transition} from "@headlessui/react";
+import {Fragment, useEffect, useState} from "react";
+import {ChevronDownIcon} from "@heroicons/react/20/solid";
+import {getLocaleFromURL} from "@/utils/localeUtils";
 
+/**
+ * Array of available locales with their labels and locale codes.
+ * Each object contains:
+ * - `label`: The display name of the locale.
+ * - `locale`: The locale code.
+ * @type {{label: string, locale: string}[]}
+ */
 const locales = [
-    { label: "EN", locale: 'en' },
-    { label: "DE", locale: 'de' },
-    { label: "FR", locale: 'fr' },
+    {label: "EN", locale: 'en'},
+    {label: "DE", locale: 'de'},
+    {label: "FR", locale: 'fr'},
 ];
 
+/**
+ * React component for switching between locales.
+ *
+ * This component includes:
+ * - State management for the current locale.
+ * - Effect to detect and set the locale based on the URL.
+ * - Integration with routing for locale-specific navigation.
+ *
+ * @returns {JSX.Element} The rendered locale switcher component.
+ */
 export default function LocaleSwitcher() {
+    /**
+     * Current pathname of the application, used for routing.
+     * @type {string}
+     */
     const pathName = usePathname();
+
+    /**
+     * State for storing the currently selected locale.
+     * Defaults to the first locale in the `locales` array.
+     * @type {{label: string, locale: string}}
+     */
     const [currentLocale, setCurrentLocale] = useState(locales[0]);
 
+    /**
+     * Effect to detect the locale from the URL and update the state.
+     * Runs whenever the `pathName` changes.
+     */
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const detectedLocale = getLocaleFromURL(window.location.href);
-            const matchedLocale = locales.find(loc => loc.locale === detectedLocale) || locales[0];
-            setCurrentLocale(matchedLocale);
+            const detectedLocale = getLocaleFromURL(window.location.href); // Extracts the locale from the URL.
+            const matchedLocale = locales.find(loc => loc.locale === detectedLocale) || locales[0]; // Matches the detected locale or defaults to the first locale.
+            setCurrentLocale(matchedLocale); // Updates the state with the matched locale.
         }
     }, [pathName]);
+
 
     return (
         <>
@@ -62,11 +94,12 @@ export default function LocaleSwitcher() {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                     >
-                        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white dark:bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items
+                            className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white dark:bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div className="px-1 py-1">
                                 {locales.map((locale) => (
                                     <Menu.Item key={locale.locale}>
-                                        {({ active }) => (
+                                        {({active}) => (
                                             <Link
                                                 href={"/" + pathName}
                                                 locale={locale.locale}
