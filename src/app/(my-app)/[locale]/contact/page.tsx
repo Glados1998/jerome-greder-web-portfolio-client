@@ -7,43 +7,65 @@ import {useTranslations} from "use-intl";
 import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
 
 export default function Contact() {
-    const t = useTranslations("page.Contact")
+/**
+ * Hook for translations based on the current locale.
+ */
+const t = useTranslations("page.Contact");
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-    });
+/**
+ * State for storing form data entered by the user.
+ * @type {{name: string, email: string, subject: string, message: string}}
+ */
+const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+});
 
-    const [status, setStatus] = useState("idle");
+/**
+ * State for tracking the status of the form submission.
+ * Possible values: "idle", "loading", "success", "error".
+ * @type {string}
+ */
+const [status, setStatus] = useState("idle");
 
-    const handleChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value});
-    }
+/**
+ * Handles changes to the form inputs.
+ * Updates the `formData` state with the new values.
+ * @param {React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} e - The change event from the input or textarea.
+ */
+const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+};
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus("loading");
+/**
+ * Handles form submission.
+ * Sends the form data to the server via a POST request and updates the `status` state based on the response.
+ * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
+ */
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
 
-        try {
-            const response = await fetch("/api/send", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(formData),
-            });
+    try {
+        const response = await fetch("/api/send", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(formData),
+        });
 
-            if (response.ok) {
-                setStatus("success");
-                setFormData({name: "", email: "", subject: "", message: ""});
-            } else {
-                setStatus("error");
-            }
-        } catch (error) {
-            console.error("Error sending email:", error);
+        if (response.ok) {
+            setStatus("success");
+            setFormData({name: "", email: "", subject: "", message: ""});
+        } else {
             setStatus("error");
         }
-    };
+    } catch (error) {
+        console.error("Error sending email:", error);
+        setStatus("error");
+    }
+};
 
     return (
         <div className="flex flex-col space-y-16 md:space-y-24 px-4 md:px-8 lg:px-12 py-10 max-w-6xl mx-auto">

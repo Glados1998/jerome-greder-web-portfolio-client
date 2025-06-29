@@ -11,21 +11,45 @@ import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
 import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
 
 export default function About() {
-    const t = useTranslations("page.About")
-    const [tags, setTags] = useState([]);
+/**
+ * React logic for fetching and managing programming tags.
+ *
+ * This code includes:
+ * - Translation handling using `useTranslations`.
+ * - State management for programming tags.
+ * - Effect for fetching programming tags from an API.
+ */
 
-    useEffect(() => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL;
-        if (!apiUrl) {
-            console.error('API URL is not defined in environment variables');
-            return;
-        }
-        axios.get(`${apiUrl}/programming-tag/?limit=30&where[includeInStack][equals]=true`).then(response => {
-            setTags(response.data.docs)
-        }).catch(error => {
-            console.error('Error fetching tags:', error);
+const t = useTranslations("page.About"); // Hook for translations based on the current locale.
+
+/**
+ * State for storing programming tags fetched from the API.
+ * @type {Array}
+ */
+const [tags, setTags] = useState([]);
+
+/**
+ * Effect to fetch programming tags from the API.
+ * Executes a GET request to load tags included in the tech stack.
+ * Runs only once when the component is mounted.
+ */
+useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL; // Determines the API URL from environment variables.
+
+    if (!apiUrl) {
+        console.error('API URL is not defined in environment variables'); // Logs an error if the API URL is missing.
+        return;
+    }
+
+    // Fetch programming tags from the API.
+    axios.get(`${apiUrl}/programming-tag/?limit=30&where[includeInStack][equals]=true`)
+        .then(response => {
+            setTags(response.data.docs); // Updates the state with fetched tags data.
+        })
+        .catch(error => {
+            console.error('Error fetching tags:', error); // Logs errors during the fetch.
         });
-    }, []);
+}, []);
 
     return (
         <div className="flex flex-col space-y-16 md:space-y-24 px-4 md:px-8 lg:px-12 py-10 max-w-7xl mx-auto">

@@ -13,35 +13,60 @@ import {MdWebAsset} from "react-icons/md";
 import {RichText} from "@payloadcms/richtext-lexical/react"
 
 export default function Page() {
-    const {id} = useParams();
-    const [singleProject, setSingleProject] = useState(null);
-    const [locale, setLocale] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    const t = useTranslations("page.projects");
+    /**
+     * React component logic for fetching and displaying project details based on locale and project ID.
+     *
+     * This code includes:
+     * - State management for project data, locale, loading status, and selected image index.
+     * - Effects for determining the locale dynamically and fetching project data from an API.
+     * - Logic for determining which images to display based on the project data.
+     */
 
+    const {id} = useParams(); // Extracts the project ID from the URL parameters.
+    const [singleProject, setSingleProject] = useState(null); // State to store the fetched project data.
+    const [locale, setLocale] = useState<string | null>(null); // State to store the current locale.
+    const [isLoading, setIsLoading] = useState(true); // State to track whether the data is being loaded.
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0); // State to track the currently selected image index.
+    const t = useTranslations("page.projects"); // Hook for translations based on the current locale.
+
+    /**
+     * Effect to determine the locale dynamically from the URL.
+     * Runs only on the client side (checks for `window` availability).
+     */
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const currentLocale = getLocaleFromURL(window.location.href);
-            setLocale(currentLocale);
+            const currentLocale = getLocaleFromURL(window.location.href); // Extracts locale from the URL.
+            setLocale(currentLocale); // Updates the locale state.
         }
     }, []);
 
+    /**
+     * Effect to fetch project data from the API based on the locale and project ID.
+     * Runs whenever the `id` or `locale` changes.
+     */
     useEffect(() => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL; // Determines the API URL from environment variables.
         if (apiUrl && locale) {
-            setIsLoading(true);
-            axios.get(`${apiUrl}/project/${id}?depth=1&draft=false&locale=${locale}&fallback-locale=en`).then(response => {
-                setSingleProject(response.data);
-                setIsLoading(false);
-            }).catch(error => {
-                console.error('Error fetching project:', error);
-                setIsLoading(false);
-            });
+            setIsLoading(true); // Sets loading state to true before fetching data.
+            axios.get(`${apiUrl}/project/${id}?depth=1&draft=false&locale=${locale}&fallback-locale=en`) // Fetches project data.
+                .then(response => {
+                    setSingleProject(response.data); // Updates the project data state with the response.
+                    setIsLoading(false); // Sets loading state to false after data is fetched.
+                })
+                .catch(error => {
+                    console.error('Error fetching project:', error); // Logs any errors during the fetch.
+                    setIsLoading(false); // Sets loading state to false in case of an error.
+                });
         }
     }, [id, locale]);
 
-    const displayImages = singleProject?.images?.length > 0 ? singleProject.images : (singleProject?.thumbnail ? [singleProject.thumbnail] : []);
+    /**
+     * Determines the images to display for the project.
+     * If the project has images, it uses them; otherwise, it falls back to the thumbnail.
+     */
+    const displayImages = singleProject?.images?.length > 0
+        ? singleProject.images
+        : (singleProject?.thumbnail ? [singleProject.thumbnail] : []);
 
     return (
         <>
@@ -60,7 +85,7 @@ export default function Page() {
                                         alt={displayImages[selectedImageIndex].alt || "Project image"}
                                         layout="fill"
                                         objectFit="cover"
-                                        className="rounded-lg"
+                                        className="rounded-lg shadow"
                                     />
                                 )}
                             </div>
@@ -69,7 +94,7 @@ export default function Page() {
                                     {displayImages.map((image, index) => (
                                         <div
                                             key={index}
-                                            className={`w-20 h-20 relative cursor-pointer ${index === selectedImageIndex ? 'ring-2 ring-blue-500' : ''}`}
+                                            className={`w-20 h-20 relative cursor-pointer ${index === selectedImageIndex ? 'ring-2 rounded ring-blue-500' : ''}`}
                                             onClick={() => setSelectedImageIndex(index)}
                                         >
                                             <Image
@@ -77,7 +102,7 @@ export default function Page() {
                                                 alt={image.alt || `Project image ${index + 1}`}
                                                 layout="fill"
                                                 objectFit="cover"
-                                                className="rounded"
+                                                className="rounded hover:ring-2 hover:ring-blue-500 transition duration-200"
                                             />
                                         </div>
                                     ))}
@@ -104,23 +129,25 @@ export default function Page() {
                                           className="prose max-w-none max-h-70 overflow-auto bg-slate-200 dark:bg-slate-800 rounded-lg p-3"/>
                             </div>
 
-                            <div>
-                                <span className="text-lg font-semibold mb-2 block">{t("cta")}</span>
-                                <div className="flex gap-4">
-                                    {singleProject?.github_link && (
-                                        <SocialBtn href={singleProject.github_link} className="btn-github">
-                                            <AiFillGithub/>
-                                            Github
-                                        </SocialBtn>
-                                    )}
-                                    {singleProject?.live_link && (
-                                        <SocialBtn href={singleProject.live_link} className="btn-live">
-                                            <MdWebAsset/>
-                                            Live
-                                        </SocialBtn>
-                                    )}
+                            {(singleProject?.github_link || singleProject?.live_link) && (
+                                <div>
+                                    <span className="text-lg font-semibold mb-2 block">{t("cta")}</span>
+                                    <div className="flex gap-4">
+                                        {singleProject?.github_link && (
+                                            <SocialBtn href={singleProject.github_link} className="btn-github">
+                                                <AiFillGithub/>
+                                                Github
+                                            </SocialBtn>
+                                        )}
+                                        {singleProject?.live_link && (
+                                            <SocialBtn href={singleProject.live_link} className="btn-live">
+                                                <MdWebAsset/>
+                                                Live
+                                            </SocialBtn>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -6,35 +6,50 @@ import ProjectItem from "@/app/(my-app)/[locale]/components/projectItem";
 import {getLocaleFromURL} from "@/utils/localeUtils";
 
 export default function Projects() {
-    const t = useTranslations("page.projects")
-    const [projects, setProjects] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [locale, setLocale] = useState<string | null>(null);
+    /**
+     * React component logic for managing and fetching project data based on locale.
+     *
+     * This code includes:
+     * - State management for projects, loading status, and locale.
+     * - Effects for dynamically determining the locale and fetching project data from an API.
+     */
 
+    const t = useTranslations("page.projects"); // Hook for translations based on the current locale.
+    const [projects, setProjects] = useState([]); // State to store the list of projects fetched from the API.
+    const [isLoading, setIsLoading] = useState(true); // State to track whether the project data is being loaded.
+    const [locale, setLocale] = useState<string | null>(null); // State to store the current locale.
 
+    /**
+     * Effect to determine the locale dynamically from the URL.
+     * Runs only on the client side (checks for `window` availability).
+     */
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const currentLocale = getLocaleFromURL(window.location.href);
-            setLocale(currentLocale);
+            const currentLocale = getLocaleFromURL(window.location.href); // Extracts locale from the URL.
+            setLocale(currentLocale); // Updates the locale state.
         }
     }, []);
 
+    /**
+     * Effect to fetch project data from the API based on the locale.
+     * Runs whenever the `locale` changes.
+     */
     useEffect(() => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL; // Determines the API URL from environment variables.
         if (!apiUrl) {
-            console.error('API URL is not defined in environment variables');
+            console.error('API URL is not defined in environment variables'); // Logs an error if the API URL is not defined.
             return;
         }
 
-        setIsLoading(true);
-        axios.get(`${apiUrl}/project/?locale=${locale}&fallback-locale=en`)
+        setIsLoading(true); // Sets loading state to true before fetching data.
+        axios.get(`${apiUrl}/project/?locale=${locale}&fallback-locale=en`) // Fetches project data from the API.
             .then(response => {
-                setProjects(response.data.docs)
-                setIsLoading(false);
+                setProjects(response.data.docs); // Updates the projects state with the fetched data.
+                setIsLoading(false); // Sets loading state to false after data is fetched.
             })
             .catch(error => {
-                console.error('Error fetching projects:', error);
-                setIsLoading(false);
+                console.error('Error fetching projects:', error); // Logs any errors during the fetch.
+                setIsLoading(false); // Sets loading state to false in case of an error.
             });
     }, [locale]);
 

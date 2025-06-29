@@ -13,43 +13,75 @@ const links = [
 ];
 
 export default function Home() {
-    const t = useTranslations('page.Index');
+    /**
+     * React logic for managing locale-based data fetching and state management.
+     *
+     * This code includes:
+     * - Translation handling using `useTranslations`.
+     * - State management for services and values data.
+     * - Effects for dynamically determining the locale and fetching data from an API.
+     */
 
+    const t = useTranslations('page.Index'); // Hook for translations based on the current locale.
+
+    /**
+     * State for storing services data fetched from the API.
+     * @type {Array}
+     */
     const [servicesData, setServicesData] = useState([]);
+
+    /**
+     * State for storing values data fetched from the API.
+     * @type {Array}
+     */
     const [valuesData, setValuesData] = useState([]);
+
+    /**
+     * State for storing the current locale.
+     * @type {string | null}
+     */
     const [locale, setLocale] = useState<string | null>(null);
 
+    /**
+     * Effect to dynamically determine the locale from the URL.
+     * Executes only on the client side.
+     */
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const currentLocale = getLocaleFromURL(window.location.href);
-            setLocale(currentLocale);
+            const currentLocale = getLocaleFromURL(window.location.href); // Extracts locale from the URL.
+            setLocale(currentLocale); // Updates the locale state.
         }
     }, []);
 
+    /**
+     * Effect to fetch data from the API based on the current locale.
+     * Executes whenever the locale changes.
+     */
     useEffect(() => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL; // Determines the API URL from environment variables.
 
         if (!apiUrl) {
-            console.error('API URL is not defined in environment variables');
+            console.error('API URL is not defined in environment variables'); // Logs an error if the API URL is missing.
             return;
         }
 
         if (locale) {
-            axios.get(`${apiUrl}/values/?locale=${locale}&fallback-locale=en`,
-                {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                    }
-                }).then(response => {
-                setValuesData(response.data.docs)
+            // Fetch values data from the API.
+            axios.get(`${apiUrl}/values/?locale=${locale}&fallback-locale=en`, {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                }
+            }).then(response => {
+                setValuesData(response.data.docs); // Updates the state with fetched values data.
             }).catch(error => {
-                console.error('Error fetching values:', error);
+                console.error('Error fetching values:', error); // Logs errors during the fetch.
             });
 
+            // Fetch services data from the API.
             axios.get(`${apiUrl}/services/?locale=${locale}&fallback-locale=en`).then(response => {
-                setServicesData(response.data.docs)
+                setServicesData(response.data.docs); // Updates the state with fetched services data.
             }).catch(error => {
-                console.error('Error fetching services:', error);
+                console.error('Error fetching services:', error); // Logs errors during the fetch.
             });
         }
     }, [locale]);

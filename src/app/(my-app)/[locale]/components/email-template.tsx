@@ -1,14 +1,23 @@
 import * as React from 'react';
 
+/**
+ * Interface representing the structure of an email.
+ */
 export interface EmailInterface {
-    name: string;
-    email: string;
-    message: string;
+    name: string; // The name of the sender
+    email: string; // The email address of the sender
+    message: string; // The message content
 }
 
+/**
+ * React functional component for rendering an email template.
+ *
+ * @param {Readonly<EmailInterface>} props - The properties containing email details.
+ * @returns {JSX.Element} The rendered email template.
+ */
 export const EmailTemplate: React.FC<Readonly<EmailInterface>> = ({
-                                                                      name, message, email
-                                                                  }) => {
+    name, message, email
+}) => {
     return (
         <div>
             <div>
