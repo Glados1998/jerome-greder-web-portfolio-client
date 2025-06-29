@@ -35,21 +35,19 @@ export default function Home() {
         }
 
         if (locale) {
-            axios.get(`${apiUrl}/values/?locale=${locale}`,
+            axios.get(`${apiUrl}/values/?locale=${locale}&fallback-locale=en`,
                 {
                     headers: {
                         "Access-Control-Allow-Origin": "*",
                     }
                 }).then(response => {
                 setValuesData(response.data.docs)
-                console.log(response.data.docs)
             }).catch(error => {
                 console.error('Error fetching values:', error);
             });
 
-            axios.get(`${apiUrl}/services/?locale=${locale}`).then(response => {
+            axios.get(`${apiUrl}/services/?locale=${locale}&fallback-locale=en`).then(response => {
                 setServicesData(response.data.docs)
-                console.log(response.data.docs)
             }).catch(error => {
                 console.error('Error fetching services:', error);
             });

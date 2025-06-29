@@ -31,7 +31,7 @@ export default function Page() {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL;
         if (apiUrl && locale) {
             setIsLoading(true);
-            axios.get(`${apiUrl}/project/${id}?depth=1&draft=false&locale=${locale}`).then(response => {
+            axios.get(`${apiUrl}/project/${id}?depth=1&draft=false&locale=${locale}&fallback-locale=en`).then(response => {
                 setSingleProject(response.data);
                 setIsLoading(false);
             }).catch(error => {

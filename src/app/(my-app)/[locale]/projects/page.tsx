@@ -27,7 +27,7 @@ export default function Projects() {
         }
 
         setIsLoading(true);
-        axios.get(`${apiUrl}/project/?locale=${locale}`)
+        axios.get(`${apiUrl}/project/?locale=${locale}&fallback-locale=en`)
             .then(response => {
                 setProjects(response.data.docs)
                 setIsLoading(false);
