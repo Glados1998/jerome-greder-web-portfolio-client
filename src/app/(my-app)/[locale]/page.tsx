@@ -100,7 +100,7 @@ export default function Home() {
             {/* Hero Section */}
             <section className="px-4 md:px-8 lg:px-12 pt-8 md:pt-16">
                 <div className="max-w-5xl">
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                         {t.rich("title", {
                             span: (children) => <span className="text-blue-500 dark:text-white">{children}</span>,
                             br: () => <br/>

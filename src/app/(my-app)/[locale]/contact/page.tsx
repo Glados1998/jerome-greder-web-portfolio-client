@@ -71,7 +71,7 @@ const handleSubmit = async (e) => {
         <div className="flex flex-col space-y-16 md:space-y-24 px-4 md:px-8 lg:px-12 py-10 max-w-6xl mx-auto">
             {/* Intro Section */}
             <section className="text-center">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                     {t.rich("title", {
                         br: () => <br/>
                     })}
