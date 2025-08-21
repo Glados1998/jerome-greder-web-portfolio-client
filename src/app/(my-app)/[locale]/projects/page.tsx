@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useTranslations } from "use-intl";
+import {useEffect, useState} from "react";
+import {useTranslations} from "use-intl";
 import axios from "axios";
 import ProjectItem from "@/app/(my-app)/[locale]/components/projectItem";
 import {getLocaleFromURL} from "@/utils/localeUtils";
+import ProjectItemSkeleton from "@/app/(my-app)/[locale]/components/skeleton/projectItem-skeleton";
 
 export default function Projects() {
     /**
@@ -68,13 +69,15 @@ export default function Projects() {
             {/* Project Section */}
             <section className="w-full">
                 {isLoading ? (
-                    <div className="text-center">
-                        <p className="text-xl">Loading projects...</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {Array.from({length: 6}).map((_, index) => (
+                            <ProjectItemSkeleton key={index}/>
+                        ))}
                     </div>
                 ) : projects.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {projects.map((project, index) => (
-                            <ProjectItem key={index} project={project} />
+                            <ProjectItem key={index} project={project}/>
                         ))}
                     </div>
                 ) : (
