@@ -11,6 +11,8 @@ import Image from "next/image";
 import {AiFillGithub} from "react-icons/ai";
 import {MdWebAsset} from "react-icons/md";
 import {RichText} from "@payloadcms/richtext-lexical/react"
+import {Skeleton} from "@/components/ui/skeleton";
+import ProgrammingTagSkeleton from "@/app/(my-app)/[locale]/components/skeleton/programmingTag-skeleton";
 
 export default function Page() {
     /**
@@ -21,6 +23,7 @@ export default function Page() {
      * - Effects for determining the locale dynamically and fetching project data from an API.
      * - Logic for determining which images to display based on the project data.
      */
+
 
     const {id} = useParams(); // Extracts the project ID from the URL parameters.
     const [singleProject, setSingleProject] = useState(null); // State to store the fetched project data.
@@ -152,7 +155,40 @@ export default function Page() {
                     </div>
                 </div>
             ) : (
-                <div>Loading...</div>
+                <div className="container mx-auto px-4 py-10">
+                    <div className="mb-4">
+                        <Link className="btn" href="/projects">{t("backBtn")}</Link>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Left Column - Images */}
+                        <div className="flex flex-col gap-4">
+                            <Skeleton className="w-full h-96 relative"/>
+                        </div>
+
+                        {/* Right Column - Project Details */}
+                        <div className="flex flex-col gap-6">
+                            <Skeleton className="w-80 h-12 rounded-2xl"/>
+                            <div>
+                                <Skeleton className="w-50 h-8 mb-2"/>
+                                <div className="flex flex-wrap gap-2 mt-2">
+                                    {Array.from({length: 3}).map((_, index) => (
+                                        <ProgrammingTagSkeleton key={index}/>
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <Skeleton className="w-50 h-8 mb-2"/>
+                            </div>
+                            <div>
+                                <Skeleton className="w-50 h-8 mb-2"/>
+                                <Skeleton className="max-w-noneh-auto h-70 rounded-lg p-3"/>
+                            </div>
+                            <div>
+                                <Skeleton className="w-50 h-8"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             )}
         </>
     );

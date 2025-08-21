@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useTranslations } from "use-intl";
+import {useEffect, useState} from "react";
+import {useTranslations} from "use-intl";
 import axios from "axios";
 import ProjectItem from "@/app/(my-app)/[locale]/components/projectItem";
 import {getLocaleFromURL} from "@/utils/localeUtils";
+import ProjectItemSkeleton from "@/app/(my-app)/[locale]/components/skeleton/projectItem-skeleton";
 
 export default function Projects() {
     /**
@@ -57,7 +58,7 @@ export default function Projects() {
         <div className="flex flex-col space-y-16 md:space-y-24 px-4 md:px-8 lg:px-12 py-10 max-w-8xl mx-auto">
             {/* Intro Section */}
             <section className="text-center">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                     {t("title")}
                 </h1>
                 <p className="text-xl md:text-2xl lg:text-3xl font-medium">
@@ -68,13 +69,15 @@ export default function Projects() {
             {/* Project Section */}
             <section className="w-full">
                 {isLoading ? (
-                    <div className="text-center">
-                        <p className="text-xl">Loading projects...</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {Array.from({length: 6}).map((_, index) => (
+                            <ProjectItemSkeleton key={index}/>
+                        ))}
                     </div>
                 ) : projects.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {projects.map((project, index) => (
-                            <ProjectItem key={index} project={project} />
+                            <ProjectItem key={index} project={project}/>
                         ))}
                     </div>
                 ) : (

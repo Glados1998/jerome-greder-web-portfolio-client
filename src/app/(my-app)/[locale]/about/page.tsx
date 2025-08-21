@@ -9,6 +9,7 @@ import {useTranslations} from "use-intl";
 import axios from "axios";
 import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
 import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
+import ProgrammingTagSkeleton from "@/app/(my-app)/[locale]/components/skeleton/programmingTag-skeleton";
 
 export default function About() {
 /**
@@ -21,6 +22,8 @@ export default function About() {
  */
 
 const t = useTranslations("page.About"); // Hook for translations based on the current locale.
+
+    const [isLoading, setIsLoading] = useState(false)
 
 /**
  * State for storing programming tags fetched from the API.
@@ -45,6 +48,7 @@ useEffect(() => {
     axios.get(`${apiUrl}/programming-tag/?limit=30&where[includeInStack][equals]=true`)
         .then(response => {
             setTags(response.data.docs); // Updates the state with fetched tags data.
+            setIsLoading(true); // Sets loading state to true after fetching tags.
         })
         .catch(error => {
             console.error('Error fetching tags:', error); // Logs errors during the fetch.
@@ -55,7 +59,7 @@ useEffect(() => {
         <div className="flex flex-col space-y-16 md:space-y-24 px-4 md:px-8 lg:px-12 py-10 max-w-7xl mx-auto">
             {/* Intro Section */}
             <section className="text-center">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                     {t("title")}
                 </h1>
                 <p className="text-xl md:text-2xl lg:text-3xl font-medium">
@@ -132,9 +136,15 @@ useEffect(() => {
             <section className="w-full">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-center">{t("techStack")}</h2>
                 <div className="flex flex-wrap justify-center gap-4">
-                    {tags.map((tag, index) => (
-                        <ProgrammingTag key={index} programmingTag={tag}/>
-                    ))}
+                    {isLoading ? (
+                        tags.map((tag) => (
+                            <ProgrammingTag key={tag.id} programmingTag={tag}/>
+                        ))
+                    ) : (
+                        Array.from({ length: 24 }).map((_, index) => (
+                            <ProgrammingTagSkeleton key={index}/>
+                        ))
+                    )}
                 </div>
             </section>
         </div>

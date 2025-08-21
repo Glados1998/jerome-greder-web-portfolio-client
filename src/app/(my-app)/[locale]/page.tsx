@@ -6,6 +6,7 @@ import CardImage from "@/app/(my-app)/[locale]/components/cardImage";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {getLocaleFromURL} from "@/utils/localeUtils";
+import CardImageSkeleton from "@/app/(my-app)/[locale]/components/skeleton/cardImage-skeleton";
 
 const links = [
     {label: "about", href: "/about"},
@@ -23,6 +24,12 @@ export default function Home() {
      */
 
     const t = useTranslations('page.Index'); // Hook for translations based on the current locale.
+
+    /**
+     * State for managing loading state.
+     * @type {boolean}
+     */
+    const [isLoading, setIsLoading] = useState(true) // State to manage loading state, initially set to true.
 
     /**
      * State for storing services data fetched from the API.
@@ -73,6 +80,7 @@ export default function Home() {
                 }
             }).then(response => {
                 setValuesData(response.data.docs); // Updates the state with fetched values data.
+                setIsLoading(false); // Sets loading state to false after data is fetched.
             }).catch(error => {
                 console.error('Error fetching values:', error); // Logs errors during the fetch.
             });
@@ -80,6 +88,7 @@ export default function Home() {
             // Fetch services data from the API.
             axios.get(`${apiUrl}/services/?locale=${locale}&fallback-locale=en`).then(response => {
                 setServicesData(response.data.docs); // Updates the state with fetched services data.
+                setIsLoading(false); // Sets loading state to false after data is fetched.
             }).catch(error => {
                 console.error('Error fetching services:', error); // Logs errors during the fetch.
             });
@@ -91,7 +100,7 @@ export default function Home() {
             {/* Hero Section */}
             <section className="px-4 md:px-8 lg:px-12 pt-8 md:pt-16">
                 <div className="max-w-5xl">
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                         {t.rich("title", {
                             span: (children) => <span className="text-blue-500 dark:text-white">{children}</span>,
                             br: () => <br/>
@@ -127,13 +136,22 @@ export default function Home() {
             <section className="px-4 md:px-8 lg:px-12">
                 <div className="max-w-full">
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                        {t("values")}. <span className="text-blue-500 dark:text-white text-xl md:text-2xl">{t("valuesSpan")}</span>
+                        {t("values")}. <span
+                        className="text-blue-500 dark:text-white text-xl md:text-2xl">{t("valuesSpan")}</span>
                     </h2>
                     <div className="overflow-x-auto">
                         <div className="inline-flex space-x-6 pb-6">
-                            {valuesData.map((item, index) => (
-                                <CardImage key={index} cardData={item}/>
-                            ))}
+                            {isLoading ? (
+                                // Display skeletons while loading
+                                Array.from({length: 4}).map((_, index) => (
+                                    <CardImageSkeleton key={index}/>
+                                ))
+                            ) : (
+                                // Display actual values data once loaded
+                                valuesData.map((item, index) => (
+                                    <CardImage key={index} cardData={item}/>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>
@@ -143,13 +161,22 @@ export default function Home() {
             <section className="px-4 md:px-8 lg:px-12">
                 <div className="max-w-full">
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                        {t("services")}. <span className="text-blue-500 dark:text-white text-xl md:text-2xl">{t("servicesSpan")}</span>
+                        {t("services")}. <span
+                        className="text-blue-500 dark:text-white text-xl md:text-2xl">{t("servicesSpan")}</span>
                     </h2>
                     <div className="overflow-x-auto">
                         <div className="inline-flex space-x-6 pb-6">
-                            {servicesData.map((item, index) => (
-                                <CardImage key={index} cardData={item}/>
-                            ))}
+                            {isLoading ? (
+                                // Display skeletons while loading
+                                Array.from({length: 4}).map((_, index) => (
+                                    <CardImageSkeleton key={index}/>
+                                ))
+                            ) : (
+                                // Display actual services data once loaded
+                                servicesData.map((item, index) => (
+                                    <CardImage key={index} cardData={item}/>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>
