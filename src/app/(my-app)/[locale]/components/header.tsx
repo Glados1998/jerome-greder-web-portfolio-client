@@ -1,10 +1,17 @@
 "use client";
 
 import LocaleSwitcher from "./locale-switcher";
-import { Menu, Transition } from "@headlessui/react";
 import { useTranslations } from "use-intl";
 import { Link } from "@/i18n/routing";
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 const links = [
     { label: "home", href: "/" },
@@ -16,6 +23,7 @@ const links = [
 export default function Header() {
     const t = useTranslations('components.Header');
     const [scrolled, setScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false); // State for dropdown menu
 
     useEffect(() => {
         const handleScroll = () => {
@@ -66,63 +74,66 @@ export default function Header() {
                     <LocaleSwitcher />
                 </div>
 
-                {/* Mobile menu */}
-                <Menu as="div" className="md:hidden relative">
-                    {({ open }) => (
-                        <>
-                            <Menu.Button className="z-20">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    {open ? (
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                    ) : (
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                    )}
-                                </svg>
-                            </Menu.Button>
-                            <Transition
-                                as={Fragment}
-                                enter="transition ease-out duration-100"
-                                enterFrom="transform opacity-0 scale-95"
-                                enterTo="transform opacity-100 scale-100"
-                                leave="transition ease-in duration-75"
-                                leaveFrom="transform opacity-100 scale-100"
-                                leaveTo="transform opacity-0 scale-95"
-                            >
-                                <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right bg-white dark:bg-slate-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                    <div className="px-1 py-1">
-                                        {links.map((link) => (
-                                            <Menu.Item key={link.label}>
-                                                {({ active }) => (
-                                                    <Link
-                                                        href={link.href}
-                                                        className={`${
-                                                            active ? 'bg-blue-500 text-white' : 'text-gray-900 dark:text-white'
-                                                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                                    >
-                                                        {t(link.label)}
-                                                    </Link>
-                                                )}
-                                            </Menu.Item>
-                                        ))}
-                                        <Menu.Item>
-                                            <div className="px-2 py-2">
-                                                <span className="font-medium block mb-2">{t('language')}:</span>
-                                                <LocaleSwitcher />
-                                            </div>
-                                        </Menu.Item>
-                                    </div>
-                                </Menu.Items>
-                            </Transition>
-                        </>
-                    )}
-                </Menu>
+                {/* Mobile menu using shadcn/ui dropdown */}
+                <div className="md:hidden relative">
+                    <DropdownMenu open={menuOpen} onOpenChange={setMenuOpen}>
+                        <DropdownMenuTrigger asChild>
+                            <button className="z-20" onClick={() => setMenuOpen(!menuOpen)}>
+                                {menuOpen ? (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="w-6 h-6"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
+                                    </svg>
+                                ) : (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="w-6 h-6"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                                        />
+                                    </svg>
+                                )}
+                            </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="absolute right-0 mt-2 w-56 origin-top-right bg-white dark:bg-slate-900 rounded-md shadow-lg focus:outline-none">
+                            <div className="px-1 py-1">
+                                {links.map((link) => (
+                                    <DropdownMenuItem key={link.label} asChild>
+                                        <Link
+                                            href={link.href}
+                                            className="font-medium hover:text-blue-500 transition-colors w-full block"
+                                            onClick={() => setMenuOpen(false)} // Close menu on link click
+                                        >
+                                            {t(link.label)}
+                                        </Link>
+                                    </DropdownMenuItem>
+                                ))}
+                                <DropdownMenuSeparator className={"mx-3"} />
+                                <DropdownMenuLabel>
+                                    <span className="font-medium block mb-2">{t('language')}:</span>
+                                    <LocaleSwitcher />
+                                </DropdownMenuLabel>
+                            </div>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
             </nav>
         </header>
     );
