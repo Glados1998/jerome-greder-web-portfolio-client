@@ -3,7 +3,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 
 function ProgrammingTagSkeleton() {
     return (
-        <Skeleton className={"rounded-full w-19 h-8 shadow"}/>
+        <Skeleton className={"rounded-full w-19 h-8"}/>
     );
 }
 
