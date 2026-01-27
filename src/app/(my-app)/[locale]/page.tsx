@@ -74,11 +74,7 @@ export default function Home() {
 
         if (locale) {
             // Fetch values data from the API.
-            axios.get(`${apiUrl}/values/?locale=${locale}&fallback-locale=en`, {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                }
-            }).then(response => {
+            axios.get(`${apiUrl}/values/?locale=${locale}&fallback-locale=en`).then(response => {
                 setValuesData(response.data.docs); // Updates the state with fetched values data.
                 setIsLoading(false); // Sets loading state to false after data is fetched.
             }).catch(error => {
