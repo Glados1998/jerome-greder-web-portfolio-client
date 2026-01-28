@@ -32,6 +32,9 @@ export default buildConfig({
         importMap: {
             baseDir: path.resolve(dirname),
         },
+        components: {
+            beforeNavLinks: ["src/components/BackToSite.tsx"],
+        }
     },
     collections: [Users, Media, Services, ProgrammingTag, Project, Values],
     editor: lexicalEditor(),
