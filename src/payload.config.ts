@@ -9,10 +9,10 @@ import sharp from 'sharp'
 
 import {Users} from './collections/Users'
 import {Media} from './collections/Media'
-import {Services} from "@/collections/Services";
-import {ProgrammingTag} from "@/collections/ProgrammingTag";
-import {Project} from "@/collections/Project";
-import {Values} from "@/collections/Values";
+import {Services} from "./collections/Services";
+import {ProgrammingTag} from "./collections/ProgrammingTag";
+import {Project} from "./collections/Project";
+import {Values} from "./collections/Values";
 import {en} from "@payloadcms/translations/languages/en";
 import {de} from "@payloadcms/translations/languages/de";
 import {fr} from "@payloadcms/translations/languages/fr";
@@ -32,6 +32,9 @@ export default buildConfig({
         importMap: {
             baseDir: path.resolve(dirname),
         },
+        components: {
+            beforeNavLinks: ["src/components/BackToSite.tsx"],
+        }
     },
     collections: [Users, Media, Services, ProgrammingTag, Project, Values],
     editor: lexicalEditor(),
