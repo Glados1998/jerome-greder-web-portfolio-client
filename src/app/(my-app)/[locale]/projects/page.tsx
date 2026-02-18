@@ -43,14 +43,14 @@ export default function Projects() {
         }
 
         setIsLoading(true); // Sets loading state to true before fetching data.
-        axios.get(`${apiUrl}/project/?locale=${locale}&fallback-locale=en`) // Fetches project data from the API.
+        axios.get(`${apiUrl}/project/?locale=${locale}&fallback-locale=en&where[show_project][equals]=true`)
             .then(response => {
-                setProjects(response.data.docs); // Updates the projects state with the fetched data.
-                setIsLoading(false); // Sets loading state to false after data is fetched.
+                setProjects(response.data.docs);
+                setIsLoading(false);
             })
             .catch(error => {
-                console.error('Error fetching projects:', error); // Logs any errors during the fetch.
-                setIsLoading(false); // Sets loading state to false in case of an error.
+                console.error('Error fetching projects:', error);
+                setIsLoading(false);
             });
     }, [locale]);
 
