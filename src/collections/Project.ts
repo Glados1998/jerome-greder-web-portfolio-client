@@ -18,6 +18,14 @@ export const Project: CollectionConfig = {
             localized: true,
         },
         {
+            name: 'headline',
+            label: 'Headline',
+            type: 'text',
+            required: false,
+            localized: true,
+            maxLength: 70,
+        },
+        {
             name: 'images',
             label: 'Images',
             type: 'upload',
@@ -61,5 +69,11 @@ export const Project: CollectionConfig = {
             type: "text",
             required: false,
         },
+        {
+            name: "show_project",
+            label: "Show Project",
+            type: "checkbox",
+            defaultValue: false,
+        }
     ],
 }

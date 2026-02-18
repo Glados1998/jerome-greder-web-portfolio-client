@@ -19,6 +19,7 @@ export default function Projects() {
     const [projects, setProjects] = useState([]); // State to store the list of projects fetched from the API.
     const [isLoading, setIsLoading] = useState(true); // State to track whether the project data is being loaded.
     const [locale, setLocale] = useState<string | null>(null); // State to store the current locale.
+    const [systemMsg, setSystemMsg] = useState("")
 
     /**
      * Effect to determine the locale dynamically from the URL.
@@ -43,14 +44,19 @@ export default function Projects() {
         }
 
         setIsLoading(true); // Sets loading state to true before fetching data.
-        axios.get(`${apiUrl}/project/?locale=${locale}&fallback-locale=en`) // Fetches project data from the API.
+        axios.get(`${apiUrl}/project/?locale=${locale}&fallback-locale=en&where[show_project][equals]=true`)
             .then(response => {
-                setProjects(response.data.docs); // Updates the projects state with the fetched data.
-                setIsLoading(false); // Sets loading state to false after data is fetched.
+
+                if (response.data.docs.length === 0) setSystemMsg(t("noProjects"))
+                else {
+                    setProjects(response.data.docs);
+                }
+                setIsLoading(false);
             })
             .catch(error => {
-                console.error('Error fetching projects:', error); // Logs any errors during the fetch.
-                setIsLoading(false); // Sets loading state to false in case of an error.
+                console.error('Error fetching projects:', error);
+                setIsLoading(false);
+                setSystemMsg(t("fetchProjectError"));
             });
     }, [locale]);
 
@@ -82,7 +88,7 @@ export default function Projects() {
                     </div>
                 ) : (
                     <div className="text-center">
-                        <p className="text-xl">{t("noProjects")}</p>
+                        <p className="text-xl">{systemMsg}</p>
                     </div>
                 )}
             </section>
