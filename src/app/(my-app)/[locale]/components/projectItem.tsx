@@ -5,7 +5,6 @@ import minimal from '../assets/images/minimal.jpg';
 export default function ProjectItem({ project }) {
     if (!project) return null;
 
-    console.log(project)
 
     return (
         <Link href={`/projects/${project.id}`} className="block">
