@@ -70,6 +70,7 @@
     },
     "projects": {
       "noProjects": "No projects found",
+      "fetchProjectError": "There was an error fetching projects",
       "backBtn": "Back",
       "title": "My projects",
       "subTitle": "Here are some of the projects I've worked on",
