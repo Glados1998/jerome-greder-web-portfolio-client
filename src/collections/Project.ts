@@ -64,12 +64,6 @@ export const Project: CollectionConfig = {
             required: false,
         },
         {
-            name: "github_link",
-            label: "Github Link",
-            type: "text",
-            required: false,
-        },
-        {
             name: "git_links",
             label: "Git Links",
             type: "array",

@@ -26,7 +26,7 @@ export default function GitMenu({children, ...props}) {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator className={"mx-1.5"}/>
                     {props.repos.map((repo, index) => (
-                        <DropdownMenuItem key={index}
+                        <DropdownMenuItem key={index} asChild
                                           className={"text-white font-medium cursor-pointer hover:underline decoration-1"}>
                             <Link href={repo.url} target={"_blank"} rel="noopener noreferrer">
                                 {repo.label}
