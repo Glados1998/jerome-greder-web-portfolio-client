@@ -137,7 +137,7 @@ export default function Page() {
                             </div>
 
                                 <div>
-                                    <span className="text-lg font-semibold mb-2 block">{t("cta")}</span>
+                                    <span className="text-lg font-semibold mb-2 block">{t("cta")} :</span>
                                     <div className="flex gap-4">
                                         {hasSingleGitLink && (
                                             <SocialBtn href={gitLinks[0].url} className="btn-github">

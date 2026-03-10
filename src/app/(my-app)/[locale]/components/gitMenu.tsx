@@ -22,7 +22,7 @@ export default function GitMenu({children, ...props}) {
             <DropdownMenuContent className={"bg-black border-none p-2 dark:bg-white"}>
                 <DropdownMenuGroup>
                     <DropdownMenuLabel className={"text-white text-md mb-2"}>
-                        Repositories
+                        Repositories :
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator className={"mx-1.5"}/>
                     {props.repos.map((repo, index) => (
