@@ -135,32 +135,35 @@ export default function Page() {
                                 <RichText data={singleProject.description}
                                           className="prose max-w-none max-h-70 overflow-auto bg-slate-200 dark:bg-slate-800 rounded-lg p-3"/>
                             </div>
+                            {
+                                    (hasSingleGitLink || hasMultipleGitLinks || singleProject?.live_link) && (
+                                    <div>
+                                        <span className="text-lg font-semibold mb-2 block">{t("cta")} :</span>
+                                        <div className="flex gap-4">
+                                            {hasSingleGitLink && (
+                                                <SocialBtn href={gitLinks[0].url} className="btn-github">
+                                                    <AiFillGithub/>
+                                                    Github
+                                                </SocialBtn>
+                                            )}
 
-                                <div>
-                                    <span className="text-lg font-semibold mb-2 block">{t("cta")} :</span>
-                                    <div className="flex gap-4">
-                                        {hasSingleGitLink && (
-                                            <SocialBtn href={gitLinks[0].url} className="btn-github">
-                                                <AiFillGithub/>
-                                                Github
-                                            </SocialBtn>
-                                        )}
+                                            {hasMultipleGitLinks && (
+                                                <GitMenu repos={gitLinks}>
+                                                    <AiFillGithub/>
+                                                    Github
+                                                </GitMenu>
+                                            )}
 
-                                        {hasMultipleGitLinks && (
-                                            <GitMenu repos={gitLinks}>
-                                                <AiFillGithub/>
-                                                Github
-                                            </GitMenu>
-                                        )}
-
-                                        {singleProject?.live_link && (
-                                            <SocialBtn href={singleProject.live_link} className="btn-live">
-                                                <MdWebAsset/>
-                                                Live
-                                            </SocialBtn>
-                                        )}
+                                            {singleProject?.live_link && (
+                                                <SocialBtn href={singleProject.live_link} className="btn-live">
+                                                    <MdWebAsset/>
+                                                    Live
+                                                </SocialBtn>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
+                                )
+                            }
                         </div>
                     </div>
                 </div>
