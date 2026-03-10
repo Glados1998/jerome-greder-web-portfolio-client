@@ -13,6 +13,7 @@ import {MdWebAsset} from "react-icons/md";
 import {RichText} from "@payloadcms/richtext-lexical/react"
 import {Skeleton} from "@/components/ui/skeleton";
 import ProgrammingTagSkeleton from "@/app/(my-app)/[locale]/components/skeleton/programmingTag-skeleton";
+import GitMenu from "@/app/(my-app)/[locale]/components/gitMenu";
 
 export default function Page() {
     /**
@@ -23,6 +24,13 @@ export default function Page() {
      * - Effects for determining the locale dynamically and fetching project data from an API.
      * - Logic for determining which images to display based on the project data.
      */
+
+    const repoTest = [
+        {label: "Front-End", url: "https://ui.shadcn.com/docs/components/radix/dropdown-menu"},
+        {label: "Back-End", url: "https://nextjs.org/docs/app/api-reference/components/link"},
+        {label: "Database", url: "https://payloadcms.slack.com/archives/C048Z9Z5KEX/p1700000000000000"},
+        {label: "DevOps", url: "https://payloadcms.slack.com/archives/C048Z9Z5KEX/p1700000000000000"},
+        ]
 
 
     const {id} = useParams(); // Extracts the project ID from the URL parameters.
@@ -132,10 +140,13 @@ export default function Page() {
                                           className="prose max-w-none max-h-70 overflow-auto bg-slate-200 dark:bg-slate-800 rounded-lg p-3"/>
                             </div>
 
-                            {(singleProject?.github_link || singleProject?.live_link) && (
                                 <div>
                                     <span className="text-lg font-semibold mb-2 block">{t("cta")}</span>
                                     <div className="flex gap-4">
+                                        <GitMenu repos={repoTest}>
+                                            <AiFillGithub/>
+                                            Github
+                                        </GitMenu>
                                         {singleProject?.github_link && (
                                             <SocialBtn href={singleProject.github_link} className="btn-github">
                                                 <AiFillGithub/>
@@ -150,7 +161,6 @@ export default function Page() {
                                         )}
                                     </div>
                                 </div>
-                            )}
                         </div>
                     </div>
                 </div>
