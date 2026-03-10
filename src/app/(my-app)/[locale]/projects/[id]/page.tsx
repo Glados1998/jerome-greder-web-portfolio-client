@@ -25,14 +25,6 @@ export default function Page() {
      * - Logic for determining which images to display based on the project data.
      */
 
-    const repoTest = [
-        {label: "Front-End", url: "https://ui.shadcn.com/docs/components/radix/dropdown-menu"},
-        {label: "Back-End", url: "https://nextjs.org/docs/app/api-reference/components/link"},
-        {label: "Database", url: "https://payloadcms.slack.com/archives/C048Z9Z5KEX/p1700000000000000"},
-        {label: "DevOps", url: "https://payloadcms.slack.com/archives/C048Z9Z5KEX/p1700000000000000"},
-        ]
-
-
     const {id} = useParams(); // Extracts the project ID from the URL parameters.
     const [singleProject, setSingleProject] = useState(null); // State to store the fetched project data.
     const [locale, setLocale] = useState<string | null>(null); // State to store the current locale.
@@ -78,6 +70,10 @@ export default function Page() {
     const displayImages = singleProject?.images?.length > 0
         ? singleProject.images
         : (singleProject?.thumbnail ? [singleProject.thumbnail] : []);
+
+    const gitLinks = Array.isArray(singleProject?.git_links) ? singleProject.git_links : [];
+    const hasSingleGitLink = gitLinks.length === 1;
+    const hasMultipleGitLinks = gitLinks.length > 1;
 
     return (
         <>
@@ -143,16 +139,20 @@ export default function Page() {
                                 <div>
                                     <span className="text-lg font-semibold mb-2 block">{t("cta")}</span>
                                     <div className="flex gap-4">
-                                        <GitMenu repos={repoTest}>
-                                            <AiFillGithub/>
-                                            Github
-                                        </GitMenu>
-                                        {singleProject?.github_link && (
-                                            <SocialBtn href={singleProject.github_link} className="btn-github">
+                                        {hasSingleGitLink && (
+                                            <SocialBtn href={gitLinks[0].url} className="btn-github">
                                                 <AiFillGithub/>
                                                 Github
                                             </SocialBtn>
                                         )}
+
+                                        {hasMultipleGitLinks && (
+                                            <GitMenu repos={gitLinks}>
+                                                <AiFillGithub/>
+                                                Github
+                                            </GitMenu>
+                                        )}
+
                                         {singleProject?.live_link && (
                                             <SocialBtn href={singleProject.live_link} className="btn-live">
                                                 <MdWebAsset/>
