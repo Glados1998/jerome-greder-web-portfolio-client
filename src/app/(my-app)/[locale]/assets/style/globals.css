@@ -132,11 +132,11 @@
     }
 }
 
-.btn, .btn-social, .btn-live, .btn-github, .btn-linkedin, .btn-inverted {
+.btn, .btn-social, .btn-live, .btn-github, .btn-linkedin, .btn-inverted, .btn-gitMenu {
     @apply text-base md:text-base font-semibold p-2 rounded-md transition duration-300 ease-in-out;
 }
 
-.btn:hover, .btn-social:hover, .btn-live:hover, .btn-github:hover, .btn-linkedin:hover, .btn-inverted:hover {
+.btn:hover, .btn-social:hover, .btn-live:hover, .btn-github:hover, .btn-linkedin:hover, .btn-inverted:hover, .btn-gitMenu:hover {
     @apply bg-slate-900 text-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110 underline underline-offset-2;
 }
 
@@ -148,11 +148,11 @@
     @apply text-slate-900 bg-white duration-300 dark:bg-slate-50 dark:text-black ease-in-out scale-110;
 }
 
-.btn-social span, .btn-live span, .btn-github span, .btn-linkedin span {
+.btn-social span, .btn-live span, .btn-github span, .btn-linkedin span, .btn-gitMenu span {
     @apply flex items-center justify-center gap-1.5;
 }
 
-.btn-social span svg, .btn-live span svg, .btn-github span svg, .btn-linkedin span svg {
+.btn-social span svg, .btn-live span svg, .btn-github span svg, .btn-linkedin span svg, .btn-gitMenu span svg {
     @apply w-6 h-6;
 }
 

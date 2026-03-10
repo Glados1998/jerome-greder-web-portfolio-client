@@ -13,6 +13,7 @@ import {MdWebAsset} from "react-icons/md";
 import {RichText} from "@payloadcms/richtext-lexical/react"
 import {Skeleton} from "@/components/ui/skeleton";
 import ProgrammingTagSkeleton from "@/app/(my-app)/[locale]/components/skeleton/programmingTag-skeleton";
+import GitMenu from "@/app/(my-app)/[locale]/components/gitMenu";
 
 export default function Page() {
     /**
@@ -23,7 +24,6 @@ export default function Page() {
      * - Effects for determining the locale dynamically and fetching project data from an API.
      * - Logic for determining which images to display based on the project data.
      */
-
 
     const {id} = useParams(); // Extracts the project ID from the URL parameters.
     const [singleProject, setSingleProject] = useState(null); // State to store the fetched project data.
@@ -70,6 +70,10 @@ export default function Page() {
     const displayImages = singleProject?.images?.length > 0
         ? singleProject.images
         : (singleProject?.thumbnail ? [singleProject.thumbnail] : []);
+
+    const gitLinks = Array.isArray(singleProject?.git_links) ? singleProject.git_links : [];
+    const hasSingleGitLink = gitLinks.length === 1;
+    const hasMultipleGitLinks = gitLinks.length > 1;
 
     return (
         <>
@@ -131,26 +135,35 @@ export default function Page() {
                                 <RichText data={singleProject.description}
                                           className="prose max-w-none max-h-70 overflow-auto bg-slate-200 dark:bg-slate-800 rounded-lg p-3"/>
                             </div>
+                            {
+                                    (hasSingleGitLink || hasMultipleGitLinks || singleProject?.live_link) && (
+                                    <div>
+                                        <span className="text-lg font-semibold mb-2 block">{t("cta")} :</span>
+                                        <div className="flex gap-4">
+                                            {hasSingleGitLink && (
+                                                <SocialBtn href={gitLinks[0].url} className="btn-github">
+                                                    <AiFillGithub/>
+                                                    Github
+                                                </SocialBtn>
+                                            )}
 
-                            {(singleProject?.github_link || singleProject?.live_link) && (
-                                <div>
-                                    <span className="text-lg font-semibold mb-2 block">{t("cta")}</span>
-                                    <div className="flex gap-4">
-                                        {singleProject?.github_link && (
-                                            <SocialBtn href={singleProject.github_link} className="btn-github">
-                                                <AiFillGithub/>
-                                                Github
-                                            </SocialBtn>
-                                        )}
-                                        {singleProject?.live_link && (
-                                            <SocialBtn href={singleProject.live_link} className="btn-live">
-                                                <MdWebAsset/>
-                                                Live
-                                            </SocialBtn>
-                                        )}
+                                            {hasMultipleGitLinks && (
+                                                <GitMenu repos={gitLinks}>
+                                                    <AiFillGithub/>
+                                                    Github
+                                                </GitMenu>
+                                            )}
+
+                                            {singleProject?.live_link && (
+                                                <SocialBtn href={singleProject.live_link} className="btn-live">
+                                                    <MdWebAsset/>
+                                                    Live
+                                                </SocialBtn>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                )
+                            }
                         </div>
                     </div>
                 </div>
