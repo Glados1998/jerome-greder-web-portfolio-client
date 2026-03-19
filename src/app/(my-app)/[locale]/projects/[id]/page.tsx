@@ -122,7 +122,7 @@ export default function Page() {
                             <h1 className="text-3xl font-bold">{singleProject?.name}</h1>
 
                             <div>
-                                <span className="text-lg font-semibold mb-2 block">{t("usedTechnologies")}</span>
+                                <span className="text-lg font-semibold mb-2 block">{t("usedTechnologies")} :</span>
                                 <div className="flex flex-wrap gap-2">
                                     {singleProject?.programming_tags?.map((technology, index) => (
                                         <ProgrammingTag key={index} programmingTag={technology}/>
@@ -131,7 +131,7 @@ export default function Page() {
                             </div>
 
                             <div>
-                                <span className="text-lg font-semibold mb-2 block">{t("projectDescription")}</span>
+                                <span className="text-lg font-semibold mb-2 block">{t("projectDescription")} :</span>
                                 <RichText data={singleProject.description}
                                           className="prose max-w-none max-h-70 overflow-auto bg-slate-200 dark:bg-slate-800 rounded-lg p-3"/>
                             </div>

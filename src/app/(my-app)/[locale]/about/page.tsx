@@ -84,7 +84,7 @@ useEffect(() => {
                         </p>
                         <div>
                             <p className="text-lg font-bold mb-2">
-                                {t("cta")}:
+                                {t("cta")} :
                             </p>
                             <div className="flex gap-4">
                                 <SocialBtn href="https://www.linkedin.com/in/jerome-greder/"
@@ -114,7 +114,7 @@ useEffect(() => {
                             {t("education.description")}
                         </p>
                         <div>
-                            <h4 className="text-lg font-bold mb-2">{t("ctaSchool")}:</h4>
+                            <h4 className="text-lg font-bold mb-2">{t("ctaSchool")} :</h4>
                             <div className="flex gap-4">
                                 <a href="https://www.webacademie.org/" target="_blank" rel="noopener noreferrer"
                                    className="btn">
