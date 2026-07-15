@@ -82,6 +82,12 @@
     },
     "Contact": {
       "title": "Contactez-moi <br></br> J’ai hâte d’avoir de vos nouvelles !",
+      "imageAlt": "Bureau avec un ordinateur portable et des notes de contact",
+      "formLegend": "Envoyez-moi un message",
+      "nameLabel": "Votre nom",
+      "emailLabel": "Votre adresse e-mail",
+      "subjectLabel": "Sujet",
+      "messageLabel": "Votre message",
       "namePlaceholder": "Votre nom",
       "emailPlaceholder": "Votre email",
       "subjectPlaceholder": "Sujet",
@@ -90,6 +96,15 @@
       "sending": "Envoi en cours...",
       "successMessage": "Message envoyé avec succès !",
       "errorMessage": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
+      "validationMessage": "Veuillez vérifier les champs signalés.",
+      "fieldError": "Veuillez vérifier ce champ.",
+      "verificationMessage": "Veuillez effectuer la vérification anti-spam, puis réessayer.",
+      "rateLimitMessage": "Trop de messages ont été envoyés. Patientez quelques minutes avant de réessayer.",
+      "unavailableMessage": "Le formulaire de contact est temporairement indisponible. Veuillez réessayer plus tard.",
+      "verificationLabel": "Vérification anti-spam",
+      "javascriptRequired": "JavaScript est nécessaire pour envoyer ce formulaire de manière sécurisée.",
+      "privacyNotice": "Vos coordonnées servent uniquement à répondre à votre demande et sont conservées le temps nécessaire au traitement de l’échange.",
+      "privacyLink": "Informations légales et confidentialité",
       "linkedin": "Vous pouvez aussi me trouver sur Linkedin"
     },
     "Legal": {

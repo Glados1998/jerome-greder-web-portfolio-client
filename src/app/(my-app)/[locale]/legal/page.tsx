@@ -1,9 +1,4 @@
-"use client";
-import {useTranslations} from "use-intl";
-
-
 export default function Legal() {
-    const t = useTranslations("page.Legal")
     return (
         <>
             <div className='relative px-5 md:px-20 lg:px-40 py-10 mb-40'>
@@ -80,6 +75,39 @@ export default function Legal() {
                                     est la propriété intellectuelle de Jérôme-Alexandre Greder, sauf mention contraire.
                                     Toute reproduction, distribution ou utilisation non autorisée de ce contenu sans
                                     permission explicite est interdite et pourra entraîner des poursuites judiciaires.
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 className="lg:text-xl font-bold">
+                                Données personnelles – formulaire de contact :
+                            </h2>
+                            <div className="mt-3 space-y-3">
+                                <p>
+                                    Les informations envoyées au moyen du formulaire de contact sont traitées par
+                                    Jérôme-Alexandre Greder afin de lire votre demande, d’y répondre et d’assurer le
+                                    suivi de l’échange. Ce traitement repose sur l’intérêt légitime à répondre aux
+                                    demandes volontairement adressées par les visiteurs du site.
+                                </p>
+                                <p>
+                                    Les champs du formulaire sont nécessaires pour traiter la demande. Les données
+                                    sont accessibles au responsable du site et transitent par ses prestataires
+                                    techniques d’hébergement et d’envoi d’e-mails, Vercel et Resend. Elles ne sont pas
+                                    utilisées à des fins de prospection et sont conservées uniquement pendant la durée
+                                    nécessaire au traitement et au suivi de l’échange, sous réserve des obligations
+                                    légales applicables.
+                                </p>
+                                <p>
+                                    Vous pouvez demander l’accès, la rectification, l’effacement ou la limitation du
+                                    traitement de vos données en écrivant à
+                                    {" "}<a className="font-bold underline underline-offset-2"
+                                           href="mailto:jerome.greder@icloud.com">
+                                        jerome.greder@icloud.com
+                                    </a>. Vous pouvez également introduire une réclamation auprès de la
+                                    {" "}<a className="font-bold underline underline-offset-2"
+                                           href="https://www.cnil.fr/" target="_blank" rel="noreferrer">
+                                        CNIL
+                                    </a>.
                                 </p>
                             </div>
                         </div>

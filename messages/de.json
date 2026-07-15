@@ -82,6 +82,12 @@
     },
     "Contact": {
       "title": "Kontakt aufnehmen <br></br> Ich freue mich darauf, von Ihnen zu hören!",
+      "imageAlt": "Schreibtisch mit Laptop und Kontaktnotizen",
+      "formLegend": "Senden Sie mir eine Nachricht",
+      "nameLabel": "Ihr Name",
+      "emailLabel": "Ihre E-Mail-Adresse",
+      "subjectLabel": "Betreff",
+      "messageLabel": "Ihre Nachricht",
       "namePlaceholder": "Ihr Name",
       "emailPlaceholder": "Ihre E-Mail",
       "subjectPlaceholder": "Betreff",
@@ -90,6 +96,15 @@
       "sending": "Senden...",
       "successMessage": "Nachricht erfolgreich gesendet!",
       "errorMessage": "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+      "validationMessage": "Bitte überprüfen Sie die markierten Felder.",
+      "fieldError": "Bitte überprüfen Sie dieses Feld.",
+      "verificationMessage": "Bitte führen Sie die Anti-Spam-Prüfung durch und versuchen Sie es erneut.",
+      "rateLimitMessage": "Es wurden zu viele Nachrichten gesendet. Bitte warten Sie einige Minuten und versuchen Sie es erneut.",
+      "unavailableMessage": "Das Kontaktformular ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.",
+      "verificationLabel": "Anti-Spam-Prüfung",
+      "javascriptRequired": "JavaScript ist erforderlich, um dieses Formular sicher zu senden.",
+      "privacyNotice": "Ihre Kontaktdaten werden ausschließlich zur Beantwortung Ihrer Anfrage verwendet und nur so lange gespeichert, wie es für die Bearbeitung erforderlich ist.",
+      "privacyLink": "Rechtliche Hinweise und Datenschutz",
       "linkedin": "Sie finden mich auch auf Linkedin"
     },
     "Legal": {

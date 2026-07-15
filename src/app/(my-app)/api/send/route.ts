@@ -1,44 +1,115 @@
-import {Resend} from 'resend';
+import {Resend} from "resend";
 import {EmailTemplate} from "@/app/(my-app)/[locale]/components/email-template";
+import {
+    type ContactApiResponse,
+    type ContactErrorCode,
+} from "@/lib/contact-shared";
+import {
+    contactSubmissionSchema,
+    getInvalidContactFields,
+    isAllowedContactOrigin,
+    isHoneypotSubmission,
+    readContactRequestBody,
+    verifyTurnstileToken,
+} from "@/lib/contact-server";
 
-/**
- * Instantiates the Resend client using the API key from environment variables.
- *
- * @constant {Resend} resend - The Resend client for sending emails.
- */
-const resend = new Resend(process.env.RESEND_API_KEY);
+const responseHeaders = {
+    "Cache-Control": "no-store",
+    "X-Content-Type-Options": "nosniff",
+};
 
-/**
- * Handles POST requests to send an email using the Resend service.
- *
- * This function extracts the email details from the request body, generates the email content
- * using a React component, and sends the email via the Resend API.
- *
- * @async
- * @function POST
- * @param {Request} request - The incoming HTTP request containing email details in JSON format.
- * @returns {Promise<Response>} A JSON response indicating success or failure.
- */
+function jsonResponse(body: ContactApiResponse, status = 200) {
+    return Response.json(body, {status, headers: responseHeaders});
+}
+
+function errorResponse(code: ContactErrorCode, status: number) {
+    return jsonResponse({ok: false, code}, status);
+}
+
 export async function POST(request: Request) {
     try {
-        // Parse the request body to extract email details
-        const {name, email, subject, message} = await request.json();
+        if (!isAllowedContactOrigin(request, process.env.CONTACT_FORM_ALLOWED_ORIGINS)) {
+            return errorResponse("FORBIDDEN", 403);
+        }
 
-        // Send the email using the Resend client
-        const { data, error } = await resend.emails.send({
-            from: 'mail@jerome-greder.com',
-            to: ['jerome.greder@icloud.com'],
+        const body = await readContactRequestBody(request);
+
+        if (body.ok === false) {
+            return errorResponse(body.code, body.status);
+        }
+
+        // Check the honeypot before the strict schema so basic bots do not need to know
+        // about Turnstile or idempotency fields to receive the same response as a user.
+        if (isHoneypotSubmission(body.value)) return jsonResponse({ok: true});
+
+        const parsedSubmission = contactSubmissionSchema.safeParse(body.value);
+
+        if (!parsedSubmission.success) {
+            return jsonResponse({
+                ok: false,
+                code: "INVALID_INPUT",
+                fields: getInvalidContactFields(parsedSubmission.error),
+            }, 400);
+        }
+
+        const {
+            name,
+            email,
+            subject,
+            message,
+            turnstileToken,
+            submissionId,
+        } = parsedSubmission.data;
+
+        const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+        const resendApiKey = process.env.RESEND_API_KEY;
+
+        if (!turnstileSecret || !resendApiKey) {
+            console.error("Contact form configuration is incomplete", {
+                hasResendApiKey: Boolean(resendApiKey),
+                hasTurnstileSecret: Boolean(turnstileSecret),
+            });
+            return errorResponse("CONFIGURATION_ERROR", 503);
+        }
+
+        const allowedHostnames = (process.env.TURNSTILE_ALLOWED_HOSTNAMES ?? "")
+            .split(",")
+            .map((value) => value.trim())
+            .filter(Boolean);
+        const verification = await verifyTurnstileToken(
+            turnstileToken,
+            turnstileSecret,
+            allowedHostnames,
+        );
+
+        if (verification.ok === false) {
+            const code = verification.reason === "invalid"
+                ? "VERIFICATION_FAILED"
+                : "VERIFICATION_UNAVAILABLE";
+            const status = verification.reason === "invalid" ? 400 : 503;
+
+            return errorResponse(code, status);
+        }
+
+        const resend = new Resend(resendApiKey);
+        const {error} = await resend.emails.send({
+            from: process.env.CONTACT_FROM_EMAIL,
+            to: process.env.CONTACT_TO_EMAIL,
+            replyTo: email,
             subject: `${subject}`,
-            react: await EmailTemplate({ name, email, message }),
+            react: EmailTemplate({name, email, message}),
+        }, {
+            idempotencyKey: `contact/${submissionId}`,
         });
 
-        // Return an error response if the email sending fails
-        if (error) return Response.json({error}, {status: 500});
+        if (error) {
+            console.error("Contact email could not be sent", error);
+            return errorResponse("SEND_FAILED", 502);
+        }
 
-        // Return a success response with the email data
-        return Response.json({data});
+        return jsonResponse({ok: true});
     } catch (error) {
-        // Handle unexpected errors and return an error response
-        return Response.json({error}, {status: 500});
+        console.error("Unexpected contact form error", error);
+        return errorResponse("SEND_FAILED", 500);
     }
 }
