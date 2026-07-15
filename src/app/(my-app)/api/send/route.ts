@@ -93,10 +93,10 @@ export async function POST(request: Request) {
 
         const resend = new Resend(resendApiKey);
         const {error} = await resend.emails.send({
-            from: process.env.CONTACT_FROM_EMAIL ?? "Portfolio <mail@jerome-greder.com>",
-            to: [process.env.CONTACT_TO_EMAIL ?? "jerome.greder@icloud.com"],
+            from: process.env.CONTACT_FROM_EMAIL,
+            to: process.env.CONTACT_TO_EMAIL,
             replyTo: email,
-            subject: `[Portfolio] ${subject}`,
+            subject: `${subject}`,
             react: EmailTemplate({name, email, message}),
         }, {
             idempotencyKey: `contact/${submissionId}`,

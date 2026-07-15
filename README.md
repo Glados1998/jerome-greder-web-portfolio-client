@@ -27,8 +27,9 @@ idempotency key. Copy `.env.example` to `.env.local` and configure these values 
 - `CONTACT_TO_EMAIL`: the inbox that receives contact messages.
 - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: the public key for a Cloudflare Turnstile widget.
 - `TURNSTILE_SECRET_KEY`: the matching private Turnstile key.
-- `TURNSTILE_ALLOWED_HOSTNAMES`: optional comma-separated production hostnames checked after token
-  verification.
+- `TURNSTILE_ALLOWED_HOSTNAMES`: optional comma-separated hostnames checked after token verification.
+  Use bare hostnames without a scheme, path, or port—for example, `localhost` during local
+  development and `example.com,www.example.com` in production.
 - `CONTACT_FORM_ALLOWED_ORIGINS`: optional comma-separated additional browser origins, such as a
   stable preview domain. The request's own origin is allowed automatically.
 
