@@ -80,6 +80,12 @@
     },
     "Contact": {
       "title": "Contact me <br></br> Let's get in touch!",
+      "imageAlt": "Desk with a laptop and contact notes",
+      "formLegend": "Send me a message",
+      "nameLabel": "Your name",
+      "emailLabel": "Your email",
+      "subjectLabel": "Subject",
+      "messageLabel": "Your message",
       "namePlaceholder": "Your Name",
       "emailPlaceholder": "Your Email",
       "subjectPlaceholder": "Subject",
@@ -88,6 +94,15 @@
       "sending": "Sending...",
       "successMessage": "Message sent successfully!",
       "errorMessage": "There was an error sending your message. Please try again.",
+      "validationMessage": "Please check the highlighted fields.",
+      "fieldError": "Please check this field.",
+      "verificationMessage": "Please complete the anti-spam verification and try again.",
+      "rateLimitMessage": "Too many messages were sent. Please wait a few minutes and try again.",
+      "unavailableMessage": "The contact form is temporarily unavailable. Please try again later.",
+      "verificationLabel": "Anti-spam verification",
+      "javascriptRequired": "JavaScript is required to send this form securely.",
+      "privacyNotice": "Your contact details are used only to reply to your request and are kept only as long as necessary to handle the exchange.",
+      "privacyLink": "Legal and privacy information",
       "linkedin": "You can also find me on Linkedin"
     },
     "Legal": {

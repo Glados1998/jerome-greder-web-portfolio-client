@@ -15,20 +15,20 @@ export interface EmailInterface {
  * @param {Readonly<EmailInterface>} props - The properties containing email details.
  * @returns {JSX.Element} The rendered email template.
  */
-export const EmailTemplate: React.FC<Readonly<EmailInterface>> = ({
+export const EmailTemplate = ({
     name, message, email
-}) => {
+}: Readonly<EmailInterface>): React.ReactElement => {
     return (
         <div>
             <div>
                 <h1>Hey, you have a new message from {name}!</h1>
-                <h3>
-                    Email: {email}
-                </h3>
+                <p>
+                    Reply to: <a href={`mailto:${email}`}>{email}</a>
+                </p>
             </div>
             <div>
-                <p>{message}</p>
+                <p style={{whiteSpace: "pre-wrap"}}>{message}</p>
             </div>
         </div>
     );
-}
+};
