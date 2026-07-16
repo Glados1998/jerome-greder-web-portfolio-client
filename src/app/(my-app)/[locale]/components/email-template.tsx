@@ -1,19 +1,25 @@
 import * as React from 'react';
 
 /**
- * Interface representing the structure of an email.
+ * Values rendered into the owner notification email.
+ *
+ * The API route validates and normalizes these strings before this component is called. React's
+ * normal text escaping must remain enabled; do not replace these nodes with raw HTML rendering.
  */
 export interface EmailInterface {
-    name: string; // The name of the sender
-    email: string; // The email address of the sender
-    message: string; // The message content
+    /** Display name supplied by the visitor. */
+    name: string;
+    /** Validated address also assigned to Resend's `replyTo` header. */
+    email: string;
+    /** Plain-text message supplied by the visitor. */
+    message: string;
 }
 
 /**
- * React functional component for rendering an email template.
+ * Builds the React Email body sent to the portfolio owner.
  *
- * @param {Readonly<EmailInterface>} props - The properties containing email details.
- * @returns {JSX.Element} The rendered email template.
+ * The message is rendered as escaped text while `whiteSpace: pre-wrap` preserves the visitor's
+ * paragraphs and line breaks without accepting arbitrary HTML.
  */
 export const EmailTemplate = ({
     name, message, email

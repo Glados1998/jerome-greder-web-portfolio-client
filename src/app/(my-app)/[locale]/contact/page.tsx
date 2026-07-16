@@ -1,5 +1,13 @@
 "use client";
 
+/**
+ * Interactive contact page.
+ *
+ * The browser owns presentation, localized feedback, and Turnstile widget lifecycle only. All
+ * values are treated as untrusted again by `/api/send`; HTML constraints here are for usability,
+ * not a security boundary.
+ */
+
 import contactImage from "../assets/images/contact-banner.jpg";
 import {
     type ChangeEvent,
@@ -32,6 +40,7 @@ type SubmissionStatus =
     | "rateLimitError"
     | "unavailable";
 
+/** Minimal subset of Cloudflare's explicit-render options used by this page. */
 type TurnstileWidgetOptions = {
     sitekey: string;
     action: string;
@@ -41,6 +50,7 @@ type TurnstileWidgetOptions = {
     "error-callback": () => void;
 };
 
+/** Minimal browser API exposed after Cloudflare's Turnstile script has loaded. */
 type TurnstileApi = {
     render: (container: HTMLElement, options: TurnstileWidgetOptions) => string;
     reset: (widgetId: string) => void;
@@ -49,12 +59,15 @@ type TurnstileApi = {
 
 declare global {
     interface Window {
+        /** Added asynchronously by `https://challenges.cloudflare.com/turnstile/v0/api.js`. */
         turnstile?: TurnstileApi;
     }
 }
 
+// This is a public widget identifier embedded in the client bundle, never the Turnstile secret.
 const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
+/** Initial controlled values, including the honeypot field that legitimate users never see. */
 const emptyForm: ContactFormValues = {
     name: "",
     email: "",
@@ -63,6 +76,7 @@ const emptyForm: ContactFormValues = {
     website: "",
 };
 
+/** Renders and coordinates the localized contact form and its submission state. */
 export default function Contact() {
     const t = useTranslations("page.Contact");
     const [formData, setFormData] = useState<ContactFormValues>(emptyForm);
@@ -70,9 +84,13 @@ export default function Contact() {
     const [fieldErrors, setFieldErrors] = useState<ContactField[]>([]);
     const [turnstileToken, setTurnstileToken] = useState("");
     const turnstileContainerRef = useRef<HTMLDivElement>(null);
+    // Widget identity is imperative Cloudflare state and does not belong in React render state.
     const turnstileWidgetIdRef = useRef<string | null>(null);
+    // Retained across an unchanged retry so the server/provider can deduplicate email delivery.
     const submissionIdRef = useRef<string | null>(null);
 
+    // Both the React effect and Script.onReady may call this; the widget-ID guard makes it safe and
+    // ensures that client-side navigation and script timing cannot create duplicate widgets.
     const renderTurnstile = useCallback(() => {
         if (
             !turnstileSiteKey
@@ -102,6 +120,7 @@ export default function Contact() {
         );
     }, []);
 
+    // Turnstile tokens are short-lived and single-use, so every submission attempt needs a reset.
     const resetTurnstile = useCallback(() => {
         if (turnstileWidgetIdRef.current && window.turnstile) {
             window.turnstile.reset(turnstileWidgetIdRef.current);
@@ -112,6 +131,7 @@ export default function Contact() {
     useEffect(() => {
         renderTurnstile();
 
+        // Explicit removal prevents Cloudflare iframe/widget state leaking across client navigation.
         return () => {
             if (turnstileWidgetIdRef.current && window.turnstile) {
                 window.turnstile.remove(turnstileWidgetIdRef.current);
@@ -128,6 +148,7 @@ export default function Contact() {
             [field]: event.target.value,
         }));
         setFieldErrors((currentErrors) => currentErrors.filter((currentField) => currentField !== field));
+        // Changed content represents a new logical submission and therefore needs a new ID.
         submissionIdRef.current = null;
 
         if (status !== "loading") setStatus("idle");
@@ -143,6 +164,7 @@ export default function Contact() {
 
         setStatus("loading");
         setFieldErrors([]);
+        // Create before fetch so an interrupted request can be retried with the same idempotency key.
         submissionIdRef.current ??= crypto.randomUUID();
 
         try {
@@ -176,6 +198,7 @@ export default function Contact() {
                     setStatus("validationError");
 
                     if (invalidFields[0]) {
+                        // Wait for React to render aria-invalid/error content before moving focus.
                         requestAnimationFrame(() => {
                             document.getElementById(`contact-${invalidFields[0]}`)?.focus();
                         });
@@ -198,6 +221,7 @@ export default function Contact() {
         } catch {
             setStatus("error");
         } finally {
+            // Cloudflare will reject reuse even when the API responds with an error.
             resetTurnstile();
         }
     };
@@ -339,6 +363,7 @@ export default function Contact() {
                                 )}
                             </div>
 
+                            {/* Bots commonly fill every input; humans cannot reach this honeypot. */}
                             <div className="absolute left-[-10000px] h-px w-px overflow-hidden" aria-hidden="true">
                                 <label htmlFor="contact-website">Website</label>
                                 <input
@@ -352,6 +377,7 @@ export default function Contact() {
                                 />
                             </div>
 
+                            {/* Explicit rendering lets React own widget setup and teardown. */}
                             {turnstileSiteKey ? (
                                 <>
                                     <Script
@@ -392,6 +418,7 @@ export default function Contact() {
                         </fieldset>
                     </form>
 
+                    {/* Keep a stable live region so assistive technology announces async results. */}
                     <div aria-live="polite" className="min-h-6">
                         {feedbackMessage && (
                             <p

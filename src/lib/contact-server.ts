@@ -1,3 +1,11 @@
+/**
+ * Server-only parsing and security helpers for the contact endpoint.
+ *
+ * These functions deliberately have no React or Resend dependency. Keeping validation, request
+ * size enforcement, origin checks, and Turnstile verification here makes them independently
+ * testable and keeps the API route focused on orchestration.
+ */
+
 import {z} from "zod";
 import {
     CONTACT_FIELDS,
@@ -10,8 +18,13 @@ const singleLineText = (minimum: number, maximum: number) =>
         .trim()
         .min(minimum)
         .max(maximum)
+        // Control characters could create ambiguous values or email-header injection attempts.
         .refine((value) => !/[\u0000-\u001f\u007f]/.test(value));
 
+/**
+ * Authoritative schema for a human submission. `.strict()` rejects undeclared properties instead
+ * of silently carrying attacker-controlled data further into the email pipeline.
+ */
 export const contactSubmissionSchema = z.object({
     name: singleLineText(CONTACT_LIMITS.name.min, CONTACT_LIMITS.name.max),
     email: z.string().trim().max(CONTACT_LIMITS.email.max).pipe(z.email()),
@@ -32,14 +45,23 @@ const honeypotSchema = z.object({
     website: z.string().min(1).max(CONTACT_LIMITS.honeypot.max),
 }).passthrough();
 
+/** Returns true when the hidden `website` field was populated, which normal UI users never do. */
 export function isHoneypotSubmission(value: unknown): boolean {
     return honeypotSchema.safeParse(value).success;
 }
 
+/** Result of bounded JSON parsing before the payload is trusted or validated. */
 type RequestBodyResult =
     | {ok: true; value: unknown}
     | {ok: false; code: "INVALID_REQUEST" | "REQUEST_TOO_LARGE"; status: 400 | 413 | 415};
 
+/**
+ * Reads a JSON body while enforcing the byte limit during streaming.
+ *
+ * `Content-Length` is checked as an inexpensive early exit, but it is not trusted: clients can
+ * omit or falsify it, so received bytes are counted as well. Fatal UTF-8 decoding prevents invalid
+ * byte sequences from being normalized into unexpected input.
+ */
 export async function readContactRequestBody(request: Request): Promise<RequestBodyResult> {
     const mediaType = request.headers.get("content-type")?.split(";", 1)[0].trim().toLowerCase();
 
@@ -94,6 +116,10 @@ export async function readContactRequestBody(request: Request): Promise<RequestB
     }
 }
 
+/**
+ * Converts Zod issues to the small set of fields the UI can display and focus. Internal fields such
+ * as the Turnstile token and submission ID are intentionally never exposed as field errors.
+ */
 export function getInvalidContactFields(error: z.ZodError): ContactField[] {
     const invalidFields = new Set<ContactField>();
 
@@ -108,6 +134,12 @@ export function getInvalidContactFields(error: z.ZodError): ContactField[] {
     return Array.from(invalidFields);
 }
 
+/**
+ * Allows same-origin browser requests plus explicitly configured preview origins.
+ *
+ * Requests without an `Origin` header are allowed because non-browser clients may omit it;
+ * Turnstile and payload validation remain the anti-abuse controls for those requests.
+ */
 export function isAllowedContactOrigin(request: Request, configuredOrigins = ""): boolean {
     const origin = request.headers.get("origin");
 
@@ -131,12 +163,21 @@ const turnstileResponseSchema = z.object({
     "error-codes": z.array(z.string()).optional(),
 }).passthrough();
 
+/** Injectable fetch signature used to test Cloudflare responses without making network calls. */
 type FetchLike = (input: string | URL | Request, init?: RequestInit) => Promise<Response>;
 
+/** Separates rejected tokens from temporary provider/network failures for correct HTTP semantics. */
 export type TurnstileVerification =
     | {ok: true}
     | {ok: false; reason: "invalid" | "unavailable"};
 
+/**
+ * Verifies a single-use Turnstile token with Cloudflare and binds it to this contact form.
+ *
+ * A successful Cloudflare response is accepted only when its widget action is `contact` and its
+ * hostname is on the optional allowlist. Allowlist entries must be bare hostnames (for example,
+ * `localhost` or `jerome-greder.com`) because Cloudflare does not return schemes or ports.
+ */
 export async function verifyTurnstileToken(
     token: string,
     secret: string,
@@ -161,6 +202,7 @@ export async function verifyTurnstileToken(
         if (!parsedResponse.success) return {ok: false, reason: "unavailable"};
 
         const result = parsedResponse.data;
+        // An empty list disables the additional hostname restriction, but never token verification.
         const hostnameIsAllowed = allowedHostnames.length === 0
             || (result.hostname !== undefined && allowedHostnames.includes(result.hostname));
 
