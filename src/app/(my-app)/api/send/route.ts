@@ -1,3 +1,11 @@
+/**
+ * Contact submission endpoint.
+ *
+ * The processing order is intentional: reject cross-origin browser requests, bound and parse the
+ * body, silently absorb honeypot traffic, validate user input, verify Turnstile, and only then call
+ * Resend. Keep all secrets and provider calls in this server module.
+ */
+
 import {Resend} from "resend";
 import {EmailTemplate} from "@/app/(my-app)/[locale]/components/email-template";
 import {
@@ -14,10 +22,12 @@ import {
 } from "@/lib/contact-server";
 
 const responseHeaders = {
+    // Contact responses contain per-request security state and must never be reused by a cache.
     "Cache-Control": "no-store",
     "X-Content-Type-Options": "nosniff",
 };
 
+/** Creates every JSON response with the endpoint's security and cache headers. */
 function jsonResponse(body: ContactApiResponse, status = 200) {
     return Response.json(body, {status, headers: responseHeaders});
 }
@@ -26,6 +36,10 @@ function errorResponse(code: ContactErrorCode, status: number) {
     return jsonResponse({ok: false, code}, status);
 }
 
+/**
+ * Handles one contact submission and returns only the public `ContactApiResponse` contract.
+ * Provider errors are logged server-side but are never returned verbatim to the browser.
+ */
 export async function POST(request: Request) {
     try {
         if (!isAllowedContactOrigin(request, process.env.CONTACT_FORM_ALLOWED_ORIGINS)) {
@@ -64,6 +78,7 @@ export async function POST(request: Request) {
         const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
         const resendApiKey = process.env.RESEND_API_KEY;
 
+        // Fail closed when either server-side credential is missing.
         if (!turnstileSecret || !resendApiKey) {
             console.error("Contact form configuration is incomplete", {
                 hasResendApiKey: Boolean(resendApiKey),
@@ -76,6 +91,7 @@ export async function POST(request: Request) {
             .split(",")
             .map((value) => value.trim())
             .filter(Boolean);
+
         const verification = await verifyTurnstileToken(
             turnstileToken,
             turnstileSecret,
@@ -92,6 +108,9 @@ export async function POST(request: Request) {
         }
 
         const resend = new Resend(resendApiKey);
+
+        // Reuse the client-generated ID across retries so Resend can suppress duplicate delivery
+        // when the first request succeeds but its response is lost before reaching the browser.
         const {error} = await resend.emails.send({
             from: process.env.CONTACT_FROM_EMAIL,
             to: process.env.CONTACT_TO_EMAIL,
@@ -109,6 +128,7 @@ export async function POST(request: Request) {
 
         return jsonResponse({ok: true});
     } catch (error) {
+        // Unexpected details stay in server logs; clients receive the stable generic error code.
         console.error("Unexpected contact form error", error);
         return errorResponse("SEND_FAILED", 500);
     }

@@ -1,3 +1,10 @@
+/**
+ * Security and contract regression tests for the contact endpoint.
+ *
+ * Provider calls are replaced with injected fetch implementations, and honeypot route tests exit
+ * before Resend is constructed, so this suite never verifies a real token or sends a real email.
+ */
+
 import assert from "node:assert/strict";
 import test from "node:test";
 import {POST} from "../app/(my-app)/api/send/route";
@@ -10,6 +17,7 @@ import {
     verifyTurnstileToken,
 } from "./contact-server";
 
+/** Complete baseline payload reused when each test changes one security-relevant condition. */
 const validSubmission = {
     name: "Jérôme Greder",
     email: "visitor@example.com",
@@ -20,6 +28,7 @@ const validSubmission = {
     submissionId: "d9428888-122b-4c0c-bc07-33be7a7ff4c9",
 };
 
+// Schema and public validation-error behavior.
 test("the contact schema trims valid input", () => {
     const result = contactSubmissionSchema.safeParse({
         ...validSubmission,
@@ -95,6 +104,7 @@ test("the contact route rejects cross-origin browser requests", async () => {
     assert.deepEqual(await response.json(), {ok: false, code: "FORBIDDEN"});
 });
 
+// Bounded request parsing and origin policy.
 test("request parsing requires JSON", async () => {
     const request = new Request("https://example.com/api/send", {
         method: "POST",
@@ -154,6 +164,7 @@ test("origin checks allow same-origin and configured preview origins", () => {
     assert.equal(isAllowedContactOrigin(foreignRequest), false);
 });
 
+// Cloudflare adapter behavior; all responses below are local test doubles.
 test("Turnstile verification checks the action and hostname", async () => {
     const verification = await verifyTurnstileToken(
         "token",
