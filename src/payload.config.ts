@@ -6,6 +6,7 @@ import path from 'path'
 import {buildConfig} from 'payload'
 import {fileURLToPath} from 'url'
 import sharp from 'sharp'
+import {getDatabasePoolConfig} from './lib/database-config'
 
 import {Users} from './collections/Users'
 import {Media} from './collections/Media'
@@ -20,7 +21,6 @@ import {s3Storage} from "@payloadcms/storage-s3";
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-const ca = process.env.RDS_CA_PEM?.replace(/\\n/g, '\n');
 
 export default buildConfig({
     cors: {
@@ -51,13 +51,7 @@ export default buildConfig({
         outputFile: path.resolve(dirname, 'payload-types.ts'),
     },
     db: postgresAdapter({
-        pool: {
-            connectionString: process.env.DATABASE_URI || 'postgres://postgres:root@127.0.0.1:5432/jerome-greder-web-portfolio-cms-db',
-            ssl: {
-                rejectUnauthorized: true,
-                ca: ca // CA certificate for SSL connection
-            }
-        },
+        pool: getDatabasePoolConfig(),
     }),
     sharp,
     plugins: [

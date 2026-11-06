@@ -2,6 +2,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Use Node.js 22.23.4 (see `.nvmrc`) or a version accepted by `package.json`'s `engines` field.
+With nvm installed, run `nvm install` and `nvm use` before `npm ci`.
+
+The Payload 3.93 upgrade includes an incremental database migration. Read
+[the upgrade notes](docs/payload-3.93-upgrade.md) before deploying it to an existing database.
+
+Development uses `DATABASE_URI_DEV` for localhost PostgreSQL. Production uses `DATABASE_URI` with
+verified TLS and `RDS_CA_PEM`; production CLI commands require `NODE_ENV=production`.
+
 First, run the development server:
 
 ```bash
