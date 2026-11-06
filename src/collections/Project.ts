@@ -1,5 +1,5 @@
 import type {CollectionConfig} from 'payload'
-import {lexicalEditor} from "@payloadcms/richtext-lexical";
+import {FixedToolbarFeature, HeadingFeature, lexicalEditor, LinkFeature} from "@payloadcms/richtext-lexical";
 
 export const Project: CollectionConfig = {
     slug: 'project',
@@ -53,7 +53,14 @@ export const Project: CollectionConfig = {
             name: 'description',
             label: 'Description',
             type: 'richText',
-            editor: lexicalEditor({}),
+            editor: lexicalEditor({
+                features: ({defaultFeatures}) => [
+                    ...defaultFeatures.filter(({key}) => !['heading', 'link'].includes(key)),
+                    HeadingFeature({enabledHeadingSizes: ['h2', 'h3', 'h4']}),
+                    LinkFeature({enabledCollections: ['project']}),
+                    FixedToolbarFeature(),
+                ],
+            }),
             localized: true,
             required: true,
         },

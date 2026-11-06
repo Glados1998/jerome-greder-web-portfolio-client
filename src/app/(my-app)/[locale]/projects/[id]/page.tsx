@@ -1,208 +1,205 @@
 "use client";
+
 import axios from "axios";
-import {useTranslations} from "use-intl";
-import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
+import {useLocale, useTranslations} from "next-intl";
 import {useParams} from "next/navigation";
 import {useEffect, useState} from "react";
-import {getLocaleFromURL} from "@/utils/localeUtils";
-import Link from "next/link";
-import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
 import Image from "next/image";
 import {AiFillGithub} from "react-icons/ai";
 import {MdWebAsset} from "react-icons/md";
-import {RichText} from "@payloadcms/richtext-lexical/react"
+import {Link} from "@/i18n/routing";
+import type {Media, Project} from "@/payload-types";
+import ProjectRichText from "@/components/ProjectRichText";
 import {Skeleton} from "@/components/ui/skeleton";
+import SocialBtn from "@/app/(my-app)/[locale]/components/SocialBtn";
+import ProgrammingTag from "@/app/(my-app)/[locale]/components/programmingTag";
 import ProgrammingTagSkeleton from "@/app/(my-app)/[locale]/components/skeleton/programmingTag-skeleton";
 import GitMenu from "@/app/(my-app)/[locale]/components/gitMenu";
 
+type ProjectState =
+    | {status: 'loading'}
+    | {status: 'success'; project: Project}
+    | {status: 'error' | 'not-found'};
+
+function isPopulatedImage(image: number | Media): image is Media & {url: string} {
+    return typeof image === 'object' && image !== null && typeof image.url === 'string' && image.url.length > 0;
+}
+
 export default function Page() {
-    /**
-     * React component logic for fetching and displaying project details based on locale and project ID.
-     *
-     * This code includes:
-     * - State management for project data, locale, loading status, and selected image index.
-     * - Effects for determining the locale dynamically and fetching project data from an API.
-     * - Logic for determining which images to display based on the project data.
-     */
+    const {id} = useParams<{id: string}>();
+    const locale = useLocale();
 
-    const {id} = useParams(); // Extracts the project ID from the URL parameters.
-    const [singleProject, setSingleProject] = useState(null); // State to store the fetched project data.
-    const [locale, setLocale] = useState<string | null>(null); // State to store the current locale.
-    const [isLoading, setIsLoading] = useState(true); // State to track whether the data is being loaded.
-    const [selectedImageIndex, setSelectedImageIndex] = useState(0); // State to track the currently selected image index.
-    const t = useTranslations("page.projects"); // Hook for translations based on the current locale.
+    // A different project or language starts a fresh request and image selection.
+    return <ProjectDetails key={`${locale}/${id}`} id={id} locale={locale}/>;
+}
 
-    /**
-     * Effect to determine the locale dynamically from the URL.
-     * Runs only on the client side (checks for `window` availability).
-     */
+function ProjectDetails({id, locale}: {id: string; locale: string}) {
+    const [state, setState] = useState<ProjectState>({status: 'loading'});
+    const [attempt, setAttempt] = useState(0);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const t = useTranslations("page.projects");
+
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const currentLocale = getLocaleFromURL(window.location.href); // Extracts locale from the URL.
-            setLocale(currentLocale); // Updates the locale state.
+        const controller = new AbortController();
+        let active = true;
+
+        async function loadProject() {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL || '/api';
+            try {
+                const response = await axios.get<Project>(
+                    `${apiUrl.replace(/\/$/, '')}/project/${encodeURIComponent(id)}`,
+                    {
+                        params: {depth: 1, draft: false, locale, 'fallback-locale': 'en'},
+                        timeout: 15_000,
+                        signal: controller.signal,
+                    },
+                );
+                if (!active) return;
+                if (!response.data || typeof response.data !== 'object' || response.data.id == null) {
+                    setState({status: 'error'});
+                    return;
+                }
+                setState({status: 'success', project: response.data});
+            } catch (error) {
+                if (!active) return;
+                const status = axios.isAxiosError(error) && error.response?.status === 404 ? 'not-found' : 'error';
+                setState({status});
+            }
         }
-    }, []);
 
-    /**
-     * Effect to fetch project data from the API based on the locale and project ID.
-     * Runs whenever the `id` or `locale` changes.
-     */
-    useEffect(() => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL; // Determines the API URL from environment variables.
-        if (apiUrl && locale) {
-            setIsLoading(true); // Sets loading state to true before fetching data.
-            axios.get(`${apiUrl}/project/${id}?depth=1&draft=false&locale=${locale}&fallback-locale=en`) // Fetches project data.
-                .then(response => {
-                    setSingleProject(response.data); // Updates the project data state with the response.
-                    setIsLoading(false); // Sets loading state to false after data is fetched.
-                })
-                .catch(error => {
-                    console.error('Error fetching project:', error); // Logs any errors during the fetch.
-                    setIsLoading(false); // Sets loading state to false in case of an error.
-                });
-        }
-    }, [id, locale]);
+        void loadProject();
+        return () => {
+            active = false;
+            controller.abort();
+        };
+    }, [id, locale, attempt]);
 
-    /**
-     * Determines the images to display for the project.
-     * If the project has images, it uses them; otherwise, it falls back to the thumbnail.
-     */
-    const displayImages = singleProject?.images?.length > 0
-        ? singleProject.images
-        : (singleProject?.thumbnail ? [singleProject.thumbnail] : []);
-
-    const gitLinks = Array.isArray(singleProject?.git_links) ? singleProject.git_links : [];
-    const hasSingleGitLink = gitLinks.length === 1;
-    const hasMultipleGitLinks = gitLinks.length > 1;
+    const project = state.status === 'success' ? state.project : null;
+    const images = project?.images?.filter(isPopulatedImage) ?? [];
+    const displayImages = images.length > 0
+        ? images
+        : project?.thumbnail && isPopulatedImage(project.thumbnail) ? [project.thumbnail] : [];
+    const selectedImage = displayImages[selectedImageIndex] ?? displayImages[0];
+    const gitLinks = project?.git_links ?? [];
 
     return (
-        <>
-            {!isLoading ? (
-                <div className="container mx-auto px-4 py-10">
-                    <div className="mb-4">
-                        <Link className="btn" href="/projects">{t("backBtn")}</Link>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Left Column - Images */}
-                        <div className="flex flex-col gap-4">
-                            <div className="w-full h-96 relative">
-                                {displayImages.length > 0 && (
-                                    <Image
-                                        src={displayImages[selectedImageIndex].url}
-                                        alt={displayImages[selectedImageIndex].alt || "Project image"}
-                                        layout="fill"
-                                        objectFit="cover"
-                                        className="rounded-lg shadow"
-                                    />
-                                )}
-                            </div>
-                            {displayImages.length > 1 && (
-                                <div className="flex flex-wrap gap-3">
-                                    {displayImages.map((image, index) => (
-                                        <div
-                                            key={index}
-                                            className={`w-20 h-20 relative cursor-pointer ${index === selectedImageIndex ? 'ring-2 rounded ring-blue-500' : ''}`}
-                                            onClick={() => setSelectedImageIndex(index)}
-                                        >
-                                            <Image
-                                                src={image.url}
-                                                alt={image.alt || `Project image ${index + 1}`}
-                                                layout="fill"
-                                                objectFit="cover"
-                                                className="rounded hover:ring-2 hover:ring-blue-500 transition duration-200"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
+        <div className="container mx-auto px-4 py-10">
+            <div className="mb-4">
+                <Link className="btn" href="/projects">{t("backBtn")}</Link>
+            </div>
+
+            {state.status === 'loading' ? (
+                <ProjectSkeleton/>
+            ) : project ? (
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <div className="flex min-w-0 flex-col gap-4">
+                        <div className="relative h-96 w-full">
+                            {selectedImage && (
+                                <Image
+                                    src={selectedImage.url}
+                                    alt={selectedImage.alt}
+                                    fill
+                                    sizes="(min-width: 768px) 50vw, 100vw"
+                                    className="rounded-lg object-cover shadow"
+                                />
                             )}
                         </div>
+                        {displayImages.length > 1 && (
+                            <div className="flex flex-wrap gap-3">
+                                {displayImages.map((image, index) => (
+                                    <button
+                                        key={image.id}
+                                        type="button"
+                                        aria-label={image.alt}
+                                        aria-pressed={index === selectedImageIndex}
+                                        className={`relative h-20 w-20 cursor-pointer rounded focus-visible:outline-2 focus-visible:outline-offset-2 ${index === selectedImageIndex ? 'ring-2 ring-blue-500' : ''}`}
+                                        onClick={() => setSelectedImageIndex(index)}
+                                    >
+                                        <Image src={image.url} alt="" fill sizes="80px" className="rounded object-cover"/>
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
 
-                        {/* Right Column - Project Details */}
-                        <div className="flex flex-col gap-6">
-                            <h1 className="text-3xl font-bold">{singleProject?.name}</h1>
+                    <div className="flex min-w-0 flex-col gap-6">
+                        <h1 className="text-3xl font-bold">{project.name}</h1>
 
-                            <div>
-                                <span className="text-lg font-semibold mb-2 block">{t("usedTechnologies")} :</span>
-                                <div className="flex flex-wrap gap-2">
-                                    {singleProject?.programming_tags?.map((technology, index) => (
-                                        <ProgrammingTag key={index} programmingTag={technology}/>
-                                    ))}
+                        <section aria-labelledby="project-technologies">
+                            <h2 id="project-technologies" className="mb-2 text-lg font-semibold">{t("usedTechnologies")} :</h2>
+                            <div className="flex flex-wrap gap-2">
+                                {project.programming_tags?.map(technology => typeof technology === 'object' && technology !== null && (
+                                    <ProgrammingTag key={technology.id} programmingTag={technology}/>
+                                ))}
+                            </div>
+                        </section>
+
+                        <section aria-labelledby="project-description">
+                            <h2 id="project-description" className="mb-2 text-lg font-semibold">{t("projectDescription")} :</h2>
+                            <ProjectRichText data={project.description} locale={locale}/>
+                        </section>
+
+                        {(gitLinks.length > 0 || project.live_link) && (
+                            <section aria-labelledby="project-links">
+                                <h2 id="project-links" className="mb-2 text-lg font-semibold">{t("cta")} :</h2>
+                                <div className="flex flex-wrap gap-4">
+                                    {gitLinks.length === 1 && (
+                                        <SocialBtn href={gitLinks[0].url} className="btn-github">
+                                            <AiFillGithub/> Github
+                                        </SocialBtn>
+                                    )}
+                                    {gitLinks.length > 1 && (
+                                        <GitMenu repos={gitLinks}>
+                                            <AiFillGithub/> Github
+                                        </GitMenu>
+                                    )}
+                                    {project.live_link && (
+                                        <SocialBtn href={project.live_link} className="btn-live">
+                                            <MdWebAsset/> Live
+                                        </SocialBtn>
+                                    )}
                                 </div>
-                            </div>
-
-                            <div>
-                                <span className="text-lg font-semibold mb-2 block">{t("projectDescription")} :</span>
-                                <RichText data={singleProject.description}
-                                          className="prose max-w-none max-h-70 overflow-auto bg-slate-200 dark:bg-slate-800 rounded-lg p-3"/>
-                            </div>
-                            {
-                                    (hasSingleGitLink || hasMultipleGitLinks || singleProject?.live_link) && (
-                                    <div>
-                                        <span className="text-lg font-semibold mb-2 block">{t("cta")} :</span>
-                                        <div className="flex gap-4">
-                                            {hasSingleGitLink && (
-                                                <SocialBtn href={gitLinks[0].url} className="btn-github">
-                                                    <AiFillGithub/>
-                                                    Github
-                                                </SocialBtn>
-                                            )}
-
-                                            {hasMultipleGitLinks && (
-                                                <GitMenu repos={gitLinks}>
-                                                    <AiFillGithub/>
-                                                    Github
-                                                </GitMenu>
-                                            )}
-
-                                            {singleProject?.live_link && (
-                                                <SocialBtn href={singleProject.live_link} className="btn-live">
-                                                    <MdWebAsset/>
-                                                    Live
-                                                </SocialBtn>
-                                            )}
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        </div>
+                            </section>
+                        )}
                     </div>
                 </div>
             ) : (
-                <div className="container mx-auto px-4 py-10">
-                    <div className="mb-4">
-                        <Link className="btn" href="/projects">{t("backBtn")}</Link>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Left Column - Images */}
-                        <div className="flex flex-col gap-4">
-                            <Skeleton className="w-full h-96 relative"/>
-                        </div>
-
-                        {/* Right Column - Project Details */}
-                        <div className="flex flex-col gap-6">
-                            <Skeleton className="w-80 h-12 rounded-2xl"/>
-                            <div>
-                                <Skeleton className="w-50 h-8 mb-2"/>
-                                <div className="flex flex-wrap gap-2 mt-2">
-                                    {Array.from({length: 3}).map((_, index) => (
-                                        <ProgrammingTagSkeleton key={index}/>
-                                    ))}
-                                </div>
-                            </div>
-                            <div>
-                                <Skeleton className="w-50 h-8 mb-2"/>
-                            </div>
-                            <div>
-                                <Skeleton className="w-50 h-8 mb-2"/>
-                                <Skeleton className="max-w-noneh-auto h-70 rounded-lg p-3"/>
-                            </div>
-                            <div>
-                                <Skeleton className="w-50 h-8"/>
-                            </div>
-                        </div>
-                    </div>
+                <div role={state.status === 'error' ? 'alert' : 'status'} className="space-y-4">
+                    <h1 className="text-2xl font-bold">
+                        {state.status === 'not-found' ? t('projectNotFound') : t('fetchProjectError')}
+                    </h1>
+                    {state.status === 'error' && (
+                        <button type="button" className="btn" onClick={() => {
+                            setState({status: 'loading'});
+                            setAttempt(previous => previous + 1);
+                        }}>
+                            {t('retry')}
+                        </button>
+                    )}
                 </div>
             )}
-        </>
+        </div>
+    );
+}
+
+function ProjectSkeleton() {
+    return (
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2" aria-busy="true">
+            <Skeleton className="h-96 w-full"/>
+            <div className="flex min-w-0 flex-col gap-6">
+                <Skeleton className="h-12 w-80 max-w-full rounded-2xl"/>
+                <div>
+                    <Skeleton className="mb-2 h-8 w-50"/>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                        {Array.from({length: 3}, (_, index) => <ProgrammingTagSkeleton key={index}/>)}
+                    </div>
+                </div>
+                <div>
+                    <Skeleton className="mb-2 h-8 w-50"/>
+                    <Skeleton className="h-70 rounded-lg p-3"/>
+                </div>
+                <Skeleton className="h-8 w-50"/>
+            </div>
+        </div>
     );
 }

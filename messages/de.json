@@ -73,6 +73,8 @@
     "projects": {
       "noProjects": "Keine Projekte gefunden",
       "fetchProjectError": "Fehler beim Abrufen der Projekte",
+      "projectNotFound": "Projekt nicht gefunden",
+      "retry": "Erneut versuchen",
       "backBtn": "Zurück",
       "title": "Meine Projekte",
       "subTitle": "Hier sind einige der Projekte, an denen ich gearbeitet habe",
